@@ -1,0 +1,45 @@
+<div class="container">
+  <h3>国名一覧</h3>
+
+<div>
+  <p><%= link_to "スタイル>>", admin_styles_path %></p>
+  <p><%= link_to "ジャンル>>", admin_genres_path %></p>
+</div>
+
+<div>
+  <%= form_with model:@country, url:admin_countries_path, local:true do |f| %>
+    <%= f.label "スタイル" %> <%= f.text_field :name %>
+    
+    <%= f.radio_button :is_active, :true %>
+    <%= f.label :is_active, "有効", {value: :true} %>
+    <%= f.radio_button :is_active, :false %>
+    <%= f.label :is_active, "無効", {value: :false} %>
+    
+    <%= f.submit "追加" %>
+  <% end %>
+</div>
+
+<tbody>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>スタイル名</th>
+        <th>状態</th>
+        <th> </th>
+      </tr>
+    </thead>
+    
+    <% @countries.each do |country| %>
+      <tr>
+        <th><%= country.id %></th>
+        <th><%= country.name %></th>
+        <th><%= country.is_active == true ? "有効" : "無効" %></th>
+        <th><%= link_to "編集", edit_admin_country_path(country) %></th>
+      </tr>
+    <% end %>
+  </table>
+
+</tbody>
+
+</div>
