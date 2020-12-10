@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "countries", force: :cascade do |t|
-    t.string "country_name"
+    t.string "name"
     t.string "currency"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "genre_name"
+    t.string "name"
     t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "restaurant_name"
+    t.string "name"
     t.float "rate"
     t.string "image"
     t.text "content"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "styles", force: :cascade do |t|
-    t.string "style_name"
+    t.string "name"
     t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name"
+    t.string "name"
     t.text "introduction"
     t.string "profile_image"
     t.string "my_country"

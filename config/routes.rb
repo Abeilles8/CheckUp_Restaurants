@@ -12,5 +12,19 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
+  # admin_route
+  get 'admin' => 'admin/homes#top'
+  namespace :admin do
+    resources :countries
+    resources :genres
+    resources :styles
+  end
+  
+  
+  # user_route
   root :to => 'user/homes#top'
+  scope module: :user do
+    resources :users
+    resources :reviews
+  end
 end
