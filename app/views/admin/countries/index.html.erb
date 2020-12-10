@@ -20,16 +20,19 @@
 </div>
 
 <tbody>
-  <table>
-    <thead>
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
+        <th>#</th>
         <th>スタイル名</th>
         <th>状態</th>
+        <th> </th>
       </tr>
     </thead>
     
     <% @countries.each do |country| %>
       <tr>
+        <th><%= country.id %></th>
         <th><%= country.name %></th>
         <th><%= country.is_active == true ? "有効" : "無効" %></th>
         <th><%= link_to "編集", edit_admin_country_path(country) %></th>

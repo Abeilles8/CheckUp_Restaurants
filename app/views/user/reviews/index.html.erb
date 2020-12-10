@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<%= link_to "reviewはこちら", new_review_path %>
+		<tbody>
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th>ユーザー名</th>
+			      <th>レストラン名</th>
+			      <th>レストラン画像</th>
+			      <th>レビュー内容</th>
+			      <th> </th>
+			    </tr>
+			  </thead>
+			  
+			  <% @reviews.each do |review| %>
+			    <tr>
+			      <th><%= review.id %></th>
+			      <th><%= review.name %></th>
+			      <th><%= review.image %></th>
+			      <th><%= review.content %></th>
+			      <th><%= link_to "編集", edit_review_path(review) %></th>
+			    </tr>
+			  <% end %>
+			</table>
+		</tbody>
+	</div>
+</div>

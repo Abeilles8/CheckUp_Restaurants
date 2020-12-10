@@ -1,9 +1,11 @@
 class User::ReviewsController < ApplicationController
 	
 	def index
-  end
+	  @reviews = Review.all
+	end
   
   def show
+    @review = Review.find(params[:id])
   end
   
   def new
@@ -13,13 +15,17 @@ class User::ReviewsController < ApplicationController
   def create
   	@review = Review.new(review_params)
   	@review.save
-  	redirect_to review_path(params[])
+  	redirect_to review_path(@review.id)
   end
   
   def edit
+    @review = Review.find(params[:id])
   end
   
   def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to review_path(@review.id)
   end
   
   def destroy

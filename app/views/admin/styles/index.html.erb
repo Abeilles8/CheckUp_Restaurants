@@ -20,22 +20,26 @@
 </div>
 
 <tbody>
-<% @styles.each do |style| %>
-  <table>
-    <thead>
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
+        <th>#</th>
         <th>スタイル名</th>
         <th>状態</th>
+        <th> </th>
       </tr>
     </thead>
     
-    <tr>
-      <th><%= style.name %></th>
-      <th><%= style.is_active == true ? "有効" : "無効" %></th>
-      <th><%= link_to "編集", edit_admin_style_path(style) %></th>
-    </tr>
+    <% @styles.each do |style| %>
+      <tr>
+        <th><%= style.id %></th>
+        <th><%= style.name %></th>
+        <th><%= style.is_active == true ? "有効" : "無効" %></th>
+        <th><%= link_to "編集", edit_admin_style_path(style) %></th>
+      </tr>
+    <% end %>
   </table>
-<% end %>
+
 </tbody>
 
 </div>

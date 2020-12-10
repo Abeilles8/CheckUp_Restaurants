@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>レビュー編集</h1>
+	<div class="row">
+	  <%= form_with model:@review, url:review_path, local:true do |f| %>
+	    <div>
+  	    <%= f.label "レストラン名" %>
+  	    <%= f.text_field :name %>
+	    </div>
+	    <div>
+				<%= f.label "レストラン画像" %>
+				<%= f.file_field :image %>
+			</div>
+	    <div>
+	      <%= f.label "レビュー内容" %>
+	      <%= f.text_area :content %>
+	    </div>
+	    <div>
+	      <%= f.submit "更新" %>
+	    </div>
+    <% end %>
+  </div>
+</div>
