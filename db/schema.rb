@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,8 +40,13 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "review_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_favorites_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_favorites_on_user_id_and_review_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -50,16 +57,30 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   end
 
   create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_likes_on_user_id_and_review_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "country_id"
+    t.integer "style_id"
+    t.integer "genre_id"
     t.string "name"
     t.float "rate"
     t.string "image"
