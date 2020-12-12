@@ -1,0 +1,15 @@
+
+<h3><%= current_user.name %>のプロフィールです</h3>
+<div class="row">
+  <div>
+    <div>
+      <%= attachment_image_tag current_user, :profile_image, fallback:"sample.jpg", size: "100px" %>
+    </div>
+    </li>
+    <li>ユーザー名 <%= current_user.name %></li>
+    <li>メールアドレス <%= current_user.email %></li>
+    <li>国籍 <%= current_user.my_country %></li>
+    <li>自己紹介 <%= current_user.introduction %></li>
+    <%= link_to "編集", edit_user_path(current_user) %>
+  </div>
+</div>
