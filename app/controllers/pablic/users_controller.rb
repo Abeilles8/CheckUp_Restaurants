@@ -6,10 +6,6 @@ class Pablic::UsersController < ApplicationController
   def my_page
   end
   
-  def show
-    # @user = User.find(params[:id])
-  end
-  
   def edit
     @user = User.find(current_user.id)
   end
@@ -17,7 +13,7 @@ class Pablic::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path
+    redirect_to my_page_path, notice: "更新しました"
   end
 
   private
