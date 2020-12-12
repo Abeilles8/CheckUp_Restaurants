@@ -7,6 +7,8 @@
 			    <tr>
 			      <th>ユーザー名</th>
 			      <th>レストラン名</th>
+			      <th>エリア</th>
+			      <th>ジャンル</th>
 			      <th>レストラン画像</th>
 			      <th>レビュー内容</th>
 			      <th> </th>
@@ -17,6 +19,8 @@
 			    <tr>
 			      <th><%= review.id %></th>
 			      <th><%= review.name %></th>
+			      <th><%= review.country %></th>
+			      <th><%= review.genre %></th>
 			      <th><%= review.image %></th>
 			      <th><%= review.content %></th>
 			      <th><%= link_to "編集", edit_review_path(review) %></th>

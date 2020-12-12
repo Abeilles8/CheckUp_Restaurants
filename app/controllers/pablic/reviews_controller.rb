@@ -1,4 +1,4 @@
-class User::ReviewsController < ApplicationController
+class Pablic::ReviewsController < ApplicationController
 	
 	def index
 	  @reviews = Review.all
@@ -15,7 +15,7 @@ class User::ReviewsController < ApplicationController
   def create
   	@review = Review.new(review_params)
   	@review.save
-  	redirect_to review_path(@review.id)
+  	redirect_to reviews_path
   end
   
   def edit

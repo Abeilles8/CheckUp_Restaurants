@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   
   
   # user_route
-  root :to => 'user/homes#top'
-  scope module: :user do
+  root :to => 'pablic/homes#top'
+  scope module: :pablic do
+    get "my_page" => "users#my_page"
     resources :users
     resources :reviews
   end

@@ -10,11 +10,31 @@
   </head>
 
   <body>
-    <header class=backcolor>
-      <div>ヘッダー</div>
+    <header class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="col-12 clearfix">
+        <%= link_to root_path do %>
+          <h5>Check Up Restaurants</h5>
+        <% end %>
+        
+        <div class="float-right">
+          <ul class="nav pull-right">
+            <% if user_signed_in? %>
+              <li><%= link_to "マイページ", my_page_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
+              <li>設定</li>
+            <% else %>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+        
+      </div>
     </header>
-      
-    <%= yield %>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
       
     <footer class="backcolor">
       <div>フッター</div>

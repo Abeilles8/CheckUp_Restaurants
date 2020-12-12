@@ -1,17 +1,27 @@
-<div class="container">
-	<h3>レビュー詳細</h3>
-	
-	<div class="row">
-	 <li>
+<h3>レビュー詳細</h3>
+<div class="row">
+	<div>
 	  	<p>レストラン名</p>
 	  	<strong><%= @review.name %></strong>
+	</div>
+	<div>
+		<p>エリア</p>
+		<strong><%= @country %></strong>
+	</div>
+	<div>
+		<p>ジャンル</p>
+		<strong><%= @genre %></strong>
+	</div>
+	<div>
 	  	<p>レストラン画像</p>
 	  	<%= @review.image %>
+	</div>
+	<div>
 	  	<p>レビュー内容</p>
 	  	<strong><%= @review.content %></strong>
-
+	</div>
+	<div>
 	  	<%= link_to "編集", edit_review_path %>
 	  	<%= link_to "一覧", reviews_path %>
-	  </li>
 	</div>
 </div>
