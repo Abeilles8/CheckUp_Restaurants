@@ -4,6 +4,12 @@ class Pablic::UsersController < ApplicationController
   # before_action :authenticate_user!, only: [:my_page]
   
   def my_page
+    @reviews = Review.all
+  end
+  
+  def show
+    @reviews = Review.all
+    @user = User.find(params[:id])
   end
   
   def edit
@@ -22,7 +28,4 @@ class Pablic::UsersController < ApplicationController
     params.require(:user).permit(:name,:my_country, :email, :profile_image, :introduction)
   end
   
-  # def set_user
-  #   @user = User.find([:id])
-  # end
 end

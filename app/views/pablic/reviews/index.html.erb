@@ -18,8 +18,8 @@
 		  
 		  <% @reviews.each do |review| %>
 		    <tr>
-		    	<!--お気に入り-->
-		      <th><%= review.user.name %></th>
+		      <th><%= render "favorite", review: review %></th>
+		      <th><%= link_to review.user.name, user_path(review) %></th>
 		      <th><%= review.name %></th>
 		      <th><%= review.country.name %></th>
 		      <th><%= review.genre.name %></th>
