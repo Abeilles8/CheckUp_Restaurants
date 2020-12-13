@@ -68,3 +68,7 @@ gem 'refile-mini_magick'
 gem 'kaminari'
 gem 'bootstrap', '~> 4.5.3'
 gem 'jquery-rails'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
