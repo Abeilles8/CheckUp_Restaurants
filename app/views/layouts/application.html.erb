@@ -20,7 +20,7 @@
           <ul class="nav pull-right">
             <% if user_signed_in? %>
               <li><%= attachment_image_tag current_user, :profile_image, fallback:"sample.jpg", size: "40x40" %></li>
-              <li><%= link_to "マイページ", my_page_path %></li>
+              <li><%= link_to "マイページ", user_path(current_user) %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
               <li>設定</li>
             <% else %>

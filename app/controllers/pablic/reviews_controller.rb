@@ -39,6 +39,6 @@ class Pablic::ReviewsController < ApplicationController
   
   private
   def review_params
-  	params.require(:review).permit(:name, :rate, :image, :content, :budget, :country_id, :style_id, :genre_id)
+  	params.require(:review).permit(:name, :rate, :image, :content, :budget, :user_id, :country_id, :style_id, :genre_id)
   end
 end
