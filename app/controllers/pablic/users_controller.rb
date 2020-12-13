@@ -4,10 +4,12 @@ class Pablic::UsersController < ApplicationController
   # before_action :authenticate_user!, only: [:my_page]
   
   def my_page
+    @reviews = Review.all
   end
   
   def show
-    # @user = User.find(params[:id])
+    @reviews = Review.all
+    @user = User.find(params[:id])
   end
   
   def edit
@@ -17,7 +19,7 @@ class Pablic::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path
+    redirect_to my_page_path, notice: "更新しました"
   end
 
   private
@@ -26,7 +28,4 @@ class Pablic::UsersController < ApplicationController
     params.require(:user).permit(:name,:my_country, :email, :profile_image, :introduction)
   end
   
-  # def set_user
-  #   @user = User.find([:id])
-  # end
 end

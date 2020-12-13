@@ -1,32 +1,34 @@
-<div class="container">
-	<div class="row">
-		<%= link_to "reviewはこちら", new_review_path %>
-		<tbody>
-			<table class="table">
-			  <thead class="thead-dark">
-			    <tr>
-			      <th>ユーザー名</th>
-			      <th>レストラン名</th>
-			      <th>エリア</th>
-			      <th>ジャンル</th>
-			      <th>レストラン画像</th>
-			      <th>レビュー内容</th>
-			      <th> </th>
-			    </tr>
-			  </thead>
-			  
-			  <% @reviews.each do |review| %>
-			    <tr>
-			      <th><%= review.id %></th>
-			      <th><%= review.name %></th>
-			      <th><%= review.country %></th>
-			      <th><%= review.genre %></th>
-			      <th><%= review.image %></th>
-			      <th><%= review.content %></th>
-			      <th><%= link_to "編集", edit_review_path(review) %></th>
-			    </tr>
-			  <% end %>
-			</table>
-		</tbody>
-	</div>
+<div class="row">
+	<%= link_to "新規reviewはこちら", new_review_path %>
+	<tbody>
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		    	<th>お気に入り</th>
+		      <th>ユーザー名</th>
+		      <th>レストラン名</th>
+		      <th>エリア</th>
+		      <th>ジャンル</th>
+		      <th>レストラン画像</th>
+		      <th>レビュー内容</th>
+		      <th>いいね</th>
+		      <th> </th>
+		    </tr>
+		  </thead>
+		  
+		  <% @reviews.each do |review| %>
+		    <tr>
+		      <th><%= render "favorite", review: review %></th>
+		      <th><%= link_to review.user.name, user_path(review) %></th>
+		      <th><%= review.name %></th>
+		      <th><%= review.country.name %></th>
+		      <th><%= review.genre.name %></th>
+		      <th><%= review.image %></th>
+		      <th><%= review.content %></th>
+	      	<th><%= render "like", review: review %></th>
+		      <th><%= link_to "編集", edit_review_path(review) %></th>
+		    </tr>
+		  <% end %>
+		</table>
+	</tbody>
 </div>

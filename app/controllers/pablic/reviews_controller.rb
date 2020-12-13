@@ -1,4 +1,6 @@
 class Pablic::ReviewsController < ApplicationController
+  # ログインユーザーのみ
+	before_action :authenticate_user!
 	
 	def index
 	  @reviews = Review.all
@@ -13,9 +15,13 @@ class Pablic::ReviewsController < ApplicationController
   end
   
   def create
-  	@review = Review.new(review_params)
-  	@review.save
-  	redirect_to reviews_path
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    if @review.save!
+    	redirect_to reviews_path, notice: "投稿しました"
+    else
+      render :new
+    end
   end
   
   def edit
@@ -33,6 +39,6 @@ class Pablic::ReviewsController < ApplicationController
   
   private
   def review_params
-  	params.require(:review).permit(:name, :rate, :image, :content, :budget)
+  	params.require(:review).permit(:name, :rate, :image, :content, :budget, :country_id, :style_id, :genre_id)
   end
 end

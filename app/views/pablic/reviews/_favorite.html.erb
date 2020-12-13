@@ -1,0 +1,5 @@
+<% if current_user.favorited_by?(review.id) %>
+	<%= link_to "お気に入りから外す", destroy_favorite_path(review), method: :DELETE %>
+<% else %>
+	<%= link_to "お気に入り登録", create_favorite_path(review), method: :POST %>
+<% end %>
