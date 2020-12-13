@@ -17,7 +17,7 @@ class Pablic::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    if @review.save!
+    if @review.save
     	redirect_to reviews_path, notice: "投稿しました"
     else
       render :new
@@ -35,10 +35,14 @@ class Pablic::ReviewsController < ApplicationController
   end
   
   def destroy
+    @review = Review.find(params[:id])
+    @review.delete
+    redirect_to reviews_path
+    
   end
   
   private
   def review_params
-  	params.require(:review).permit(:name, :rate, :image, :content, :budget, :country_id, :style_id, :genre_id)
+  	params.require(:review).permit(:name, :rate, :image, :content, :budget, :user_id, :country_id, :style_id, :genre_id)
   end
 end

@@ -31,7 +31,7 @@
       
       <% @reviews.each do |review| %>
         <tr>
-		    	<th><%= link_to review.user.name, user_path(review) %></th>
+		    	<th><%= link_to review.user.name, user_path(review.id) %></th>
 		      <th><%= review.user.name %></th>
 		      <th><%= review.name %></th>
 		      <th><%= review.country.name %></th>
