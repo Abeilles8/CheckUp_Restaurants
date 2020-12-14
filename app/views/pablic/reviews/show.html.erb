@@ -1,27 +1,35 @@
-<h3>レビュー詳細</h3>
+<h3 class="text-center">レビュー詳細</h3>
 <div class="row">
 	<div>
-	  	<p>レストラン名</p>
-	  	<strong><%= @review.name %></strong>
-	</div>
-	<div>
-		<p>エリア</p>
-		<strong><%= @country %></strong>
-	</div>
-	<div>
-		<p>ジャンル</p>
-		<strong><%= @genre %></strong>
-	</div>
-	<div>
-	  	<p>レストラン画像</p>
-	  	<%= @review.image %>
-	</div>
-	<div>
-	  	<p>レビュー内容</p>
-	  	<strong><%= @review.content %></strong>
-	</div>
-	<div>
-	  	<%= link_to "編集", edit_review_path %>
-	  	<%= link_to "一覧", reviews_path %>
+		<div> <%= render "pablic/reviews/like", review: @review %></div>
+		<div><%= render "pablic/reviews/favorite", review: @review %></div>
+		<div>
+ 	 		<%= attachment_image_tag @review, :image_id, fallback:"sample.jpg", size: "300x300" %>
+		</div>
+		<div>
+			<p>ユーザー名　<strong><%= @review.user.name %></strong></p>
+		</div>
+		<div>
+		  	<p>レストラン名 <strong><%= @review.name %></strong></p> 
+		</div>
+		<div>
+			<p>エリア <strong><%= @review.country.name %></strong></p>
+		</div>
+		<div>
+			<p>ジャンル <strong><%= @review.genre.name %></strong></p>
+		</div>
+		
+		<div>
+		  	<p>レビュー内容 <strong><%= @review.content %></strong></p>
+		</div>
+		<div>
+			<!--コメントが入ります-->
+			<p>コメント</p>
+		</div>
+		<div>
+		  	<%= link_to "編集", edit_review_path %>
+		  	<%= link_to "一覧", reviews_path %>
+		  	<%= link_to "削除", review_path(@review), method: :delete, "data-confirm" => "本当に消しますか？"%>
+		</div>
 	</div>
 </div>

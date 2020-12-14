@@ -17,7 +17,7 @@ class Pablic::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    if @review.save
+    if @review.save!
     	redirect_to reviews_path, notice: "投稿しました"
     else
       render :new
@@ -31,7 +31,7 @@ class Pablic::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
-    redirect_to review_path(@review.id)
+    redirect_to review_path(@review.id), notice: "更新しました"
   end
   
   def destroy

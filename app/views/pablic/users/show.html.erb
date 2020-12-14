@@ -1,46 +1,52 @@
 <div class="row">
   <div>
+    <!--Userのプロフィール-->
     <div>
-      <%= attachment_image_tag current_user, :profile_image, fallback:"sample.jpg", size: "80x80" %>
+      <%= attachment_image_tag current_user, :image_id, fallback:"sample.jpg", size: "80x80" %>
     </div>
     </li>
     <li>ユーザー名 <%= @user.name %></li>
     <li>メールアドレス <%= @user.email %></li>
     <li>国籍 <%= @user.my_country %></li>
     <li>自己紹介 <%= @user.introduction %></li>
+    <li>投稿数: <%= @user.reviews.count %></li>
+    <li>いいねしてもらった数: <%= @user.likes.count %></li>
+    <li>コメント数</li>
+    
     <%= link_to "編集", edit_user_path(current_user) %>
+    <%= link_to "設定"%>
   </div>
 </div>
+
+<!--投稿した一覧-->
 <div>
-  <h3>投稿済み</h3>
   <tbody>
     <table class="table">
       <thead class="thead-dark">
         <tr>
-		    	<th></th>
-		      <th></th>
+          <th>レストラン画像</th>
 		      <th>レストラン名</th>
 		      <th>エリア</th>
 		      <th>ジャンル</th>
-		      <th>レストラン画像</th>
 		      <th>レビュー内容</th>
 		      <th></th>
-		      <th> </th>
 		    </tr>
       </thead>
-      
+
       <% @reviews.each do |review| %>
         <tr>
-		    	<th><%= link_to review.user.name, user_path(review.id) %></th>
-		      <th><%= review.user.name %></th>
-		      <th><%= review.name %></th>
-		      <th><%= review.country.name %></th>
-		      <th><%= review.genre.name %></th>
-		      <th><%= review.image %></th>
-		      <th><%= review.content %></th>
-	      	<th></th>
-		      <th><%= link_to "編集", edit_review_path(review) %></th>
-		    </tr>
+          <th>
+            <%= link_to review_path(review.id) do %>
+		      		<%= attachment_image_tag review, :image_id, fallback:"sample.jpg", size: "100x100" %>
+		      	<% end %>
+          </th>
+  	      <th><%= review.name %></th>
+  	      <th><%= review.country.name %></th>
+  	      <th><%= review.genre.name %></th>
+  	      
+  	      <th><%= review.content %></th>
+  	      <th></th>
+  	    </tr>
 		  <% end %>
     </table>
   </tbody>
