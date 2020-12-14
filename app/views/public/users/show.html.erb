@@ -3,6 +3,7 @@
     <!--Userのプロフィール-->
     <div class="col-md-3">
       <%= attachment_image_tag @user, :image_id, fallback:"sample.jpg", size: "150x150" %>
+      <%= render "public/relationships/follow_button", user: @user %>
     </div>
     <div class="col-md-6 ">
       <li>ユーザー名 <%= @user.name %></li>

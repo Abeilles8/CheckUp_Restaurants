@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   root :to => 'public/homes#top'
   
-  # Admin.route
+  
+  # Admin.routiong
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   end
   
   
-  # User.route
+  # User.routing
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
@@ -25,9 +26,10 @@ Rails.application.routes.draw do
   }
   
   scope module: :public do
-    get "my_page" => "users#my_page"
     resources :users, only: [:show, :edit, :update]
-    
+    # フォロー
+    resources :relationships, only: [:create, :destroy]
+    # レビュー
     resources :reviews do
        # コメント
       resources :review_comments, only: [:create, :destroy]

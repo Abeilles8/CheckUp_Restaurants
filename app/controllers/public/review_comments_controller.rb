@@ -9,6 +9,8 @@ class Public::ReviewCommentsController < ApplicationController
   end
   
   def destroy
+    ReviewComment.find_by(id: params[:id], review_id: params[:review_id]).destroy
+    redirect_back(fallback_location: root_path)
   end
   
   private
