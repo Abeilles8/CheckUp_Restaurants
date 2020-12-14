@@ -1,2 +1,0 @@
-module Pablic::LikesHelper
-end

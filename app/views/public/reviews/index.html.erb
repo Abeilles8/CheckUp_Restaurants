@@ -1,0 +1,41 @@
+<div class="row">
+	<%= link_to "新規reviewはこちら>> ", new_review_path %>
+	
+	<tbody>
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+	    	  <th>レストラン画像</th>
+		      <th>ユーザー名</th>
+		      <th>レストラン名</th>
+		      <th>エリア</th>
+		      <th>ジャンル</th>
+		      <th>レビュー内容</th>
+		    </tr>
+		  </thead>
+		  
+		  <% @reviews.each do |review| %>
+		    <tr>
+		      <th>
+		      	<!--レビュー画像-->
+		      	<%= link_to review_path(review.id) do %>
+		      		<%= attachment_image_tag review, :image_id, fallback:"sample.jpg", size: "80x80" %>
+		      	<% end %><br/>
+		      	
+		      	<!--いいね＆お気に入り-->
+		      	<% if current_user.id != review.user.id %>
+		      		<!--自分の投稿には表示しない-->
+			      	<%= render "favorite", review: review %>
+			      	<%= render "like", review: review %>
+		      	<% end %>
+		      </th>
+		      <th><%= link_to review.user.name, user_path(review.user.id) %></th>
+		      <th><%= review.name %></th>
+		      <th><%= review.country.name %></th>
+		      <th><%= review.genre.name %></th>
+		      <th><%= review.content %></th>
+		    </tr>
+		  <% end %>
+		</table>
+	</tbody>
+</div>
