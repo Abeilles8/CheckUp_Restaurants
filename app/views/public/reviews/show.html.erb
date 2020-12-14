@@ -58,7 +58,9 @@
 		<table class="table">
 			<tr>
 				<p><%= review_comment.comment %></p>
-				<%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
+				<% if review_comment.user == current_user %>
+					<%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
+				<% end %>
 			</tr>
 		</table>
 		<% end %>
