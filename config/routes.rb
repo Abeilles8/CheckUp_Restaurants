@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     delete "like/:id" => "likes#destroy", as: "destroy_like"
     
     # お気に入り
+    resources :favorites, only: [:show]
     post "favorite/:id" => "favorites#create", as: "create_favorite"
     delete "favorite/:id" => "favorites#destroy", as: "destroy_favorite"
   end

@@ -1,20 +1,27 @@
-<div class="row">
-  <div>
+<div>
+  <div class="row">
     <!--Userのプロフィール-->
-    <div>
-      <%= attachment_image_tag current_user, :image_id, fallback:"sample.jpg", size: "80x80" %>
+    <div class="col-md-3">
+      <%= attachment_image_tag @user, :image_id, fallback:"sample.jpg", size: "150x150" %>
     </div>
-    </li>
-    <li>ユーザー名 <%= @user.name %></li>
-    <li>メールアドレス <%= @user.email %></li>
-    <li>国籍 <%= @user.my_country %></li>
-    <li>自己紹介 <%= @user.introduction %></li>
-    <li>投稿数: <%= @user.reviews.count %></li>
-    <li>いいねしてもらった数: <%= @user.likes.count %></li>
-    <li>コメント数</li>
-    
-    <%= link_to "編集", edit_user_path(current_user) %>
-    <%= link_to "設定"%>
+    <div class="col-md-6 ">
+      <li>ユーザー名 <%= @user.name %></li>
+      <li>メールアドレス <%= @user.email %></li>
+      <li>国籍 <%= @user.my_country %></li>
+      <li>自己紹介 <%= @user.introduction %></li>
+      <li>投稿数: <%= @user.reviews.count %></li>
+      <li>いいねしてもらった数: <%= @user.likes.count %></li>
+      <li>コメント数</li>
+      <% if current_user.id == @user.id %>
+        <li>お気に入り:
+          <%= link_to favorite_path(@user) do %>
+            <%= @user.favorites.count %>
+          <% end %>
+        </li>
+      <% end %>
+      <%= link_to "編集", edit_user_path(current_user) %>
+      <%= link_to "設定"%>
+    </div>
   </div>
 </div>
 
