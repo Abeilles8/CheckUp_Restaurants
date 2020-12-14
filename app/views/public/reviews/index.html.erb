@@ -23,8 +23,8 @@
 		      	<% end %><br/>
 		      	
 		      	<!--いいね＆お気に入り-->
+		      	<!--自分の投稿には表示しない-->
 		      	<% if current_user.id != review.user.id %>
-		      		<!--自分の投稿には表示しない-->
 			      	<%= render "favorite", review: review %>
 			      	<%= render "like", review: review %>
 		      	<% end %>

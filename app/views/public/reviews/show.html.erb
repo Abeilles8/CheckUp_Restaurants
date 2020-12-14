@@ -3,13 +3,13 @@
 	<div>
 		<%= link_to "一覧", reviews_path %>
 		<div>
-			<!--current_userのみ操作-->
+			<!--current_userのみ表示-->
 			<% if current_user.id == @review.user.id %>
 		  	<%= link_to "編集", edit_review_path %>
 		  	<%= link_to "削除", review_path(@review), method: :delete, "data-confirm" => "本当に消しますか？"%>
 			<% end %>
 		</div>
-		<!--画像表示-->
+		<!--レビュー画像-->
 		<div>
  	 		<%= attachment_image_tag @review, :image_id, fallback:"sample.jpg", size: "300x300" %>
 		</div>
@@ -37,31 +37,32 @@
 		<div>
 		  	<p>レビュー内容 <strong><%= @review.content %></strong></p>
 		</div>
+		
 		<div>
-			<!--コメント投稿フォーム-->
-			<!--自分の投稿にはコメントできない-->
-			<% if current_user.id != @review.user.id %>
-				<%= form_with(model:[@review, @review_comment], url: review_review_comments_path(@review.id), local: true) do |f| %>
-					<div>
-						<%= f.text_area :comment, row:'10', placeholder: "コメントをここに入力して下さい。"  %>
-						<%= f.submit "送信する" %>
-					</div>
-				<% end %>
+		<!--コメント投稿フォーム-->
+		<!--自分の投稿にはコメントできない-->
+		<% if current_user.id != @review.user.id %>
+			<%= form_with(model:[@review, @review_comment], url: review_review_comments_path(@review.id), local: true) do |f| %>
+				<div>
+					<%= f.text_area :comment, row:'10', placeholder: "コメントをここに入力して下さい。"  %>
+					<%= f.submit "送信する" %>
+				</div>
 			<% end %>
-			<!--/コメント投稿フォーム-->
+		<% end %>
+		<!--/コメント投稿フォーム-->
 		</div>
+		
 		<div>
-			<!--コメントの一覧表示-->
-			<% @review.review_comments.each do |review_comment| %>
-			<table class="table col-md-12">
-				<th>
-					<p>
-						<%= review_comment.comment %>
-					</p>
-				</th>
-			</table>
-			<% end %>
-			<!--/コメントの一覧表示-->
+		<!--コメントの一覧表示-->
+		<% @review.review_comments.each do |review_comment| %>
+		<table class="table">
+			<tr>
+				<p><%= review_comment.comment %></p>
+				<%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
+			</tr>
+		</table>
+		<% end %>
+		<!--/コメントの一覧表示-->
 		</div>
 		
 	</div>
