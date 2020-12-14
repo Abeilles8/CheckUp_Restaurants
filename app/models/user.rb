@@ -6,8 +6,8 @@ class User < ApplicationRecord
   
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :favorites,dependent: :destroy
-  
+  has_many :favorites, dependent: :destroy
+  has_many :review_comments, dependent: :destroy
   
   
   

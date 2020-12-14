@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root :to => 'pablic/homes#top'
+  root :to => 'public/homes#top'
   
   # Admin.route
   devise_for :admins, controllers: {
@@ -24,11 +24,14 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
-  scope module: :pablic do
+  scope module: :public do
     get "my_page" => "users#my_page"
     resources :users, only: [:show, :edit, :update]
     
-    resources :reviews
+    resources :reviews do
+       # コメント
+      resources :review_comments, only: [:create, :destroy]
+    end
 
     # いいね
     post "like/:id" => "likes#create", as: "create_like"
@@ -38,5 +41,6 @@ Rails.application.routes.draw do
     resources :favorites, only: [:show]
     post "favorite/:id" => "favorites#create", as: "create_favorite"
     delete "favorite/:id" => "favorites#destroy", as: "destroy_favorite"
+    
   end
 end

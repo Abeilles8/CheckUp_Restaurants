@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_085515) do
+ActiveRecord::Schema.define(version: 2020_12_14_082837) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,6 +58,14 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "inquiries", force: :cascade do |t|
+    t.string "title"
+    t.string "name"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
@@ -75,6 +84,14 @@ ActiveRecord::Schema.define(version: 2020_12_08_085515) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "review_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
