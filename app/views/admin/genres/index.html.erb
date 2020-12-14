@@ -6,7 +6,10 @@
 
 <div>
   <%= form_with model:@genre, url:admin_genres_path, local:true do |f| %>
-    <%= f.label "ジャンル" %> <%= f.text_field :name %>
+    <%= f.label "ジャンル" %> 
+    <%= f.text_field :name %><br/>
+    <%= f.attachment_field :image %><br/>
+    
     
     <%= f.radio_button :is_active, :true %>
     <%= f.label :is_active, "有効", {value: :true} %>
@@ -22,7 +25,8 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th></th>
+        <th>#</th>
+        <th>アイコン</th>
         <th>ジャンル名</th>
         <th>状態</th>
         <th> </th>
@@ -32,6 +36,7 @@
     <% @genres.each do |genre| %>
       <tr>
         <th><%= genre.id %></th>
+        <th>画像が入る</th>
         <th><%= genre.name %></th>
         <th><%= genre.is_active == true ? "有効" : "無効" %></th>
         <th><%= link_to "編集", edit_admin_genre_path(genre) %></th>

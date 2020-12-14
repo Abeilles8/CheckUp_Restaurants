@@ -8,8 +8,9 @@ class Pablic::UsersController < ApplicationController
   end
   
   def show
-    @reviews = Review.all
     @user = User.find(params[:id])
+    # my_pageには自分がレビューしたものだけを表示
+    @reviews = @user.reviews.all
   end
   
   def edit
@@ -19,13 +20,13 @@ class Pablic::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to my_page_path, notice: "更新しました"
+    redirect_to user_path, notice: "更新しました"
   end
 
   private
   
   def user_params
-    params.require(:user).permit(:name,:my_country, :email, :profile_image, :introduction)
+    params.require(:user).permit(:name,:my_country, :email, :image, :introduction)
   end
   
 end

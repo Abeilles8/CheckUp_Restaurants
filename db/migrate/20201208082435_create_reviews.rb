@@ -7,7 +7,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :genre_id
       t.string :name
       t.float :rate
-      t.string :image
+      t.string :image_id
       t.text :content
       t.integer :budget
        
