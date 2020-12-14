@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :favorites,dependent: :destroy
   
+  
+  
+  
   # いいね
   def liked_by?(review_id)
     # whereでlikesテーブルにreview_idがあるか検索する

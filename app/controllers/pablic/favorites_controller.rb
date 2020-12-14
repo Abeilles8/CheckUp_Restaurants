@@ -1,5 +1,9 @@
 class Pablic::FavoritesController < ApplicationController
   
+  def show
+    @favorites = Favorite.all
+  end
+  
   # お気に入り
   def create
     Favorite.create(user_id: current_user.id, review_id: params[:id])
@@ -12,4 +16,5 @@ class Pablic::FavoritesController < ApplicationController
     favorite.destroy
     redirect_back(fallback_location: root_path)
   end
+
 end
