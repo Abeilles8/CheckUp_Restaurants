@@ -44,5 +44,10 @@ Rails.application.routes.draw do
     post "favorite/:id" => "favorites#create", as: "create_favorite"
     delete "favorite/:id" => "favorites#destroy", as: "destroy_favorite"
     
+    # お問い合わせ
+    get "inquiry" => "inquiry#index"
+    post "inquiry/confirm" => "inquiry#confirm"
+    post "inquiry/thanks" => "inquiry#thanks"
+    
   end
 end
