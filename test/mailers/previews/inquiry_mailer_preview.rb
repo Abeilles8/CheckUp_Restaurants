@@ -4,7 +4,7 @@ class InquiryMailerPreview < ActionMailer::Preview
   def inquiry
     inquiry = Inquiry.new(title: "不具合", name: "太郎", message: "エラーが出ています。")
     
-    InquiryMailer.send_mail(inquiry)
+    InquiryMailer.received_email(inquiry)
   end
   
 end
