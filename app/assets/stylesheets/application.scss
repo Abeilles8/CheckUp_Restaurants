@@ -13,6 +13,18 @@
  */
 @import "bootstrap";
 
-.backcolor {
+.backred {
 	 background-color: red;
+}
+.backgreen {
+	 background-color: green;
+}
+.backpink {
+	 background-color: pink;
+}
+.toptitle {
+  height: 400px;
+}
+.required {
+	color :red;
 }

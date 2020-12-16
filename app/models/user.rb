@@ -2,12 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :google_oauth2, :github]
   
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :review_comments, dependent: :destroy
+  has_many :sns
   
   has_many :relationships
   # relationshipsテーブルのfollow_idを参考に、followings(架空)モデルにアクセスする
@@ -17,18 +18,7 @@ class User < ApplicationRecord
   # reverse_of_relationshipsからuser_idを出口に自分をフォローしているuserを持ってくる
   has_many :followers, through: :reverse_of_relationships, source: :user
   
-  
-  # いいね
-  def liked_by?(review_id)
-    # whereでlikesテーブルにreview_idがあるか検索する
-    likes.where(review_id: review_id).exists?
-  end
-  
-  # お気に入り
-  def favorited_by?(review_id)
-    favorites.where(review_id: review_id).exists?
-  end
-  
+
   # フォロー
   def follow(other_user)
     # フォローしようとしているother_userが自分自信ではないか確認する
@@ -49,5 +39,18 @@ class User < ApplicationRecord
     # self.followingsでフォローしているUserを取得、include?(other_user)でother_userが含まれていないか確認
     self.followings.include?(other_user)
   end
+  
+  
+  # いいね
+  def liked_by?(review_id)
+    # whereでlikesテーブルにreview_idがあるか検索する
+    likes.where(review_id: review_id).exists?
+  end
+  
+  # お気に入り
+  def favorited_by?(review_id)
+    favorites.where(review_id: review_id).exists?
+  end
+  
   
 end

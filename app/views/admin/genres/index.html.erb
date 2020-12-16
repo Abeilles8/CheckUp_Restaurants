@@ -36,7 +36,7 @@
     <% @genres.each do |genre| %>
       <tr>
         <th><%= genre.id %></th>
-        <th>画像が入る</th>
+        <th><%= attachment_image_tag genre, :image, :fill, 300, 180, format: 'svg' %></th> 
         <th><%= genre.name %></th>
         <th><%= genre.is_active == true ? "有効" : "無効" %></th>
         <th><%= link_to "編集", edit_admin_genre_path(genre) %></th>

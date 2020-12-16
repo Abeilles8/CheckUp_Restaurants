@@ -72,3 +72,8 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+# Log_in
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
