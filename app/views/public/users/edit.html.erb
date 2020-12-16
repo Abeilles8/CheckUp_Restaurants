@@ -1,24 +1,26 @@
-<h3>プロフィール編集</h3>
-<div class="row">
-  <%= form_with model:@user, url:user_path, local:true do |f| %>
-    <div>
-      <%= f.label "プロフィール画像" %><br/>
-      <%= f.file_field :image_id%>
-    </div>
-    <div>
-      <%= f.label "名前" %>
-      <%= f.text_field :name %>
-    </div> 
-    <div>
-      <%= f.label "国籍" %>
-      <%= f.text_field :my_country %>
-    </div>
-    <div>
-      <%= f.label "プロフィール" %>
-      <%= f.text_area :introduction %>
-    </div>
-    <div>
-      <%= f.submit "更新" %>
-    </div>
-    <% end %>
+<h3 class="text-center">プロフィール編集</h3>
+<div class="col text-center">
+  <div class="row">
+    <%= form_with model:@user, url:user_path, local:true do |f| %>
+      <div>
+        <%= f.label "プロフィール画像" %><br/>
+        <%= f.file_field :image_id%>
+      </div>
+      <div>
+        <%= f.label "名前" %>
+        <%= f.text_field :name %>
+      </div> 
+      <div>
+        <%= f.label "国籍" %>
+        <%= f.text_field :my_country %>
+      </div>
+      <div>
+        <%= f.label "プロフィール" %>
+        <%= f.text_area :introduction %>
+      </div>
+      <div>
+        <%= f.submit "更新" %>
+      </div>
+      <% end %>
+  </div>
 </div>

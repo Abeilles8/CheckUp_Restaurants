@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   }
   
   scope module: :public do
+    get "/about" => "homes#about"
     resources :users, only: [:show, :edit, :update]
     # フォロー
     resources :relationships, only: [:create, :destroy]
@@ -36,7 +37,9 @@ Rails.application.routes.draw do
        # コメント
       resources :review_comments, only: [:create, :destroy]
     end
-
+    # googlemaps
+    resources :maps, only: [:index]
+    
     # いいね
     post "like/:id" => "likes#create", as: "create_like"
     delete "like/:id" => "likes#destroy", as: "destroy_like"

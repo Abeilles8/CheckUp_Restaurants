@@ -1,35 +1,42 @@
-<h3 class="text-center">レビュー詳細</h3>
+<h2 class="text-center"><%= @review.name %></h2>
 <div class="row">
-	<div>
-		<%= link_to "一覧", reviews_path %>
-		<div>
-			<!--current_userのみ表示-->
-			<% if current_user.id == @review.user.id %>
-		  	<%= link_to "編集", edit_review_path %>
-		  	<%= link_to "削除", review_path(@review), method: :delete, "data-confirm" => "本当に消しますか？"%>
-			<% end %>
+	<div class="container none">
+		<div class="row">
+			<%= link_to "一覧", reviews_path %>
+			<div>
+				<!--current_userのみ表示-->
+				<!--< if current_user.id == @review.user.id %>-->
+			  	<%= link_to "編集", edit_review_path %>
+			  	<%= link_to "削除", review_path(@review), method: :delete, "data-confirm" => "本当に消しますか？"%>
+				<!--< end %>-->
+			</div>
 		</div>
 		<!--レビュー画像-->
-		<div>
- 	 		<%= attachment_image_tag @review, :image_id, fallback:"sample.jpg", size: "300x300" %>
+		<div class="d-flex align-items-center justify-content-center">
+ 	 		<%= attachment_image_tag @review, :image_id, fallback:"review-image.jpg", size: "600x400" %>
 		</div>
-		<div>
-		<!--いいね＆お気に入り-->
-		<!--自分の投稿には表示しない-->
-		<% if current_user.id != @review.user.id %>
-			<%= render "public/reviews/favorite", review: @review %>
-			<%= render "public/reviews/like", review: @review %>
-		<% end %>
+		
+		<div class="text-right">
+			<!--いいね＆お気に入り-->
+			<!--自分の投稿には表示しない-->
+			<% if current_user.id != @review.user.id %>
+				<%= render "public/reviews/favorite", review: @review %>
+				<%= render "public/reviews/like", review: @review %>
+			<% end %>
 		</div>
+		
 		<div>
 			<p>ユーザー名　<strong><%= @review.user.name %></strong></p>
 		</div>
+		
 		<div>
 		  	<p>レストラン名 <strong><%= @review.name %></strong></p> 
 		</div>
+		
 		<div>
 			<p>エリア <strong><%= @review.country.name %></strong></p>
 		</div>
+		
 		<div>
 			<p>ジャンル <strong><%= @review.genre.name %></strong></p>
 		</div>
@@ -38,13 +45,18 @@
 		  	<p>レビュー内容 <strong><%= @review.content %></strong></p>
 		</div>
 		
+		<!--GoogleMap-->
+		<div><%= render "public/maps/index" %></div>
+		
+		
+		
 		<div>
 		<!--コメント投稿フォーム-->
 		<!--自分の投稿にはコメントできない-->
 		<% if current_user.id != @review.user.id %>
 			<%= form_with(model:[@review, @review_comment], url: review_review_comments_path(@review.id), local: true) do |f| %>
 				<div>
-					<%= f.text_area :comment, row:'10', placeholder: "コメントをここに入力して下さい。"  %>
+					<%= f.text_area :comment, row:'10', placeholder: "コメントをここに入力して下さい。", class: "comment-window" %>
 					<%= f.submit "送信する" %>
 				</div>
 			<% end %>
@@ -56,12 +68,17 @@
 		<!--コメントの一覧表示-->
 		<% @review.review_comments.each do |review_comment| %>
 		<table class="table">
-			<tr>
-				<p><%= review_comment.comment %></p>
-				<% if review_comment.user == current_user %>
-					<%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete %>
-				<% end %>
-			</tr>
+			<tbody>
+				<tr>
+					<td><p><%= review_comment.comment %></p></td>
+					<td>
+						<% if review_comment.user == current_user %>
+							<%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class: "btn btn-danger" %>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+			
 		</table>
 		<% end %>
 		<!--/コメントの一覧表示-->
