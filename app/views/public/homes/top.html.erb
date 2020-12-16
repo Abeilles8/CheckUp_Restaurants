@@ -1,10 +1,13 @@
-<div class="backpink d-flex align-items-center justify-content-center toptitle">
-<h1 class="text-center">Check Up Restaurants</h1>
+<div class="back-image d-flex align-items-center justify-content-center">
+  <h1 class="text-center">Check Up Restaurants</h1>
 </div>
 <div class=text-center>
-  <li><%= link_to "新規reviewはこちら", new_review_path %></li>
-  <li><%= link_to "review一覧はこちら", reviews_path %></li>
   <li><%= link_to "Twitter", user_twitter_omniauth_authorize_path %></li>
   <li><%= link_to "Google", user_google_oauth2_omniauth_authorize_path %></li>
   <li><%= link_to "Github", user_github_omniauth_authorize_path %></li>
+  <div><%= link_to "review一覧はこちら", reviews_path %></div>
+  <div><%= link_to "About", about_path %></div>
+  <div></div>
+  <div></div>
+  <div></div>
 </div>

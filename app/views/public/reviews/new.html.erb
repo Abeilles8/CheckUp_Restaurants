@@ -1,39 +1,41 @@
 <div class="text-center">
 	<h3 >レビュー登録</h3>
-	<div class="">
-		<div class="row">
+	<div class="container">
+		<div class="row none">
 			<%= form_with model: @review, url: reviews_path, local:true do |f| %>
-				<div>
-					<%= f.label "レストラン画像" %>
-					<%= f.file_field :image %>
-				</div>
-				<div>
-					<%= f.label "レストランの名前" %>
-					<%= f.text_field :name, class: "col-12", placeholder: "レストラン名" %>
-				</div>
-				<div>
-					<%= f.label "エリア選択"%>
-					<%= f.collection_select :country_id, Country.all, :id, :name %>
-				</div>
-				<div>
-					<%= f.label "スタイル"%>
-					<%= f.collection_select :style_id, Style.all, :id, :name  %>
-				</div>
-				<div>
-					<%= f.label "ジャンル選択"%>
-					<%= f.collection_check_boxes :genre_id, Genre.all, :id, :name do |genre| %>
-						<%= genre.label do %>
-							<%= genre.object.name %>
-							<!--<= genre.object.image %>-->
-							<%= genre.check_box %>
+			<table>
+				<tr>
+					<th><%= f.label "レストラン画像" %></th>
+					<td><%= f.file_field :image %></td>
+				</tr>
+				<tr>
+					<th><%= f.label "レストランの名前" %></th>
+					<td><%= f.text_field :name, class: "col-12", placeholder: "レストラン名" %></td>
+				</tr>
+				<tr>
+					<th><%= f.label "エリア選択"%></th>
+					<td><%= f.collection_select :country_id, Country.all, :id, :name %></td>
+				</tr>
+				<tr>
+					<th><%= f.label "スタイル"%></th>
+					<td><%= f.collection_select :style_id, Style.all, :id, :name  %></td>
+				</tr>
+				<tr>
+					<th><%= f.label "ジャンル選択"%></th>
+					<td><%= f.collection_check_boxes :genre_id, Genre.all, :id, :name do |genre| %>
+							<%= genre.label do %>
+								<%= genre.object.name %>
+								<!--<= genre.object.image %>-->
+								<%= genre.check_box %>
+							<% end %>
 						<% end %>
-					<% end %>
-				</div>
-				<div>
-					<%= f.label "レビュー" %>
-					<%= f.text_area :content, class: "col-12", placeholder: "レビュー内容はここに" %>
-					
-				</div>
+					</td>
+				</tr>
+				<tr>
+					<th><%= f.label "レビュー" %></th>
+					<td><%= f.text_area :content, class: "col-12", placeholder: "レビュー内容はここに" %></td>
+				</tr>
+			</table>
 				<div>
 					<%= link_to "<<一覧に戻る", reviews_path %>
 					<%= f.submit "投稿", class: "btn-primary" %>

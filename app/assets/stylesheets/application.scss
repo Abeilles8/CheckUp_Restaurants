@@ -22,9 +22,24 @@
 .backpink {
 	 background-color: pink;
 }
-.toptitle {
-  height: 400px;
+.none {
+	background-color: #fff;
 }
-.required {
-	color :red;
+.back-image{
+	background-image: url(top-image);
+	background-size: cover;
+	height: 800px;
+	margin:5px 20px; 
+}
+.wallpaper {
+	background-image: url(back-ground);
+	background-size: cover;
+}
+
+footer {
+	height: 50px;
+	background-color: #000;
+}
+.comment-window {
+	width: 100%;
 }

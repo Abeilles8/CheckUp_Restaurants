@@ -1,0 +1,48 @@
+<div class="container">
+  
+  <!--検索フォーム-->
+  <input id="address" type="textbox" value="Geeksalon">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <div id="map"></div>
+  <style>#map {height: 400px; width: 100%;} </style>
+  
+  <script>
+    let map
+    
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      
+      map = new google.maps.Map(document.getElementById('map'), {
+        // 初期位置
+        center: {lat: 40.7828, lng:-73.9653},
+        // 表示領域
+        zoom: 12,
+      });
+      
+      marker = new google.maps.Maker({
+        position: {lat: 40.7828, lng:-73.9653},
+        map: map
+      });
+    }
+    
+    let geocoder
+    
+    function codeAddress(){
+      let inputAddress = document.getElementById("address").value;
+      
+      geocoder.geocode( {"address": inputAddress}, function(results, status) {
+        if (status == "OK") {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Maker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert("該当する結果がありませんでした:" + status);
+        }
+      });
+    }
+    
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSvPOYiyX5M5pcP38UgHqemwc5SODstPY&callback=initMap" async defer></script>
+</div>
