@@ -4,18 +4,26 @@
     <title>CheckUpRestaurants</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <!--googlemapsに使用-->
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--slickに使用-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
-  <body>
+  <body class="wallpaper">
     <div>
-      <header class="navbar navbar-expand-lg navbar-light bg-light">
+      <header class="navbar navbar-expand-lg">
       <div class="col-12 clearfix">
-        <%= link_to root_path do %>
-          <h5>Check Up Restaurants</h5>
-        <% end %>
+        <div class=>
+          <%= link_to root_path do %>
+            <p class="logo">Check Up Restaurants</p>
+          <% end %>
+        </div>
         
         <div class="float-right">
           <ul class="nav pull-right">
@@ -26,7 +34,7 @@
               </li>
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <%= attachment_image_tag current_user, :image_id, fallback:"sample.jpg", size: "40x40" %>
+                  <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40" %>
                   マイページ
                 <% end %>
               </li>
@@ -38,14 +46,15 @@
             <% end %>
           </ul>
         </div>
-        
       </div>
     </header>
     
-    <div class="container-fluid wallpaper">
+    <div class="container-fluid">
       <div class="mx-auto">
         <div class="col-xs-12">
-          <p  class="text-center"><%= flash[:notice] %></p>
+          <div  class="text-center">
+            <p><%= flash[:notice] %></p>
+          </div>
           <%= yield %>
         </div>
       </div>

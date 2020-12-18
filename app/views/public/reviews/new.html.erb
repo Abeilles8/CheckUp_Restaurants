@@ -1,12 +1,12 @@
-<div class="text-center">
-	<h3 >レビュー登録</h3>
+<div class="text-center none">
+	<h3>レビュー登録</h3>
 	<div class="container">
-		<div class="row none">
+		<div class="row">
 			<%= form_with model: @review, url: reviews_path, local:true do |f| %>
 			<table>
 				<tr>
 					<th><%= f.label "レストラン画像" %></th>
-					<td><%= f.file_field :image %></td>
+					<td><%= f.attachment_field :image %></td>
 				</tr>
 				<tr>
 					<th><%= f.label "レストランの名前" %></th>
@@ -17,16 +17,21 @@
 					<td><%= f.collection_select :country_id, Country.all, :id, :name %></td>
 				</tr>
 				<tr>
+					<th><%= f.label "住所"%></th>
+					<td><%= f.text_field :address, class: 'form-control'%></td>
+				</tr>
+				<tr>
 					<th><%= f.label "スタイル"%></th>
 					<td><%= f.collection_select :style_id, Style.all, :id, :name  %></td>
 				</tr>
 				<tr>
 					<th><%= f.label "ジャンル選択"%></th>
-					<td><%= f.collection_check_boxes :genre_id, Genre.all, :id, :name do |genre| %>
+					<td><%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
 							<%= genre.label do %>
+								<%= genre.check_box %>
+								<%= attachment_image_tag genre.object, :image, fallback:"sample.jpg", size: "20x20" %>
 								<%= genre.object.name %>
 								<!--<= genre.object.image %>-->
-								<%= genre.check_box %>
 							<% end %>
 						<% end %>
 					</td>

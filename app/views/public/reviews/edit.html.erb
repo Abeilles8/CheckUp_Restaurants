@@ -1,38 +1,62 @@
-<h3 class="text-center">レビュー編集</h3>
-<div class="row">
-  <div>
+<div class="text-center">
+  <h3>レビュー編集</h3>
+  <div class="container">
+    <div class="row none">
       <%= form_with model:@review, url:review_path, local:true do |f| %>
-    <div>
-      <%= attachment_image_tag @review, :image_id, :fill, 300, 300, format: 'jpeg' %>
+        <div class="d-flex align-items-center justify-content-center">
+          <%= attachment_image_tag @review, :image, fallback:"sample.jpg", size: "300x300" %>
+        </div>
+          <%= f.attachment_field :image %>
+        <table>
+          <tr>
+          	<th><%= f.label "レストランの名前" %></th>
+          	<td><%= f.text_field :name, class: "col-12", placeholder: "レストラン名" %></td>
+          </tr>
+          
+          <tr>
+          	<th><%= f.label "エリア選択"%></th>
+          	<td><%= f.collection_select :country_id, Country.all, :id, :name %></td>
+          </tr>
+          
+          <!--<tr>-->
+          <!--	<th><= f.label "住所"%></th>-->
+          <!--	<td class="spot">-->
+          <!--		<= f.fields_for :spot do |s| %>-->
+          <!--			<= s.label :address, "レビュー場所(Google Mapで検索)", class: "spot_title" %>-->
+          <!--			<= s.text_field :address, placeholder: "スポットを入力", id: "address", class: "spot_text" %>-->
+          <!--		< end %>-->
+          <!--		<input onclick="codeAddress()", type: "button", value: "検索する"></input>-->
+          <!--		<div class="map" id="map" style: "height: 320px; width: 640px;"></div>-->
+          <!--	</td>-->
+          <!--</tr>-->
+          
+          <tr>
+          	<th><%= f.label "スタイル"%></th>
+          	<td><%= f.collection_select :style_id, Style.all, :id, :name  %></td>
+          </tr>
+          
+          <tr>
+          	<th><%= f.label "ジャンル選択"%></th>
+          	<td><%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
+          			<%= genre.label do %>
+          				<%= genre.check_box %>
+          				<%= genre.object.name %>
+          				<!--<= genre.object.image %>-->
+          			<% end %>
+          		<% end %>
+          	</td>
+          </tr>
+          
+          <tr>
+          	<th><%= f.label "レビュー" %></th>
+          	<td><%= f.text_area :content, class: "col-12", placeholder: "レビュー内容はここに" %></td>
+          </tr>
+        </table>
+        <div>
+          <%= link_to "戻る", review_path(@review.id) %>
+          <%= f.submit "更新" %>
+        </div>
+      <% end %>
     </div>
-    <div>
-  		<p>レビュー画像 <%= f.file_field :image %></p>
-	  </div>
-    <div>
-  	  <p>レストラン名 <%= f.text_field :name %></p>
-    </div>
-    <div>
-      <p>
-        エリア選択 <%= f.collection_select :country_id, Country.all, :id, :name %> 
-		  </p>
-    </div>
-    <div>
-      <p>
-        スタイル選択 <%= f.collection_select :style_id, Style.all, :id, :name %>
-      </p>
-    </div>
-    <div>
-    	<p>
-    	  ジャンル選択 <%= f.collection_select :genre_id, Genre.all, :id, :name  %>
-    	</p>
-    </div>
-    <div>
-	    <p>レビュー内容　<%= f.text_area :content %></p>
-    </div>
-    <div>
-      <%= link_to "戻る", review_path(@review.id) %>
-      <%= f.submit "更新" %>
-    </div>
-  <% end %>
   </div>
 </div>

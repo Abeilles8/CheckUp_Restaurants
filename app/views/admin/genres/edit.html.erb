@@ -1,20 +1,36 @@
-<div class="container">
-	<h3>ジャンル編集</h3>
+<div class="none">
+	<h3 class="text-center">ジャンル編集</h3>
 	<div class="row">
 	  
     <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
-      <%= f.label "ジャンル" %> 
-      <%= f.text_field :name %><br/>
       <!--画像を表示させる-->
-      <!--<= attachment_image_tag @genre, :image, :fill, 300, 300, format: 'jpeg' %>-->
-      <%= f.attachment_field :image %>
-      
-      <%= f.radio_button :is_active, :true %>
-      <%= f.label :is_active, "有効", {value: :true} %>
-      <%= f.radio_button :is_active, :false %>
-      <%= f.label :is_active, "無効", {value: :false} %>
+      <div class="d-flex align-items-center justify-content-center">
+        <%= attachment_image_tag @genre, :image, fallback:"sample.jpg", size: "100x100" %>
+      </div>
+      <div>
+        <%= f.attachment_field :image %>
+      </div>
+      <div>
+        <%= f.label "ジャンル" %> 
+        <%= f.text_field :name %><br/>
+      </div>
+      <div>
+        <%= f.radio_button :is_active, :true %>
+        <%= f.label :is_active, "有効", {value: :true} %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, "無効", {value: :false} %>
+      </div>
       
       <%= f.submit "変更を保存" %>
     <% end %>
+    <!--管理者へメッセージ-->
+    <div>
+      <p>※アイコンはジャンル名に適したアイコンを使用して下さい。<br/>
+        以下のリンクのサイトからアイコンをダウンロードしファイルを選択することで利用できます。<br/>
+        <li><a href='https://icons8.jp/'>icons8</a></li>
+        <li><a href='https://icon-icons.com/ja/'>icon-icons</a></li>
+        また、ここでアイコンをアップロードと<span class="red">直ちにユーザーに反映されます</span>ので<strong>お気をつけ下さい。</strong>
+      </p>
+    </div>
 	</div>
 </div>

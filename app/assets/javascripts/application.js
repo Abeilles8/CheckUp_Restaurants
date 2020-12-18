@@ -18,3 +18,30 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+// 
+//= require underscore
+
+$(document).ready(function(){
+  $('.your-class').slick({
+    // setting-name: setting-value
+  });
+});
+
+$(function() {
+    $('.autoplay').slick({
+        // 表示枚数
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // dots: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+    });
+});
+
+// 自動再生
+// $('.autoplay').slick({
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 2000,
+// });

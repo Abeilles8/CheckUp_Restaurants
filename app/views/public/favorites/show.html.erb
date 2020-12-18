@@ -1,5 +1,10 @@
-<div>
-  お気に入り登録一覧
+<div class="none">
+  <div class="text-center">
+    <h3>お気に入りリスト</h3>
+    <%= link_to "レビューの一覧", reviews_path %>
+  </div>
+  
+  
   <tbody>
     <table class="table">
       <thead class="thead-dark">
@@ -15,13 +20,18 @@
       <tr>
         <th>
           <%= link_to review_path(favorite.review.id) do %>
-            <%= attachment_image_tag favorite.review, :image_id, fallback:"sample.jpg", size: "80x80" %>
+            <%= attachment_image_tag favorite.review, :image, fallback:"sample.jpg", size: "80x80" %>
           <% end %>
-          <%= link_to favorite.user.name, user_path(favorite.user.id) %>
+          <%= link_to favorite.review.user.name, user_path(favorite.review.user.id) %>
         </th>
-        <th><%= link_to favorite.review.name, review_path(favorite.user.id) %></th>
+        <th><%= link_to favorite.review.name, review_path(favorite.review.id) %></th>
         <th><%= favorite.review.country.name %></th>
-        <th><%= favorite.review.genre.name %></th>
+        <th>
+        	<% favorite.review.review_genres.each do |review_genre| %>
+	      		<%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "20x20" %>
+						<!--<= review_genre.genre.name %>-->
+					<% end %>
+        </th>
       </tr>
       <% end %>
     </table>

@@ -28,7 +28,7 @@
 .back-image{
 	background-image: url(top-image);
 	background-size: cover;
-	height: 800px;
+	height: 900px;
 	margin:5px 20px; 
 }
 .wallpaper {
@@ -42,4 +42,41 @@ footer {
 }
 .comment-window {
 	width: 100%;
+}
+.box {
+	background: #fff;
+	height: 300px;
+	width: 300px;
+}
+
+.blue-box {
+	background: #fff;
+	height: 300px;
+	width: 300px;
+}
+
+.clear-box {
+	background: transparent;
+	height: 300px;
+	width: 300px;
+}
+.top-main-title {
+	padding-top: 40px;
+	font-family: 'Times New Roman',sans-serif;
+	font-size: 90px;
+	color: white;
+}
+.logo{
+	font-family: 'Georgia',sans-serif;
+	color: white;
+	font-size: 30px;
+	padding: 20px 20px;
+}
+.red {
+	color: red;
+}
+.boxsize{
+	width: 100%;
+	padding: 0 5px;
+	height: 100%;
 }
