@@ -72,7 +72,12 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-# Log_in
+# gem "gmaps4rails"
+# 地名から緯度経度に変換
+gem "geocoder"
+# jsでcontrollerの変数を扱う
+gem "gon"
+# SNS_Login
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'

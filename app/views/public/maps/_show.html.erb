@@ -1,0 +1,55 @@
+<div class="">
+  
+  <!--検索フォーム-->
+  <!--<input id="address" type="textbox" value="住所">-->
+  <div id="map"></div>
+  <style>#map {height: 600px; width: 80%;} </style>
+  
+  <script>
+    let map;
+    
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+        // 定義した変数から緯度経度を呼び出す
+            lat: gon.review.latitude, 
+            lng: gon.review.longitude
+        },
+        // 表示領域
+        zoom: 18,
+      });
+      
+      var marker = new google.maps.Marker({
+        // 定義した変数から緯度経度を呼び出し、マーカーを立てる
+        position: {
+            lat: gon.review.latitude,
+            lng: gon.review.longitude
+        },
+        map: map
+      });
+    }
+    
+    let geocoder
+    
+    function codeAddress(){
+      let inputAddress = document.getElementById("address").value;
+      
+      geocoder.geocode( {"address": inputAddress}, function(results, status) {
+        if (status == "OK") {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Maker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert("該当する結果がありませんでした:" + status);
+        }
+      });
+    }
+  </script>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"] %>&callback=initMap" async defer></script>
+  
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_180823) do
+ActiveRecord::Schema.define(version: 2020_12_18_065228) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 2020_12_15_180823) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "review_genres", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_review_genres_on_genre_id"
+    t.index ["review_id"], name: "index_review_genres_on_review_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "country_id"
@@ -106,6 +115,9 @@ ActiveRecord::Schema.define(version: 2020_12_15_180823) do
     t.integer "budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "sns", force: :cascade do |t|
@@ -115,6 +127,16 @@ ActiveRecord::Schema.define(version: 2020_12_15_180823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_on_user_id"
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string "address", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.integer "review_id_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id_id"], name: "index_spots_on_review_id_id"
   end
 
   create_table "styles", force: :cascade do |t|
