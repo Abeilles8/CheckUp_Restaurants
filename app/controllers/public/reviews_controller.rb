@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   # ログインユーザーのみ
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:show]
 	
 	def index
 	  @reviews = Review.all
@@ -31,6 +31,11 @@ class Public::ReviewsController < ApplicationController
   
   def edit
     @review = Review.find(params[:id])
+    if @review.user == current_user
+      render :edit
+    else
+      redirect_to reviews_path
+    end
   end
   
   def update
@@ -46,10 +51,23 @@ class Public::ReviewsController < ApplicationController
     
   end
   
+  def search
+    @reviews = Review.search(params[:search])
+  end
+  
   private
   def review_params
   	params.require(:review).permit(
-  	  :name, :rate, :image, :content, :address, :budget, :user_id, :country_id, :style_id, { :genre_ids => [] },
+  	  :name, 
+  	  :rate, 
+  	  { :review_images_images => []}, 
+  	  :content, 
+  	  :address, 
+  	  :budget, 
+  	  :user_id, 
+  	  :country_id, 
+  	  :style_id, 
+  	  { :genre_ids => [] },
   	  )
   end
 end

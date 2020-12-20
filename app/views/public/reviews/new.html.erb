@@ -6,11 +6,21 @@
 			<table>
 				<tr>
 					<th><%= f.label "レストラン画像" %></th>
-					<td><%= f.attachment_field :image %></td>
+					<td><%= f.attachment_field :review_images_images, multiple: true %></td>
 				</tr>
 				<tr>
 					<th><%= f.label "レストランの名前" %></th>
 					<td><%= f.text_field :name, class: "col-12", placeholder: "レストラン名" %></td>
+				</tr>
+				<tr>
+					<th><%= f.label "レビュー評価"%></th>
+					<td>
+						<div class="form-group" id="star">
+							<%= f.hidden_field :rate, id: :review_star %>
+						</div>
+					</td>
+					
+					<script src="assets/"></script>
 				</tr>
 				<tr>
 					<th><%= f.label "エリア選択"%></th>
@@ -18,14 +28,14 @@
 				</tr>
 				<tr>
 					<th><%= f.label "住所"%></th>
-					<td><%= f.text_field :address, class: 'form-control'%></td>
+					<td><%= f.text_field :address, class: 'form-control', placeholder: "詳細に"%></td>
 				</tr>
 				<tr>
 					<th><%= f.label "スタイル"%></th>
 					<td><%= f.collection_select :style_id, Style.all, :id, :name  %></td>
 				</tr>
 				<tr>
-					<th><%= f.label "ジャンル選択"%></th>
+					<th><%= f.label "ジャンル選択(複数選択可)"%></th>
 					<td><%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
 							<%= genre.label do %>
 								<%= genre.check_box %>
@@ -38,7 +48,7 @@
 				</tr>
 				<tr>
 					<th><%= f.label "レビュー" %></th>
-					<td><%= f.text_area :content, class: "col-12", placeholder: "レビュー内容はここに" %></td>
+					<td><%= f.text_area :content, class: "col-12", placeholder: "（例）このお店おすすめです！" %></td>
 				</tr>
 			</table>
 				<div>

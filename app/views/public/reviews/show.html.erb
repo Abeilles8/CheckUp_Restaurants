@@ -17,7 +17,9 @@
 			
 			<!--レビュー画像-->
 			<div class="d-flex align-items-center justify-content-center">
-	 	 		<%= attachment_image_tag @review, :image, fallback:"review-image.jpg", size: "600x500" %>
+				<% @review.review_images.each do |image| %>
+	 	 			<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "600x500" %>
+				<% end %>
 			</div>
 			
 			<div class="text-right">
