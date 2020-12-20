@@ -13,38 +13,38 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
   </head>
 
   <body class="wallpaper">
     <div>
       <header class="navbar navbar-expand-lg">
       <div class="col-12 clearfix">
-        <div class=>
+        <div>
           <%= link_to root_path do %>
             <p class="logo">Check Up Restaurants</p>
           <% end %>
-        </div>
-        
-        <div class="float-right">
-          <ul class="nav pull-right">
-            <% if user_signed_in? %>
-            <%= image_tag "レストラン.png"%>
-              <li>
-                <%= link_to "レビューを書く", new_review_path %>
-              </li>
-              <li>
-                <%= link_to user_path(current_user) do %>
-                  <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40" %>
-                  マイページ
-                <% end %>
-              </li>
-              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
-              
-            <% else %>
-              <li><%= link_to "新規登録", new_user_registration_path %></li>
-              <li><%= link_to "ログイン", new_user_session_path %></li>
-            <% end %>
-          </ul>
+          <div class="float-right">
+            <ul class="nav pull-right">
+              <% if user_signed_in? %>
+              <%= image_tag "レストラン.png"%>
+                <li>
+                  <%= link_to "レビューを書く", new_review_path %>
+                </li>
+                <li>
+                  <%= link_to user_path(current_user) do %>
+                    <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40" %>
+                    マイページ
+                  <% end %>
+                </li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
+                
+              <% else %>
+                <li><%= link_to "新規登録", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </header>

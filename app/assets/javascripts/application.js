@@ -27,6 +27,7 @@ $(document).ready(function(){
   });
 });
 
+// 自動再生
 $(function() {
     $('.autoplay').slick({
         // 表示枚数
@@ -34,14 +35,18 @@ $(function() {
         slidesToScroll: 1,
         // dots: true,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 4500,
     });
 });
 
-// 自動再生
-// $('.autoplay').slick({
-//   slidesToShow: 3,
-//   slidesToScroll: 1,
-//   autoplay: true,
-//   autoplaySpeed: 2000,
-// });
+$(function() {
+  $('#star').raty({
+		  size      :36,
+		  starOff:    "/images/star-off.png",
+		  starOn:    "/images/star-on.png",
+		  starHalf:   "/images/star-half.png",
+		  scoreName: "review[rate]",
+		  //半分の入力を行う
+		  half:       "true"
+		});
+});

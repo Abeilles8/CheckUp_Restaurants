@@ -1,8 +1,10 @@
 <div class="row">
-	<%= link_to "新規reviewはこちら>> ", new_review_path %>
+	<div>
+		
+	</div>
 	
 	<tbody>
-		<table class="table">
+		<table class="table none">
 		  <thead class="thead-dark">
 		    <tr>
 	    	  <th>レストラン画像</th>
@@ -13,11 +15,13 @@
 		  </thead>
 		  
 		  <% @reviews.each do |review| %>
-		    <tr class="none">
+		    <tr>
 		      <th>
-		      	<!--レビュー画像-->
 		      	<%= link_to review_path(review.id) do %>
-		      		<%= attachment_image_tag review, :image, fallback:"sample.jpg", size: "80x80" %>
+		      		<!--レビュー画像-->
+			      	<% review.review_images.each do |image| %>
+			      		<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
+			      	<% end %>
 		      	<% end %><br/>
 		      	<!--いいね＆お気に入り-->
 		      	<!--自分の投稿には表示しない-->
@@ -27,19 +31,19 @@
 		      	<% end %>
 		      	<%= review.country.name %>
 		      </th>
+		      
 		      <!--レストラン名-->
-		      <th><%= review.name %></th>
+		      <th><%= link_to review.name, review_path(review.id) %></th>
+		      
 		      <!--ジャンル名-->
 		      <th>
 		      	<% review.review_genres.each do |review_genre| %>
-		      		<%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "20x20" %>
+		      		<%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "40x40" %>
 							<!--<= review_genre.genre.name %>-->
 						<% end %>
 					</th>
 					<th><%= review.content %></th>
 		    </tr>
-		    <tr></tr>
-		      <th></th>
 		  <% end %>
 		</table>
 	</tbody>

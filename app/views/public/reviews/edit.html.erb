@@ -4,9 +4,11 @@
     <div class="row none">
       <%= form_with model:@review, url:review_path, local:true do |f| %>
         <div class="d-flex align-items-center justify-content-center">
-          <%= attachment_image_tag @review, :image, fallback:"sample.jpg", size: "300x300" %>
+          <% @review.review_images.each do |image| %>
+            <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x300" %>
+          <% end %>
         </div>
-          <%= f.attachment_field :image %>
+          <%= f.attachment_field  :review_images_images, multiple: true %>
         <table>
           <tr>
           	<th><%= f.label "レストランの名前" %></th>
@@ -17,18 +19,10 @@
           	<th><%= f.label "エリア選択"%></th>
           	<td><%= f.collection_select :country_id, Country.all, :id, :name %></td>
           </tr>
-          
-          <!--<tr>-->
-          <!--	<th><= f.label "住所"%></th>-->
-          <!--	<td class="spot">-->
-          <!--		<= f.fields_for :spot do |s| %>-->
-          <!--			<= s.label :address, "レビュー場所(Google Mapで検索)", class: "spot_title" %>-->
-          <!--			<= s.text_field :address, placeholder: "スポットを入力", id: "address", class: "spot_text" %>-->
-          <!--		< end %>-->
-          <!--		<input onclick="codeAddress()", type: "button", value: "検索する"></input>-->
-          <!--		<div class="map" id="map" style: "height: 320px; width: 640px;"></div>-->
-          <!--	</td>-->
-          <!--</tr>-->
+          <tr>
+					<th><%= f.label "住所"%></th>
+					<td><%= f.text_field :address, class: 'form-control', placeholder: "詳細に"%></td>
+				</tr>
           
           <tr>
           	<th><%= f.label "スタイル"%></th>
@@ -40,8 +34,8 @@
           	<td><%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
           			<%= genre.label do %>
           				<%= genre.check_box %>
+          				<%= attachment_image_tag genre.object, :image, fallback:"sample.jpg", size: "20x20" %>
           				<%= genre.object.name %>
-          				<!--<= genre.object.image %>-->
           			<% end %>
           		<% end %>
           	</td>
