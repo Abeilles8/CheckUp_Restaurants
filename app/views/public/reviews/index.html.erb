@@ -1,50 +1,67 @@
-<div class="row">
-	<div>
-		
-	</div>
-	
-	<tbody>
-		<table class="table none">
-		  <thead class="thead-dark">
-		    <tr>
-	    	  <th>レストラン画像</th>
-		      <th>レストラン名</th>
-		      <th>ジャンル</th>
-		      <th>レビュー内容</th>
-		    </tr>
-		  </thead>
-		  
-		  <% @reviews.each do |review| %>
-		    <tr>
-		      <th>
-		      	<%= link_to review_path(review.id) do %>
-		      		<!--レビュー画像-->
-			      	<% review.review_images.each do |image| %>
-			      		<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
-			      	<% end %>
-		      	<% end %><br/>
-		      	<!--いいね＆お気に入り-->
-		      	<!--自分の投稿には表示しない-->
-		      	<% if current_user.id != review.user.id %>
-			      	<%= render "favorite", review: review %>
-			      	<%= render "like", review: review %>
-		      	<% end %>
-		      	<%= review.country.name %>
-		      </th>
-		      
-		      <!--レストラン名-->
-		      <th><%= link_to review.name, review_path(review.id) %></th>
-		      
-		      <!--ジャンル名-->
-		      <th>
-		      	<% review.review_genres.each do |review_genre| %>
-		      		<%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "40x40" %>
-							<!--<= review_genre.genre.name %>-->
-						<% end %>
-					</th>
-					<th><%= review.content %></th>
-		    </tr>
-		  <% end %>
-		</table>
-	</tbody>
+<div class="text-center">
+  <p><%= paginate @reviews %></p>
+</div>
+
+<% @reviews.each do |review| %>
+  <div class="row none review-box">
+    <div class="review-image col-md-4"><!--レビュー画像-->
+      <%= link_to review_path(review.id) do %>
+        <% review.review_images.each do |image| %>
+          <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="review col-md-8">
+        <div class="review-title">
+          <div><!--いいね/お気に入り-->
+            <% if current_user.id != review.user.id %>
+              <div class="text-right">
+                <%= render "favorite", review: review %> <%= render "like", review: review %>
+              </div>
+            <% end %>
+          </div>
+          <div class=""><!--レストラン名-->
+            <h4 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h4>
+            <p class="restrant-details">[<%= review.country.name %>] / <%= review.style.name %></p>
+          </div>
+        </div>
+        
+        <div class="review-tag"><!--タグ-->
+          <% review.tag_list.each do |tag| %>
+            <%= image_tag "tag.png", size: "15x15" %><%= tag %>
+          <% end %>
+        </div>
+
+        <div class=" row user-content"><!--ユーザーの情報-->
+          <!--ユーザー画像-->
+          <div class="link-none col-md-1">
+            <%= link_to user_path(review.user.id) do %>
+              <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
+              <div class="text-center">
+                <strong class="name"><%= review.user.name %></strong>
+              </div>
+            <% end %>
+          </div>
+          <!--レビュー内容-->
+          <div class="review-contentcol-md-10"><%= review.content %></div>
+        </div>
+
+        <div><p>予算:<span><%= review.budget %></span></p></div>
+        <div>
+          <p>
+            いいね数(<%= review.likes.count %>)<br/>
+            コメント数(<%= review.review_comments.count %>)件
+          </p>
+        </div>
+        <div class="review-genre"><!--ジャンル-->
+          <% review.review_genres.each do |review_genre| %>
+            <%= attachment_image_tag review_genre.genre, :image, size: "25x25" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+<% end %>
+<div class="text-center">
+  <p><%= paginate @reviews %></p>
 </div>

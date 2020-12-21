@@ -13,20 +13,16 @@
  */
 @import "bootstrap";
 
-.backred {
-	 background-color: red;
-}
-.backgreen {
-	 background-color: green;
-}
-.backpink {
-	 background-color: pink;
+.link-none a {
+	text-decoration: none;
+	color: #000;
 }
 .none {
-	background-color: #fff;
+	background-color: #FFEBCC;
 }
+
 .back-image{
-	background-image: url(top-image);
+	background-image: url(top-page);
 	background-size: cover;
 	height: 900px;
 	margin:5px 20px; 
@@ -37,12 +33,11 @@
 }
 
 footer {
-	height: 50px;
-	background-color: #000;
+	height: 60px;
+	background-color: #444499;
+	a {color: #fff;}
 }
-.comment-window {
-	width: 100%;
-}
+
 .box {
 	background: #fff;
 	height: 300px;
@@ -60,23 +55,178 @@ footer {
 	height: 300px;
 	width: 300px;
 }
+
 .top-main-title {
 	padding-top: 40px;
 	font-family: 'Times New Roman',sans-serif;
-	font-size: 90px;
-	color: white;
+	font-size: 95px;
+	color: #000;
 }
-.logo{
+.top-message {
+	color: #fff;
+	font-size: 25px;
+	margin: 30px;
+	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;;
+}
+
+
+.logo {
 	font-family: 'Georgia',sans-serif;
-	color: white;
-	font-size: 30px;
+	color: #000;
+	font-size: 33px;
 	padding: 20px 20px;
-}
-.red {
-	color: red;
+	red {color: red;}
 }
 .boxsize{
 	width: 100%;
-	padding: 0 5px;
+	padding: 5px 5px;
 	height: 100%;
+}
+
+.about-page {
+	font-size: 35px;
+	color: blue;
+}
+.tag {
+	width: 5px 5px ;
+}
+
+.review-image {
+	padding: 15px;
+}
+
+// review.index
+.review-box {
+	border-width: 0.1px;
+	border-style: solid;
+	border-color: #FF9900;
+	
+	.review {
+	padding: 10px;
+	}
+	.review-title {
+		border-width: 0.5px;
+		border-bottom-style: solid;
+	}
+	.restrant-name {
+	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Charter','Segoe UI Historic',sans-serif;
+		a:hover {color: #FF9900;}
+	}
+	.restrant-details {
+		margin-bottom: 3px;
+	}
+	.user-content {
+		margin: 7px 0;
+	}
+
+	.name {
+		font-size: bold;
+	}
+	.review-content {
+		background: #FFE0B3;
+		border-width: 0.1px;
+		border-style: solid;
+		border-color: #FFE0B3;
+		border-radius: 10px;
+		margin-left: 10px;
+		margin-bottom: 5px;
+		width: 100%;
+	}
+}
+
+// review.show
+.review-show {
+	.title {
+		background: #FFE0B3;
+		
+		.edit {
+			padding: 10px 10px;
+		}
+		.boder-red {
+			border-bottom-style: double ;
+			border-color: red;
+			border-width: 6px;
+			margin: 0 7px 10px 7px;
+			padding-top: 2px;
+			
+			h2 {
+				font-family: 'Baskerville',YuGothic,'Yu Gothic',sans-serif;
+				border-bottom-style: double ;
+				border-width: 6px;
+				border-color: #0E2287;
+				// background: #FFE0B3;
+				padding: 5px;
+				margin-bottom: 2px;
+			}
+		}
+	}
+	// review画像
+	.review-image {
+		border-width: 6px;
+		border-bottom-style: double;
+		border-color: red;
+		margin-top: 0;
+		padding-bottom: 15px;
+	}
+	
+	.tag-list {
+		margin: 12px;
+	}
+	.user-review {
+		border-width: 0.1px;
+		border-style: solid;
+		border-color: #FFE0B3;
+		background: #EDAF5F;
+		margin: 12px;
+		padding: 10px 0;
+		
+		.review-content {
+			background: #FFE0B3;
+			border-width: 0.1px;
+			border-style: solid;
+			border-color: #FFE0B3;
+			border-radius: 10px;
+			margin-left: 10px;
+			margin-bottom: 5px;
+			width: 100%;
+		}
+	}
+	
+	// 店舗詳細
+	h4 {
+		margin: 25px 0 0 15px;
+	}
+	.restrant-information {
+		border-width: 0.1px;
+		margin: 0 12px;
+		margin-bottom: 25px;
+		padding: 5px;
+		font-size: 1.2rem;
+		
+		.table-bordered{
+			line-height: 1.5rem;
+			
+			th {
+				background: #EDAB2F;
+				padding: 10px;
+			}
+			td {
+				padding: 10px;
+				background: #FFE0B3;
+			}
+		}
+	}
+	// googlemap
+	.maps {
+		margin:20px;
+		padding-bottom: 20px;
+	}
+	// comments
+	.comment {
+		margin: 20px;
+	}
+	.comment-window {
+	width: 100%;
+	}
+	
 }

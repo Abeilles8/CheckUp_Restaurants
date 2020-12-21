@@ -1,5 +1,7 @@
 {
   "name": "CheckUp_Restaurants",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap-icons": "^1.2.1"
+  }
 }

@@ -72,7 +72,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-# gem "gmaps4rails"
+gem 'acts-as-taggable-on', '~> 6.0'
 # 地名から緯度経度に変換
 gem "geocoder"
 # jsでcontrollerの変数を扱う

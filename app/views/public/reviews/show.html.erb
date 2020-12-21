@@ -1,110 +1,150 @@
-<div class=" none">
-	<div>
-		<h2 class="text-center"><%= @review.name %></h2>
-	</div>
-	<div>
-		<div>
-			<div class="text-right">
-				<%= link_to "一覧", reviews_path %>
-				<div>
-					<!--current_userのみ表示-->
-					<% if current_user.id == @review.user.id %>
-				  	<%= link_to "編集", edit_review_path %>
-				  	<%= link_to "削除", review_path(@review), method: :delete, "data-confirm" => "本当に消しますか？"%>
-					<% end %>
-				</div>
-			</div>
-			
-			<!--レビュー画像-->
-			<div class="d-flex align-items-center justify-content-center">
-				<% @review.review_images.each do |image| %>
-	 	 			<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "600x500" %>
-				<% end %>
-			</div>
-			
-			<div class="text-right">
-				<!--いいね＆お気に入り-->
-				<!--自分の投稿には表示しない-->
-				<% if current_user.id != @review.user.id %>
-					<%= render "public/reviews/favorite", review: @review %>
-					<%= render "public/reviews/like", review: @review %>
-				<% end %>
-			</div>
-			
-			<div class="user-contents">
-				<div>
-					<p>ユーザー名　<strong><%= link_to @review.user.name, user_path(@review.user.id) %></strong></p>
-				</div>
-				
-				<div>
-				  	<p>レストラン名 <strong><%= @review.name %></strong></p> 
-				</div>
-				
-				<div>
-					<p>エリア <strong><%= @review.country.name %></strong></p>
-				</div>
-				<div>
-					<p>住所 <strong><%= @review.address %></strong></p>
-				</div>
-				<div>
-					<p>ジャンル 
-					<strong>
-						<% @review.review_genres.each do |review_genre| %>
-							<%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "20x20" %>
-							<%= review_genre.genre.name %>
-						<% end %>
-					</strong>
-					</p>
-				</div>
-				
-				<div>
-				  	<p>レビュー内容 <strong><%= @review.content %></strong></p>
-				</div>
-			</div>
-			
-			<!--GoogleMap-->
-			<div class="container"><%= render "public/maps/show", review: @review %></div>
-			
-			
-			
-			
-			<div>
-				<!--コメント投稿フォーム-->
-				<!--自分の投稿にはコメントできない-->
-				<% if current_user.id != @review.user.id %>
-					<%= form_with(model:[@review, @review_comment], url: review_review_comments_path(@review.id), local: true) do |f| %>
-						<div>
-							<%= f.text_area :comment, row:'10', placeholder: "コメントをここに入力して下さい。", class: "comment-window" %>
-							<%= f.submit "送信する" %>
-						</div>
-					<% end %>
-				<% end %>
-				<!--/コメント投稿フォーム-->
-			</div>
-			
-			<div>
-			<!--コメントの一覧表示-->
-			<% @review.review_comments.each do |review_comment| %>
-			<table class="table">
-				<tbody>
-					<tr>
-						<td>
-							<%= attachment_image_tag review_comment.user, :image, fallback:"review-image.jpg", size: "30x30" %><br/>
-							<%= review_comment.user.name %>
-						</td>
-						<td><p><%= review_comment.comment %></p></td>
-						<td>
-							<% if review_comment.user == current_user %>
-								<%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class: "btn btn-danger" %>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<% end %>
-			<!--/コメントの一覧表示-->
-			</div>
-			
-		</div>
-	</div>
+<div class=""><%= link_to "＜＜一覧画面に戻る", reviews_path %></div>
+<div class="none review-show">
+  <div class="title">
+    <div class="text-right edit">
+      <!--current_userのみ編集＆削除-->
+      <% if current_user.id == @review.user.id %>
+        <span>
+          <%= link_to edit_review_path do %>
+            <%= image_tag "edit.png", size: "45x45" %>
+          <% end %>
+        </span>
+        <span>
+          <%= link_to review_path(@review), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+            <%= image_tag "delete.png", size: "45x45" %>
+          <% end %>
+        </span>
+      <% else %>
+        <p>
+          <%= render "public/reviews/favorite", review: @review %>(<%= @review.favorites.count %>)
+        </p>
+      <% end %>
+      <!--/current_userのみ編集＆削除-->
+    </div>
+    <!--レストラン名-->
+    <div class="boder-red"><h2 class="text-center"><%= @review.name %></h2></div>
+  </div>
+
+  <div class="review-image">
+    <!--レビュー画像-->
+    <div class="text-center">
+      <% @review.review_images.each do |image| %>
+        <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "600x400" %>
+      <% end %>
+    </div>
+    
+    <!--いいね-->
+    <div class="text-right">
+    		<%= render "public/reviews/like", review: @review %>
+    </div>
+  </div>
+	
+  <div>
+    <div class="tag-list"><!--タグ-->
+      <% @review.tag_list.each do |tag| %>
+        <%= link_to reviews_path(tag_name: tag) do %>
+          <%= image_tag "tag.png", size: "23x23" %><%= tag %>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <!--ユーザー-->
+    <div class="row user-review">
+      <div class="link-none col-md-1"><!--ユーザー画像-->
+        <%= link_to user_path(@review.user.id) do %>
+          <div class="user">
+            <%= attachment_image_tag @review.user, :image, fallback:"sample.jpg", size: "70x70", class: "rounded-circle" %><br/>
+          </div>
+          <div class="text-center">
+            <strong><%= @review.user.name %></strong><br/>
+          </div>
+        <% end %>
+      </div>
+      <div class="review-content col-md-10"><!--レビュー内容-->
+        <p><%= @review.content %></p>
+      </div>
+    </div>
+    
+    <!--店舗情報-->
+    <div>
+      <h4>店舗情報</h4>
+      <div class="row restrant-information">
+          <table class="table-bordered col-md-6">
+            <tbody>
+              <tr>
+                <th>レストラン名</th>
+                <td><%= @review.name %></td>
+              </tr>
+              <tr>
+                <th>詳細</th>
+                <td>
+                  <% @review.review_genres.each do |review_genre| %>
+                    <%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "25x25" %>
+                    <%= review_genre.genre.name %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>予算</th>
+                <td><%= @review.budget %></td>
+              </tr>
+              <tr>
+                <th>エリア</th>
+                <td><%= @review.country.name %></td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td><%= @review.address %></p></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="offset-md-1 col-md-3">
+            <%= image_tag "illust.png", size: "400x300"%>
+          </div>
+      </div>
+      
+      <!--GoogleMap-->
+      <div>
+        <div class="maps">
+          <%= render "public/maps/show", review: @review %>
+        </div>
+      </div>
+    </div>
+    
+  <!--コメント-->
+    <div>
+      <!--コメント投稿フォーム-->
+      <% if current_user.id != @review.user.id %>
+        <%= form_with(model:[@review, @review_comment], url: review_review_comments_path(@review.id), local: true) do |f| %>
+          <div class="comment">
+            <%= f.text_area :comment, row:'10', placeholder: "コメントをここに入力して下さい。", class: "comment-window" %>
+            <div class="text-right"><%= f.submit "投稿する" %></div>
+          </div>
+        <% end %>
+      <% end %>
+      <!--/コメント投稿フォーム-->
+    </div>
+    <div>
+      <!--コメントの一覧表示-->
+      <% @review.review_comments.each do |review_comment| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>
+              <%= attachment_image_tag review_comment.user, :image, fallback:"review-image.jpg", size: "45x45", class: "rounded-circle" %><br/>
+              <%= review_comment.user.name %>
+            </th>
+            <td><p><%= review_comment.comment %></p></td>
+            <td>
+              <% if review_comment.user == current_user %>
+                <%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+      <!--/コメントの一覧表示-->
+    </div>
+  </div>
 </div>

@@ -1,13 +1,13 @@
 <% if current_user.liked_by?(review.id) %>
 	<!--いいねを外す-->
 	<%= link_to destroy_like_path(review), method: :DELETE do %>
-		<i><img src="https://img.icons8.com/fluent/35/000000/thumb-up.png"/></i>
+		<%= image_tag "like.png", size: "40x40"%>
 	<% end %>
 	<%= review.likes.count %>
 <% else %>
 	<!--いいねする-->
 	<%= link_to create_like_path(review), method: :POST do %>
-	<i><img src="https://img.icons8.com/pastel-glyph/35/000000/thumb-up--v2.png"/></i>
+		<%= image_tag "like-plus", size: "35x35"%>
 	<% end %>
 	<%= review.likes.count %>
 <% end %>
