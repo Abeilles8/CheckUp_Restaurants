@@ -17,34 +17,33 @@
   </head>
 
   <body class="wallpaper">
-    <div>
-      <header class="navbar navbar-expand-lg">
-      <div class="col-12 clearfix">
-        <div>
+    <header class="navbar navbar-expand-lg">
+      <div>
+        <div class="navbar-left">
           <%= link_to root_path do %>
-            <p class="logo">Check Up Restaurants</p>
+            <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
           <% end %>
-          <div class="float-right">
-            <ul class="nav pull-right">
-              <% if user_signed_in? %>
-              <%= image_tag "レストラン.png"%>
-                <li>
-                  <%= link_to "レビューを書く", new_review_path %>
-                </li>
-                <li>
-                  <%= link_to user_path(current_user) do %>
-                    <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40" %>
-                    マイページ
-                  <% end %>
-                </li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
-                
-              <% else %>
-                <li><%= link_to "新規登録", new_user_registration_path %></li>
-                <li><%= link_to "ログイン", new_user_session_path %></li>
+        </div>
+        <div>
+          <ul class="nav">
+          <% if user_signed_in? %>
+          <%= image_tag "レストラン.png"%>
+            <li><%= link_to "レビューを書く", new_review_path %></li>
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40", class: "rounded-circle" %>
+                マイページ
               <% end %>
-            </ul>
-          </div>
+            </li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "ジャンル", admin_genres_path %></li>
+            <li><%= link_to "スタイル", admin_styles_path %></li>
+            <li><%= link_to "Country", admin_countries_path %></li>
+          <% else %>
+            <li><%= link_to "新規登録/ログイン", users_account_path %></li>
+          <% end %>
+        </ul>
         </div>
       </div>
     </header>
@@ -60,7 +59,7 @@
       </div>
     </div>
     
-    <footer>
+    <footer class="">
       <div class="">
         <div>
           <%= link_to "お問い合わせはこちらから", inquiry_path %>

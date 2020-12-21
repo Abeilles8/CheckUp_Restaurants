@@ -1,0 +1,25 @@
+<div class="none">
+  <div class="col-md-6">
+    <div>
+      <p>無料会員登録</p>
+      <%= link_to "無料会員登録はこちら", new_user_registration_path %>
+    </div>
+  </div>
+  <div class="col=md-6">
+    <p>ログイン</p>
+    <div class="row">
+      <div>
+        <%= link_to "すでにログインがお済みの方", new_user_session_path %>
+      </div>
+      <div>
+        <%= link_to "Twitter", user_twitter_omniauth_authorize_path %>
+      </div>
+      <div>
+        <%= link_to "Google", user_google_oauth2_omniauth_authorize_path %>
+      </div>
+      <div>
+        <%= link_to "Github", user_github_omniauth_authorize_path %>
+      </div>
+    </div>
+  </div>
+</div>

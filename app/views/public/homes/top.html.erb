@@ -1,17 +1,27 @@
 <div class="back-image d-flex align-items-center justify-content-center">
   <div class="">
-    <p class="top-main-title">Check Up Restaurants</p>
+    <%= link_to reviews_path do %>
+      <p class="top-main-title">Check Up <span class="red">Rest</span>aurants</p>
+    <% end %>
+    <div>
+      <div class="top-message">
+        <p class="">
+          ようこそ！！<br/>
+          　お越しいただきありがとうございます。<br/>
+          　　皆様の知っている<span>海外・国内</span>のおすすめのレストランを広めませんか？<br/>
+          　　そして、このサイトを立ち上げた目的は<%= link_to "ここに", about_path %>あります。
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 <div>
-
 </div>
-<h3 class="text-center">エリア検索</h3>
 <div class="">
-  <div class="row">
-    <div class="box"><%= link_to "review一覧はこちら", reviews_path %></div>
-    <div class="box"><%= link_to "About", about_path %></div>
-  </div>
+  <% if  user_signed_in? %>
+    <div class="flex"><%= link_to "review一覧はこちら", reviews_path %></div>
+  <% else %>
+  <% end %>
 </div>
 <div class="">
   <div class="autoplay">

@@ -1,7 +1,7 @@
-<div class="text-center">
+<div class="text-center none">
   <h3>レビュー編集</h3>
   <div class="container">
-    <div class="row none">
+    <div class="">
       <%= form_with model:@review, url:review_path, local:true do |f| %>
         <div class="d-flex align-items-center justify-content-center">
           <% @review.review_images.each do |image| %>
@@ -52,5 +52,6 @@
         </div>
       <% end %>
     </div>
+      <div><%= render "public/maps/search" %></div>
   </div>
 </div>

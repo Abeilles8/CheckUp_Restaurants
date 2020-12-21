@@ -1,12 +1,18 @@
 <div class="text-center none">
 	<h3>レビュー登録</h3>
 	<div class="container">
-		<div class="row">
+		<div>
+			
+		</div>
+		<div class="">
 			<%= form_with model: @review, url: reviews_path, local:true do |f| %>
 			<table>
 				<tr>
 					<th><%= f.label "レストラン画像" %></th>
-					<td><%= f.attachment_field :review_images_images, multiple: true %></td>
+					<td>
+						<%= f.attachment_field :review_images_images, multiple: true %><br/>
+						<p>複数選択の場合<span>shift</span>またはCommandをおしながら選択して下さい。</p>
+					</td>
 				</tr>
 				<tr>
 					<th><%= f.label "レストランの名前" %></th>
@@ -21,6 +27,11 @@
 					</td>
 					
 					<script src="assets/"></script>
+				</tr>
+				<tr>
+					<!--タグ付け機能-->
+					<th><p>タグ</p></th>
+					<td><%= f.text_field :tag_list, value: @review.tag_list.join(','), class: "form-control" %></td>
 				</tr>
 				<tr>
 					<th><%= f.label "エリア選択"%></th>
@@ -57,5 +68,11 @@
 				</div>
 			<% end %>
 		</div>
+			<!--googleマップ検索フォーム-->
+			
+			<div>
+				<p>Googleマップ上から検索をすることができます。</p>
+				<%= render "public/maps/search" %>
+			</div>
 	</div>
 </div>

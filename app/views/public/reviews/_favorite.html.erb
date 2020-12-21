@@ -1,11 +1,11 @@
 <% if current_user.favorited_by?(review.id) %>
 	<!--お気に入りから外す-->
 	<%= link_to destroy_favorite_path(review), method: :DELETE do %>
-		<i><img src="https://img.icons8.com/color/35/000000/filled-star--v1.png"/></i>
+		<%= image_tag "favorite.png", size: "35x40" %>
 	<% end %>
 <% else %>
 	<!--お気に入り登録-->
 	<%= link_to create_favorite_path(review), method: :POST do %>
-		<i><img src="https://img.icons8.com/ios/35/000000/add-to-favorites--v1.png"/></i>
+		<%= image_tag "favorite-plus.png", size: "35x35" %>
 	<% end %>
 <% end %>
