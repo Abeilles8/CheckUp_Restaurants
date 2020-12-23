@@ -2,17 +2,23 @@
   <div class="text-left"><%= link_to "<<一覧に戻る", reviews_path %></div>
   <div class="text-center"><h2>Review編集</h2></div>
 	
+	<!--画像表示-->
+	<div class="container-fluid">
+  	<div class="row">
+      <% @review.review_images.each do |image| %>
+      	<div>
+        	<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "500x400" %>
+      	</div>
+      <% end %>
+    </div>
+  </div>
+  
 	<!--レビュー投稿-->
 	<div class="container">
   	<div class="text-center">
 	    <%= form_with model: @review, url: review_path, local:true do |f| %>
 	      <div>
 	        <p>レストラン画像<span class="required">（必須）</span></p>
-          <div>
-            <% @review.review_images.each do |image| %>
-              <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "400x400" %>
-            <% end %>
-          </div>
 	        <p>複数選択の場合<strong>shift</strong>または<strong>Command</strong>をおしながら選択して下さい。</p>
 	        <%= f.attachment_field :review_images_images, multiple: true %>
 	      </div>

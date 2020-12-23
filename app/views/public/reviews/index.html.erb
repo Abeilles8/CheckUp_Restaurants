@@ -4,14 +4,18 @@
 
 <% @reviews.each do |review| %>
   <div class="row none review-box">
-    <div class="review-image col-md-4 text-center"><!--レビュー画像-->
+    <!--レビュー画像-->
+    <div class="review-image col-md-4 text-center">
       <%= link_to review_path(review.id) do %>
-        <% review.review_images.each do |image| %>
-          <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
-        <% end %>
+        <div class="auto">
+          <% review.review_images.each do |image| %>
+            <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "200x100" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-
+    
+    <!--レビュー詳細-->
     <div class="review col-md-8">
         <div class="review-title">
           <div><!--いいね/お気に入り-->
@@ -22,29 +26,28 @@
             <% end %>
           </div>
           <div class=""><!--レストラン名-->
-            <h4 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h4>
+            <h3 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h3>
             <p class="restrant-details">[<%= review.country.name %>] / <%= review.style.name %></p>
           </div>
         </div>
         
         <div class="review-tag"><!--タグ-->
           <% review.tag_list.each do |tag| %>
-            <%= image_tag "tag.png", size: "18x18" %><%= tag %>
+            <%= image_tag "tag.png", size: "23x23" %><%= tag %>
           <% end %>
         </div>
 
         <div class=" row user-content"><!--ユーザーの情報-->
           <!--ユーザー画像-->
-          <div class="text-center link-none col-md-2">
+          <div class="text-center link-none col-md-1">
             <%= link_to user_path(review.user.id) do %>
-              <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
-              <div class="text-center name">
-                <p><strong><%= review.user.name %></strong></p>
+              <div class="text-center">
+                <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "55x55", class: "rounded-circle"%>
               </div>
             <% end %>
           </div>
           <!--レビュー内容-->
-          <div class="review-content col-md-8"><%= review.content %></div>
+          <div class="review-content col-md-9"><%= review.content %></div>
         </div>
 
         <div><p>予算： <strong><%= review.budget %></strong></p></div>
@@ -53,7 +56,7 @@
         </div>
         <div class="review-genre"><!--ジャンル-->
           <% review.review_genres.each do |review_genre| %>
-            <%= attachment_image_tag review_genre.genre, :image, size: "25x25" %>
+            <%= attachment_image_tag review_genre.genre, :image, size: "27x27" %>
           <% end %>
         </div>
     </div>

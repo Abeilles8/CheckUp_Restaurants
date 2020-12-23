@@ -36,7 +36,7 @@
                   <%= image_tag "home.icon.png", size: "50x50" %>
                 <% end %>
               </li>
-              <li><%= render "public/root/nav.drop" %></li>
+              <li><%= render "layouts/nav.drop" %></li>
             <% elsif admin_signed_in? %>
               <!--管理者-->
               <li><%= link_to "ジャンル", admin_genres_path %></li>
@@ -54,9 +54,7 @@
     <div class="container-fluid">
       <div class="mx-auto">
         <div class="col-xs-12">
-          <div class="text-center">
-            <p><%= flash[:notice] %></p>
-          </div>
+          <div class="text-center"><%= render "layouts/flash_messages"%></div>
           <%= yield %>
         </div>
       </div>

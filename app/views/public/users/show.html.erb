@@ -30,11 +30,14 @@
     </div>
   </div>
   
-  <div class="intro"><%= @user.introduction %></div>
+  <div class="intro text-center"><%= @user.introduction %></div>
   <div class="row follow">
     <div><strong><%= @user.followings.count %></strong>フォロー中</div>
     <div><strong><%= @user.followers.count %></strong>フォロワー</div>
-    <div class="country"><%= @user.my_country %></div>
+    <div class="country">
+      <%= image_tag "country.png", size: "25x25" %>
+      <%= @user.my_country %>
+    </div>
   </div>
 </div>
 <!--/ユーザーのプロフィール-->
@@ -43,35 +46,37 @@
 <!--投稿した一覧-->
 <% @reviews.each do |review| %>
   <div class="row none review-box">
-    <div class="review-image col-md-4 text-center"><!--レビュー画像-->
+    
+    <!--レビュー画像-->
+    <div class="review-image col-md-4 text-center">
       <%= link_to review_path(review.id) do %>
         <% review.review_images.each do |image| %>
           <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
         <% end %>
       <% end %>
     </div>
-
+    
+    <!--レストラン詳細-->
     <div class="review col-md-8">
         <div class="review-title">
           <div class=""><!--レストラン名-->
-            <h4 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h4>
+            <h3 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h3>
             <p class="restrant-details">[<%= review.country.name %>] / <%= review.style.name %></p>
           </div>
         </div>
         
         <div class="review-tag"><!--タグ-->
           <% review.tag_list.each do |tag| %>
-            <%= image_tag "tag.png", size: "18x18" %><%= tag %>
+            <%= image_tag "tag.png", size: "23x23" %><%= tag %>
           <% end %>
         </div>
 
         <div class=" row user-content"><!--ユーザーの情報-->
           <!--ユーザー画像-->
-          <div class="link-none col-md-2">
+          <div class="link-none col-md-1">
             <%= link_to user_path(review.user.id) do %>
-              <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
-              <div class="text-center name">
-                <p><strong><%= review.user.name %></strong></p>
+              <div class="text-center user-name">
+                <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
               </div>
             <% end %>
           </div>
@@ -88,7 +93,7 @@
         </div>
         <div class="review-genre"><!--ジャンル-->
           <% review.review_genres.each do |review_genre| %>
-            <%= attachment_image_tag review_genre.genre, :image, size: "25x25" %>
+            <%= attachment_image_tag review_genre.genre, :image, size: "27x27" %>
           <% end %>
         </div>
     </div>

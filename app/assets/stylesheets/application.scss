@@ -25,6 +25,22 @@
 // 必須(!)
 .required {color: red;}
 
+// flash(!)
+.alert-primary {
+	background: #1906ffa1;
+	color: #fff;
+}
+.alert-danger {
+	background: #fd190bb5;
+	font-size: 1.3rem;
+	color: #000;
+}
+.alert-update {
+	background: #d3d810c7;
+	color: #001eff;
+}
+
+
 // 壁紙
 .wallpaper {
 	background-image: url(back-ground);
@@ -52,7 +68,7 @@
 
 // footer
 footer {
-	height: 60px;
+	height: 90px;
 	background-color: #330066;
 	
 	// お問い合わせ
@@ -142,7 +158,7 @@ footer {
 		padding: 15px;
 		border-right-style: dotted;
 		// border-width: 0.5px;
-		border-color: #C0C0C0;
+		border-color: #ff7f06;
 	}
 	.review {
 		padding: 10px;
