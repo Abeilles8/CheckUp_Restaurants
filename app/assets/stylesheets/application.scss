@@ -13,13 +13,20 @@
  */
 @import "bootstrap";
 
+// リンクの下線をなし
 .link-none a {
 	text-decoration: none;
 	color: #000;
 }
+
+// 標準背景色()
 .none {
 	background-color: #FFEBCC;
 }
+
+// 必須(!)
+.required {color: red;}
+
 
 .back-image{
 	background-image: url(top-page);
@@ -58,7 +65,7 @@ footer {
 
 .top-main-title {
 	padding-top: 40px;
-	font-family: 'Times New Roman',sans-serif;
+	font-family: 'Snell Roundhand','Segoe UI Historic',sans-serif;
 	font-size: 95px;
 	color: #000;
 	
@@ -73,7 +80,7 @@ footer {
 
 
 .logo {
-	font-family: 'Georgia',sans-serif;
+	font-family: 'Snell Roundhand','Segoe UI Historic',sans-serif;
 	color: #000;
 	font-size: 33px;
 	padding: 20px 20px;
@@ -237,6 +244,35 @@ footer {
 	width: 100%;
 	}
 	
+}
+
+// review-new
+.review-new {
+	
+	h2 {
+		font-family: 'Times','Times New Roman','Superclarendon',sans-serif;
+		color: #330066;
+		border-bottom-style: double;
+		border-width: 0.5rem;
+	}
+	table {
+		margin: 50px 50px;
+		th {padding: 20px;}
+		td {padding: 30px;}
+		
+	}
+	.field {
+		width: 100%;
+	}
+	.genre-field {
+		border-style: solid;
+		border-color: #FFA500;
+	}
+	.btn-primary {
+		background: #FFA500;
+		color: blue;
+		width: 200px;
+	}
 }
 
 // user-profile
