@@ -39,6 +39,32 @@ $(function() {
     });
 });
 
+// 自動
+$(function() {
+    $('.auto').slick({
+        // 表示枚数
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4000,
+    });
+});
+
+
+$(function() {
+  $('.slider-nav').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+    centerMode: true,
+    focusOnSelect: true,
+  });  
+}) 
+
+
+
 $(function() {
   $('#star').raty({
 		  size      :36,

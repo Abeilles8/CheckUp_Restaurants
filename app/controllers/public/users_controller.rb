@@ -17,7 +17,8 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path, notice: "プロフィールを更新しました"
+    flash[:update] = "プロフィールを更新しました"
+    redirect_to user_path
   end
 
   private

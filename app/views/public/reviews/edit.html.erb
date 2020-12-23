@@ -3,11 +3,11 @@
   <div class="text-center"><h2>Review編集</h2></div>
 	
 	<!--画像表示-->
-	<div class="text-center">
+	<div class="container-fluid">
   	<div class="row">
       <% @review.review_images.each do |image| %>
       	<div>
-        	<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "400x400" %>
+        	<%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "500x400" %>
       	</div>
       <% end %>
     </div>

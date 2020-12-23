@@ -27,10 +27,14 @@
 
   <div class="review-image">
     <!--レビュー画像-->
-    <div class="text-center">
-      <% @review.review_images.each do |image| %>
-        <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "600x400" %>
-      <% end %>
+    <div class="container-fluid">
+      <div class="text-center">
+        <div class=" slider-nav">
+          <% @review.review_images.each do |image| %>
+            <div><%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "600x400" %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
     
     <!--いいね-->
