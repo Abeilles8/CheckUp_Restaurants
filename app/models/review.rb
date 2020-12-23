@@ -17,6 +17,8 @@ class Review < ApplicationRecord
 	
 	# image
 	accepts_attachments_for :review_images, attachment: :image
+	# まとめて保存する
+	# accepts_nested_attributes_for :review_images, allow_destroy: true
 	attachment :image
 	
 	# tag付け

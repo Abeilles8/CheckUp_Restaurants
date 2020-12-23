@@ -3,7 +3,7 @@ class Public::ReviewsController < ApplicationController
 	before_action :authenticate_user!, only: [:show]
 	
 	def index
-	  @reviews = Review.all.order("created_at DESC").page(params[:page]).per(10)
+	  @reviews = Review.all.order("created_at DESC").page(params[:page]).per(4)
 	  
 	  if params[:tag_name]
 	   # tagged_withで絞り込み
@@ -80,7 +80,8 @@ class Public::ReviewsController < ApplicationController
   	  :country_id, 
   	  :style_id, 
   	  { :genre_ids => [] },
-  	  :tag_list
+  	  :tag_list,
+  	 # review_images_attributes: [:image, :id]
   	  )
   end
 end
