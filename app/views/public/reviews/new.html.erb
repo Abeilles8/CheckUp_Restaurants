@@ -1,78 +1,89 @@
-<div class="text-center none">
-	<h3>レビュー登録</h3>
+<div class=" none review-new">
+  <div class="text-left"><%= link_to "<<一覧に戻る", reviews_path %></div>
+  <div class="text-center"><h2>Review</h2></div>
+	
+	<!--レビュー投稿-->
 	<div class="container">
-		<div>
-			
-		</div>
-		<div class="">
-			<%= form_with model: @review, url: reviews_path, local:true do |f| %>
-			<table>
-				<tr>
-					<th><%= f.label "レストラン画像" %></th>
-					<td>
-						<%= f.attachment_field :review_images_images, multiple: true %><br/>
-						<p>複数選択の場合<span>shift</span>またはCommandをおしながら選択して下さい。</p>
-					</td>
-				</tr>
-				<tr>
-					<th><%= f.label "レストランの名前" %></th>
-					<td><%= f.text_field :name, class: "col-12", placeholder: "レストラン名" %></td>
-				</tr>
-				<tr>
-					<th><%= f.label "レビュー評価"%></th>
-					<td>
-						<div class="form-group" id="star">
-							<%= f.hidden_field :rate, id: :review_star %>
-						</div>
-					</td>
-					
-					<script src="assets/"></script>
-				</tr>
-				<tr>
-					<!--タグ付け機能-->
-					<th><p>タグ</p></th>
-					<td><%= f.text_field :tag_list, value: @review.tag_list.join(','), class: "form-control" %></td>
-				</tr>
-				<tr>
-					<th><%= f.label "エリア選択"%></th>
-					<td><%= f.collection_select :country_id, Country.all, :id, :name %></td>
-				</tr>
-				<tr>
-					<th><%= f.label "住所"%></th>
-					<td><%= f.text_field :address, class: 'form-control', placeholder: "詳細に"%></td>
-				</tr>
-				<tr>
-					<th><%= f.label "スタイル"%></th>
-					<td><%= f.collection_select :style_id, Style.all, :id, :name  %></td>
-				</tr>
-				<tr>
-					<th><%= f.label "ジャンル選択(複数選択可)"%></th>
-					<td><%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
-							<%= genre.label do %>
-								<%= genre.check_box %>
-								<%= attachment_image_tag genre.object, :image, fallback:"sample.jpg", size: "20x20" %>
-								<%= genre.object.name %>
-								<!--<= genre.object.image %>-->
-							<% end %>
-						<% end %>
-					</td>
-				</tr>
-				<tr>
-					<th><%= f.label "レビュー" %></th>
-					<td><%= f.text_area :content, class: "col-12", placeholder: "（例）このお店おすすめです！" %></td>
-				</tr>
-			</table>
-				<div>
-					<%= link_to "<<一覧に戻る", reviews_path %>
-					<%= f.submit "投稿", class: "btn-primary" %>
-				</div>
-			<% end %>
-		</div>
-			<!--googleマップ検索フォーム-->
-			
-			<div>
-				<p>Googleマップ上から検索をすることができます。</p>
-				<%= render "public/maps/search" %>
-			</div>
+  	<div class="text-center">
+	    <%= form_with model: @review, url: reviews_path, local:true do |f| %>
+	      <div>
+	        <p>レストラン画像<span class="required">（必須）</span></p>
+	        <p>複数選択の場合<strong>shift</strong>または<strong>Command</strong>をおしながら選択して下さい。</p>
+	        <%= f.attachment_field :review_images_images, multiple: true %>
+	      </div>
+	      
+	      	<table>
+	        <tr class="bar">
+	          <th>レストラン名<span class="required">（必須）</span></th>
+	          <td><%= f.text_field :name, placeholder: "レストラン名", class: "field"%></td>
+	        </tr>
+	        
+	        <tr>
+	          <th>予算</th>
+	          <td><%= f.text_field :budget, placeholder: "予算どのくらいですか？　◯〜◯", class: "field" %></td>
+	        </tr>
+	        
+	        <tr>
+	          <th>エリア選択<span class="required">（必須）</span></th>
+	          <td><%= f.collection_select :country_id, Country.all, :id, :name, class: "field" %></td>
+	        </tr>
+	        
+	        <tr>
+	          <th>住所<span class="required">（必須）</span></th>
+	          <td>
+	            <p>住所が分からない場合、下記のGoogleマップを使って検索できます。</p>
+	            <%= f.text_field :address, placeholder: "詳細に", class: 'form-control' %>
+	          </td>
+	        </tr>
+	
+	        <tr>
+	          <th>スタイル</th>
+	          <td><%= f.collection_select :style_id, Style.all, :id, :name  %></td>
+	        </tr>
+	
+	        <tr>
+	          <th>ジャンル選択（複数選択可）</th>
+	          <td class="genre-field">
+	            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
+	              <%= genre.label do %>
+	                <%= genre.check_box %>
+	                <%= attachment_image_tag genre.object, :image, fallback:"sample.jpg", size: "20x20" %>
+	                <%= genre.object.name %>
+	                <!--<= genre.object.image %>-->
+	              <% end %>
+	            <% end %>
+	          </td>
+	        </tr>
+	
+	        <tr>
+	          <th>タグ</th>
+	          <td>
+	          	<p>タグの間に「,」を入れて下さい。</p>
+	            <%= f.text_field :tag_list, value: @review.tag_list.join('、'), placeholder: "pari, 最高, いいねほしい", class: "form-control" %>
+	          </td>
+	        </tr>
+	
+	        <tr>
+	          <th>レビュー内容</th>
+	          <td>
+	            <%= f.text_area :content, placeholder: "このお店どうでしたか？", class: "col-12" %>
+	          </td>
+	        </tr>
+	      </table>
+	      
+	      <div>
+          <%= f.submit "Goooooo!!!", class: "btn btn-primary" %>
+        </div>
+    <% end %>
+  </div>
+  
+  <!--GoogleMap-->
 	</div>
+    <div class="text-center">
+      <p>
+        Googleマップ上から検索をすることができます。<br/>
+        <span>検索後クリック▶表示された住所をコピー▶住所欄に貼り付け</span>
+      </p>
+      <%= render "public/maps/search" %>
+    </div>
 </div>

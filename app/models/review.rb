@@ -7,6 +7,7 @@ class Review < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	has_many :review_comments, dependent: :destroy
+	has_many :notifications, dependent: :destroy
 	
 	has_many :review_genres, dependent: :destroy
 	# articles経由でgenreにアクセス
@@ -14,15 +15,13 @@ class Review < ApplicationRecord
 	
 	has_many :review_images, dependent: :destroy
 	
-	# tag付け
-	# has_many :tag_maps, dependent: :destroy
-	# has_many :tags, through: :tag_maps
-	
-	acts_as_taggable
-
+	# image
 	accepts_attachments_for :review_images, attachment: :image
 	attachment :image
 	
+	# tag付け
+	acts_as_taggable
+
 	# addressカラムを基準に緯度経度を算出する
 	geocoded_by :address
 	# 住所変更時に緯度経度も変更する
@@ -34,29 +33,55 @@ class Review < ApplicationRecord
 		Review.where(['content LIKE ?', "%#{search}%"])
 	end
 	
-	# タグ機能
-	# def save_tag(sent_tags)
-	# 	# 現在存在するタグを取得
-	# 	current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
-	# 	# 古いタグを取得
-	# 	old_tags = current_tags - sent_tags
-	# 	# 新しいタグを取得
-	# 	new_tags = sent_tags - current_tags
-		
-	# 	# 古いタグを削除
-	# 	old_tags.each do |old|
-	# 		self.review_tags.delete Tag.find_by(tag_name: old)
-	# 	end
-		
-	# 	# 新しいタグを保存
-	# 	new_tags.each do |new|
-	# 		new_review_tag = Tag.find_or_create_by(tag_name: new)
-	# 		self.tags << new_review_tag
-	# 	end
-		
-	# end
+	# 通知機能<いいね>
+	def create_notification_like?(current_user)
+		# 既に通知が作成されているか確認
+		temp = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ?",
+																current_user.id, user_id, id, "like"])
+		if temp.blank?
+			notification = current_user.active_notifications.new(
+				review_id: id,
+				visited_id: user_id,
+				action: "like"
+			)
+				
+			# 登録済み、自分の投稿にいいねの場合通知を確認済みにする
+			if notification.visitor_id == notification.visited_id
+				notification.checked = true
+			end
+			
+			notification.save if notification.valid?
+		end
+	end
 	
+	# 通知機能<コメント>
+	def create_notification_comment?(current_user, review_comment_id)
+		# 同じ投稿にコメントしているユーザーに通知（current_userと投稿者は除いて）
+		#  distinctで複数コメントしていても通知は一件
+		temp_ids = ReviewComment.where(review_id: id).where.not("user_id = ? or user_id", current_user.id, user_id).select(:user_id).distinct
+		# 取得したuser_idをユーザー達に通知を作成（user_idのみ繰り返し取得）
+		temp_ids.each do |temp_id|
+			save_notication_comment!(current_user, review_comment_id, temp_id["user_id"])
+		end
+		# 投稿者へ通知を作成
+		save_notication_comment!(current_user, review_comment_id, user_id)
+	end
 	
+	def save_notication_comment!(current_user, review_comment_id, visited_id)
+		notification = current_user.active_notifications.new(
+			review_id: id,
+			review_comment_id: comment_id,
+			visited_id: visited_id,
+			action: "comment"
+		)
+		if notification.visitor_id == notification.visited_id
+			notification.checked = true
+		end
+		notification.save if notification.valid?
+	end
+	# /通知機能<コメント>
+	
+	# validation
 	validates :name, presence: true
 	validates :review_images_images, presence: true
 	
