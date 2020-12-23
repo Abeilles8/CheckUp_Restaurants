@@ -1,68 +1,95 @@
-<div class="container">
-  <div class="row">
-    <!--Userのプロフィール-->
-    <div class="col-md-4">
-      <%= attachment_image_tag @user, :image, fallback: "sample.jpg", size: "300x300", class: "rounded-circle" %>
-      <%= render "public/relationships/follow_button", user: @user %>
+<!--ユーザーのプロフィール-->
+<div class=" profile">
+  <div class="text-right ">
+    <div class="counter">
+      <div>投稿数<strong class="count"><%= @user.reviews.count%></strong></div>
+      <div><%= image_tag "like.png", size: "40x40"%><strong class="count"><%= @user.likes.count %></strong></div>
+      <div>
+        <% if current_user.id == @user.id %>
+            <%= link_to favorite_path(current_user.favorites) do %>
+              <%= image_tag "favorite.png", size: "35x40" %>
+              <strong class="count"><%= current_user.favorites.count %></strong>
+            <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-md-8 ">
-      <li>ユーザー名 <%= @user.name %></li>
-      <li>メールアドレス <%= @user.email %></li>
-      <li>国籍 <%= @user.my_country %></li>
-      <li>自己紹介 <%= @user.introduction %></li>
-      <li>投稿数: <%= @user.reviews.count %></li>
-      <li>いいねしてもらった数: <%= @user.likes.count %></li>
-      <li>コメント数</li>
-      <!--current_userのみ表示-->
+  </div>
+  
+  <!--ユーザー画像-->
+  <div class="text-center">
+    <div class="user-image">
+      <%= attachment_image_tag @user, :image, fallback: "sample.jpg", size: "200x200", class: "rounded-circle" %><br/>
+      <strong class="user-name"><%= @user.name %></strong>
+    </div>
+    <div class="button">
       <% if current_user.id == @user.id %>
-        <li>お気に入り:
-          <%= link_to favorite_path(@user) do %>
-            <%= @user.favorites.count %>
-          <% end %>
-        </li>
-        <%= link_to "プロフィールの編集", edit_user_path(current_user) %>
-        <%= link_to "設定"%>
+        <%= @user.email %>  <%= link_to "プロフィールの編集", edit_user_path(current_user), class: "edit-link btn btn-outline-primary" %>
+      <% else %>
+        <%= render "public/relationships/follow_button", user: @user %>
       <% end %>
     </div>
   </div>
+  
+  <div class="intro"><%= @user.introduction %></div>
+  <div class="row follow">
+    <div><strong><%= @user.followings.count %></strong>フォロー中</div>
+    <div><strong><%= @user.followers.count %></strong>フォロワー</div>
+    <div class="country"><%= @user.my_country %></div>
+  </div>
 </div>
+<!--/ユーザーのプロフィール-->
 
 <!--投稿した一覧-->
-<div>
-  <%= link_to "一覧はこちら", reviews_path%>
-  <tbody>
-    <table class="table none">
-      <thead class="thead-dark">
-        <tr>
-          <th>レストラン画像</th>
-		      <th>レストラン名</th>
-		      <th>エリア</th>
-		      <th>ジャンル</th>
-		      <th>レビュー内容</th>
-		      <th></th>
-		    </tr>
-      </thead>
+<% @reviews.each do |review| %>
+  <div class="row none review-box">
+    <div class="review-image col-md-4 text-center"><!--レビュー画像-->
+      <%= link_to review_path(review.id) do %>
+        <% review.review_images.each do |image| %>
+          <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
+        <% end %>
+      <% end %>
+    </div>
 
-      <% @reviews.each do |review| %>
-        <tr>
-          <th>
-            <%= link_to review_path(review.id) do %>
-		      		<%= attachment_image_tag review, :image, fallback:"sample.jpg", size: "100x100" %>
-		      	<% end %>
-          </th>
-  	      <th><%= review.name %></th>
-  	      <th><%= review.country.name %></th>
-  	      <th>
-  	        <% review.review_genres.each do |review_genre| %>
-		      		<%= attachment_image_tag review_genre.genre, :image, fallback:"sample.jpg", size: "20x20" %>
-							<%= review_genre.genre.name %>
-						<% end %>
-  	      </th>
-  	      
-  	      <th><%= review.content %></th>
-  	      <th></th>
-  	    </tr>
-		  <% end %>
-    </table>
-  </tbody>
-</div>
+    <div class="review col-md-8">
+        <div class="review-title">
+          <div class=""><!--レストラン名-->
+            <h4 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h4>
+            <p class="restrant-details">[<%= review.country.name %>] / <%= review.style.name %></p>
+          </div>
+        </div>
+        
+        <div class="review-tag"><!--タグ-->
+          <% review.tag_list.each do |tag| %>
+            <%= image_tag "tag.png", size: "15x15" %><%= tag %>
+          <% end %>
+        </div>
+
+        <div class=" row user-content"><!--ユーザーの情報-->
+          <!--ユーザー画像-->
+          <div class="link-none col-md-1">
+            <%= link_to user_path(review.user.id) do %>
+              <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
+              <div class="text-center">
+                <strong class="name"><%= review.user.name %></strong>
+              </div>
+            <% end %>
+          </div>
+          <!--レビュー内容-->
+          <div class="review-content col-md-10"><%= review.content %></div>
+        </div>
+
+        <div><p>予算:<span><%= review.budget %></span></p></div>
+        <div>
+          <p>
+            いいね数(<%= review.likes.count %>)<br/>
+            コメント数(<%= review.review_comments.count %>)件
+          </p>
+        </div>
+        <div class="review-genre"><!--ジャンル-->
+          <% review.review_genres.each do |review_genre| %>
+            <%= attachment_image_tag review_genre.genre, :image, size: "25x25" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+<% end %>

@@ -1,11 +1,19 @@
 class Public::ReviewCommentsController < ApplicationController
   
   def create
-    review = Review.find(params[:review_id])
-    comment = current_user.review_comments.new(review_comment_params)
-    comment.review_id = review.id
-    comment.save
-    redirect_back(fallback_location: root_path)
+    # review = Review.find(params[:review_id])
+    @comment = current_user.review_comments.new(review_comment_params)
+    @comment.review_id = params[:review_id]
+    if @comment.save
+      flash[:notice] = "コメントしました"
+      # 通知機能
+      # @review = @comment.review
+      # @review.create_notification_comment?(current_user, @comment.id)
+      redirect_back(fallback_location: root_path)
+    else
+      comments_get
+      render "public/reviews/show"
+    end
   end
   
   def destroy

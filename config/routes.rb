@@ -30,22 +30,21 @@ Rails.application.routes.draw do
   scope module: :public do
     get "/about" => "homes#about"
     get "users/account" => "users#account"
-    resources :users, only: [:show, :edit, :update]
     
+    resources :users, only: [:show, :edit, :update]
     # フォロー
     resources :relationships, only: [:create, :destroy]
-    
     # レビュー
     resources :reviews do
        # コメント
       resources :review_comments, only: [:create, :destroy]
     end
-    
+    # タグ
     resources :tags
-    
     # googlemaps
     resources :maps, only: [:index]
-    
+    # 通知
+    resources :notifications, only: [:index, :destroy]
     
     # いいね
     post "like/:id" => "likes#create", as: "create_like"

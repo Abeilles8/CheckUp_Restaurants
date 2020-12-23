@@ -61,6 +61,8 @@ footer {
 	font-family: 'Times New Roman',sans-serif;
 	font-size: 95px;
 	color: #000;
+	
+	span { color: red;}
 }
 .top-message {
 	color: #fff;
@@ -75,7 +77,8 @@ footer {
 	color: #000;
 	font-size: 33px;
 	padding: 20px 20px;
-	red {color: red;}
+	
+	span {color: red;}
 }
 .boxsize{
 	width: 100%;
@@ -91,18 +94,23 @@ footer {
 	width: 5px 5px ;
 }
 
-.review-image {
-	padding: 15px;
-}
+
 
 // review.index
 .review-box {
 	border-width: 0.1px;
 	border-style: solid;
 	border-color: #FF9900;
+	color: #000;
 	
+	.review-image {
+		padding: 15px;
+		border-right-style: dotted;
+		// border-width: 0.5px;
+		border-color: #C0C0C0;
+	}
 	.review {
-	padding: 10px;
+		padding: 10px;
 	}
 	.review-title {
 		border-width: 0.5px;
@@ -229,4 +237,62 @@ footer {
 	width: 100%;
 	}
 	
+}
+
+// user-profile
+
+.profile {
+	background: #330066;
+	color: orange;
+	
+	.counter {
+		margin: 10px;
+		padding: 10px;
+		div {margin-bottom: 5px;}
+		.count {color: #fff}
+	}
+	.user-image {
+		padding: 10px 0;
+		
+		.user-name {
+			font-size: 18px;
+			color: #fff;
+			font-family: 'Bodoni 72','ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体','Segoe UI Historic',sans-serif;
+		}
+	}
+	.button {
+		.edit-link {
+			margin-left: 10px;
+			a { color: #fff}
+		}
+	}
+	.intro { margin: 10px 20px;}
+	.follow {
+		margin: 10px 20px;
+		div {
+			margin-bottom: 10px;
+			margin-right: 10px;
+			strong {color: #fff;}
+		}
+	}
+	
+	// efit
+	label {
+		border-style: solid;
+		padding: 10px 20px;
+		margin-top: 10px;
+		
+		
+		.field {
+			height: 3rem;
+			width: 500px;
+			background: #330066;
+			color: #fff;
+		}
+	}
+	.btn-primary {
+		padding: 5px 60px;
+		margin: 10px 0;
+		background: #FFA500;
+	}
 }

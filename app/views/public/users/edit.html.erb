@@ -1,26 +1,36 @@
-<h3 class="text-center">プロフィール編集</h3>
-<div class="col text-center">
-  <div class="row">
-    <%= form_with model:@user, url:user_path, local:true do |f| %>
-      <div>
-        <%= f.label "プロフィール画像" %><br/>
-        <%= f.attachment_field :image%>
-      </div>
-      <div>
-        <%= f.label "名前" %>
-        <%= f.text_field :name %>
-      </div> 
-      <div>
-        <%= f.label "国籍" %>
-        <%= f.text_field :my_country %>
-      </div>
-      <div>
-        <%= f.label "プロフィール" %>
-        <%= f.text_area :introduction %>
-      </div>
-      <div>
-        <%= f.submit "更新" %>
-      </div>
+<div class="profile">
+  <div class="text-center">
+    <div class="">
+      <%= form_with model:@user, url:user_path, local:true do |f| %>
+        <div>
+          <label>
+            <%= attachment_image_tag @user, :image, fallback: "sample.jpg", size: "200x200", class: "rounded-circle" %><br/>
+            <p>プロフィール画像</p>
+            <%= f.attachment_field :image%>
+          </label>
+        </div>
+        <div>
+          <label>
+            <p>名前</p>
+            <%= f.text_field :name, class: "field" %>
+          </label>
+        </div> 
+        <div>
+          <label>
+            <p>自己紹介</p>
+            <%= f.text_area :introduction, class: "field area" %>
+          </label>
+        </div>
+        <div>
+          <label>
+            <p>場所</p>
+            <%= f.text_field :my_country, class: "field" %>
+          </label>
+        </div>
+        <div>
+          <%= f.submit "更新", class: "btn btn-primary" %>
+        </div>
       <% end %>
+    </div>
   </div>
 </div>

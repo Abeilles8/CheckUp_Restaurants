@@ -4,7 +4,7 @@
 
 <% @reviews.each do |review| %>
   <div class="row none review-box">
-    <div class="review-image col-md-4"><!--レビュー画像-->
+    <div class="review-image col-md-4 text-center"><!--レビュー画像-->
       <%= link_to review_path(review.id) do %>
         <% review.review_images.each do |image| %>
           <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "300x200" %>
@@ -44,15 +44,12 @@
             <% end %>
           </div>
           <!--レビュー内容-->
-          <div class="review-contentcol-md-10"><%= review.content %></div>
+          <div class="review-content col-md-10"><%= review.content %></div>
         </div>
 
         <div><p>予算:<span><%= review.budget %></span></p></div>
         <div>
-          <p>
-            いいね数(<%= review.likes.count %>)<br/>
-            コメント数(<%= review.review_comments.count %>)件
-          </p>
+          <p>コメント数(<%= review.review_comments.count %>)件</p>
         </div>
         <div class="review-genre"><!--ジャンル-->
           <% review.review_genres.each do |review_genre| %>
