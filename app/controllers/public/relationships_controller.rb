@@ -7,7 +7,7 @@ class Public::RelationshipsController < ApplicationController
     if following.save
       flash[:notice] = "フォローしました"
       # 通知機能
-      @user.create_notification_follow!(current_user)
+      # @user.create_notification_follow!(current_user)
       redirect_to @user
     else
       flash[:notice] = "フォローに失敗しました"

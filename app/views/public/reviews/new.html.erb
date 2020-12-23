@@ -13,7 +13,7 @@
 	      </div>
 	      
 	      	<table>
-	        <tr class="bar">
+	        <tr>
 	          <th>レストラン名<span class="required">（必須）</span></th>
 	          <td><%= f.text_field :name, placeholder: "レストラン名", class: "field"%></td>
 	        </tr>
@@ -59,7 +59,7 @@
 	          <th>タグ</th>
 	          <td>
 	          	<p>タグの間に「,」を入れて下さい。</p>
-	            <%= f.text_field :tag_list, value: @review.tag_list.join('、'), placeholder: "pari, 最高, いいねほしい", class: "form-control" %>
+	            <%= f.text_field :tag_list, value: @review.tag_list.join(','), placeholder: "pari, 最高, いいねほしい", class: "form-control" %>
 	          </td>
 	        </tr>
 	

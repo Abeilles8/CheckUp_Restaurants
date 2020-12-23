@@ -1,41 +1,32 @@
 <!--問い合わせ確認画面-->
 
-<div class="d-flex align-items-center justify-content-center">
-  <%= form_with model:@inquiry , url: inquiry_thanks_path, local:true do |f| %>
-  <div>
-    <h1>お問い合わせ内容</h1>
+<div class="none inquiry-new">
+  <div class="text-left"><%= link_to "<<一覧に戻る", reviews_path %></div>
+  <div class="text-center"><h2>お問い合わせ内容</h2></div>
+
+  <div class="container">
+    <div class="text-center">
+      <%= form_with model:@inquiry , url: inquiry_thanks_path, local:true do |f| %>
+        <table>
+          <tr>
+            <th>名前<span class="required">(必須)</span></th>
+            <td><%= f.hidden_field :name %><%= @inquiry.name %>様</td>
+          </tr>
+          <tr>
+            <th>メールアドレス<span class="required">(必須)</span></th>
+            <td><%= f.hidden_field :email %><%= @inquiry.email %></td>
+          </tr>
+          <tr>
+            <th>タイトル<span class="required">(必須)</span></th>
+            <td><%= f.hidden_field :title %><%= @inquiry.title %></td>
+          </tr>
+          <tr>
+            <th>お問い合わせ内容</th>
+            <td><%= f.hidden_field :message %><%= @inquiry.message %></td>
+          </tr>
+        </table>
+        <%= f.submit "送信", :class => "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-    
-    <table>
-      <tr>
-        <th>名前</th>
-        <td>
-          <%= f.hidden_field :name %>
-          <%= @inquiry.name %>様
-        </td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td>
-          <%= f.hidden_field :email %>
-          <%= @inquiry.email %>
-        </td>
-      </tr>
-      <tr>
-        <th>タイトル</th>
-        <td>
-          <%= f.hidden_field :title %>
-          <%= @inquiry.title %>について
-        </td>
-      </tr>
-      <tr>
-        <th>お問い合わせ内容</th>
-        <td>
-          <%= f.hidden_field :message %>
-          <%= @inquiry.message %>
-        </td>
-      </tr>
-    </table>
-    <%= f.submit "送信", :class => "btn btn-primary" %>
-  <% end %>
 </div>

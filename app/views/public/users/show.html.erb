@@ -39,6 +39,7 @@
 </div>
 <!--/ユーザーのプロフィール-->
 
+
 <!--投稿した一覧-->
 <% @reviews.each do |review| %>
   <div class="row none review-box">
@@ -60,22 +61,22 @@
         
         <div class="review-tag"><!--タグ-->
           <% review.tag_list.each do |tag| %>
-            <%= image_tag "tag.png", size: "15x15" %><%= tag %>
+            <%= image_tag "tag.png", size: "18x18" %><%= tag %>
           <% end %>
         </div>
 
         <div class=" row user-content"><!--ユーザーの情報-->
           <!--ユーザー画像-->
-          <div class="link-none col-md-1">
+          <div class="link-none col-md-2">
             <%= link_to user_path(review.user.id) do %>
               <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
-              <div class="text-center">
-                <strong class="name"><%= review.user.name %></strong>
+              <div class="text-center name">
+                <p><strong><%= review.user.name %></strong></p>
               </div>
             <% end %>
           </div>
           <!--レビュー内容-->
-          <div class="review-content col-md-10"><%= review.content %></div>
+          <div class="review-content col-md-9"><%= review.content %></div>
         </div>
 
         <div><p>予算:<span><%= review.budget %></span></p></div>

@@ -17,35 +17,38 @@
   </head>
 
   <body class="wallpaper">
-    <header class="navbar navbar-expand-lg">
-      <div>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <!--LOGO-->
         <div class="navbar-left">
           <%= link_to root_path do %>
             <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
           <% end %>
         </div>
-        <div>
-          <ul class="nav">
-          <% if user_signed_in? %>
-          <%= image_tag "レストラン.png"%>
-            <li><%= link_to "レビューを書く", new_review_path %></li>
-            <li>
-              <%= link_to user_path(current_user) do %>
-                <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40", class: "rounded-circle" %>
-                マイページ
-              <% end %>
-            </li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
-          <% elsif admin_signed_in? %>
-            <li><%= link_to "ジャンル", admin_genres_path %></li>
-            <li><%= link_to "スタイル", admin_styles_path %></li>
-            <li><%= link_to "Country", admin_countries_path %></li>
-          <% else %>
-            <li><%= link_to "新規登録/ログイン", users_account_path %></li>
-          <% end %>
-        </ul>
+        
+        <!--Navigation-->
+        <div class="">
+          <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+              <!--ユーザー-->
+              <li>
+                <%= link_to root_path do %>
+                  <%= image_tag "home.icon.png", size: "50x50" %>
+                <% end %>
+              </li>
+              <li><%= render "public/root/nav.drop" %></li>
+            <% elsif admin_signed_in? %>
+              <!--管理者-->
+              <li><%= link_to "ジャンル", admin_genres_path %></li>
+              <li><%= link_to "スタイル", admin_styles_path %></li>
+              <li><%= link_to "Country", admin_countries_path %></li>
+            <% else %>
+              <!--ゲスト-->
+              <li><%= link_to "新規登録/ログイン", users_account_path %></li>
+            <% end %>
+          </ul>
         </div>
-      </div>
+      </nav>
     </header>
     
     <div class="container-fluid">
@@ -60,10 +63,12 @@
     </div>
     
     <footer class="">
-      <div class="">
-        <div>
-          <%= link_to "お問い合わせはこちらから", inquiry_path %>
-        </div>
+      <div class="text-right inquiry-link">
+        <%= link_to inquiry_path do %>
+          <p>お問い合わせはこちらから
+            <%= image_tag "inquiry.png", size: "30x30" %>
+          </p>
+        <% end %>
       </div>
     </footer>
     </div>
