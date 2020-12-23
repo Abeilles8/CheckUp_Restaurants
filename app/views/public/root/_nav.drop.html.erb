@@ -1,0 +1,49 @@
+<div class="dropdown open ">
+  <button class="btn btn-secondary dropdown-toggle navdrop"
+          type="button" id="dropdownMenu5" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+    <%= image_tag "table.icon.png", size: "40x40" %>
+  </button>
+  
+  <div class="dropdown-menu navdrop">
+    <!--マイページ-->
+    <%= link_to user_path(current_user) do %>
+      <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40", class: "rounded-circle" %>
+      <%= current_user.name %>
+    <% end %>
+    
+    <div class="dropdown-divider"></div>
+    
+    <!--投稿-->
+    <div class="dropdown-item">
+      <%= link_to new_review_path do %>
+        <%= image_tag "review.new.icon.png", size: "40x40" %>
+        <span>レビューを書く</span>
+      <% end %>
+    </div>
+    
+    <!--レビューの一覧-->
+    <div class="dropdown-item">
+      <%= link_to reviews_path do %>
+        <%= image_tag "review.index.png", size: "40x40" %>
+        <span>一覧</span>
+      <% end %>
+    </div>
+    
+    <!--about-->
+    <div class="dropdown-item">
+      <%= link_to about_path do %>
+        <%= image_tag "about.icon.png", size: "40x40" %>
+        <span>About</span>
+      <% end %>
+    </div>
+    
+    <!--ログアウト-->
+    <div class="dropdown-item">
+      <%= link_to destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" do %>
+        <%= image_tag "logout.png", size: "40x40" %>
+        <span>ログアウト</span>
+      <% end %>
+    </div>
+  </div>
+</div>

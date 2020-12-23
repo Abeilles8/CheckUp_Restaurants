@@ -3,14 +3,14 @@
     <!--フォロー解除-->
     <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit "フォロー中" %>
+      <%= f.submit "フォロー中", class: "btn btn-outline-warning" %>
     <% end %>
     
   <% else %>
     <!--フォローする-->
     <%= form_for(current_user.relationships.build) do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit "フォロー" %>
+      <%= f.submit "フォロー", class: "btn btn-outline-primary" %>
     <% end %>
     
   <% end%>
