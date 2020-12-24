@@ -16,29 +16,29 @@
         </span>
       <% else %>
         <p>
-          <%= render "public/reviews/favorite", review: @review %>(<%= @review.favorites.count %>)
+          <%= render "public/reviews/favorite", review: @review %><%= @review.favorites.count %>
         </p>
       <% end %>
       <!--/current_userのみ編集＆削除-->
     </div>
     <!--レストラン名-->
-    <div class="boder-red"><h2 class="text-center"><%= @review.name %></h2></div>
+    <div class="boder-red"><p class="text-center restrant-title"><%= @review.name %></p></div>
   </div>
 
   <div class="review-image">
     <!--レビュー画像-->
     <div class="container-fluid">
       <div class="text-center">
-        <div class=" slider-nav">
+        <div class="auto"><!--スライダー-->
           <% @review.review_images.each do |image| %>
-            <div><%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "600x400" %></div>
+            <div><%= attachment_image_tag image, :image, fallback:"review-image.jpg", class: "image-vw" %></div>
           <% end %>
         </div>
       </div>
     </div>
     
     <!--いいね-->
-    <div class="text-right">
+    <div class="text-right like">
     		<%= render "public/reviews/like", review: @review %>
     </div>
   </div>

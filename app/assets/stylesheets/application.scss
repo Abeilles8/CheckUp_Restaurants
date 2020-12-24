@@ -209,7 +209,7 @@ footer {
 			margin: 0 7px 10px 7px;
 			padding-top: 2px;
 			
-			h2 {
+			.restrant-title {
 				font-family: 'Baskerville',YuGothic,'Yu Gothic',sans-serif;
 				border-bottom-style: double ;
 				border-width: 6px;
@@ -217,6 +217,7 @@ footer {
 				// background: #FFE0B3;
 				padding: 5px;
 				margin-bottom: 2px;
+				font-size: 2.5rem;
 			}
 		}
 	}
@@ -227,24 +228,27 @@ footer {
 		border-color: red;
 		margin-top: 0;
 		padding-bottom: 15px;
+		
+		.image-vw {
+			width: 50vw;
+			// padding: 0 20px;
+			height: 30vw;
+		}
 	}
 	
-	.tag-list {
-		margin: 12px;
-	}
 	.user-review {
-		border-width: 0.1px;
-		border-style: solid;
-		border-color: #FFE0B3;
-		background: #EDAF5F;
+		// border-width: 0.1px;
+		// border-style: solid;
+		// border-color: #FFE0B3;
+		// background: #EDAF5F;
 		margin: 12px;
 		padding: 10px 0;
 		
 		.review-content {
-			background: #FFE0B3;
+			background: #ff9d1f4a;
 			border-width: 0.1px;
 			border-style: solid;
-			border-color: #FFE0B3;
+			border-color: #e8640f6e;
 			border-radius: 10px;
 			margin-left: 10px;
 			margin-bottom: 5px;
@@ -267,15 +271,26 @@ footer {
 			line-height: 1.5rem;
 			
 			th {
-				background: #EDAB2F;
+				background: #eca62063;
 				padding: 10px;
+				border: 1px solid #e67d11ab;
 			}
 			td {
 				padding: 10px;
-				background: #FFE0B3;
+				background: #f5dcbca8;
+				border: 1px solid #e67d11ab;
 			}
 		}
 	}
+	// like_icon
+	.like {
+		padding-right: 10px;
+	}
+	// タグ
+	.tag-list {
+		margin: 12px;
+	}
+	
 	// googlemap
 	.maps {
 		margin:20px;
@@ -356,7 +371,7 @@ footer {
 		}
 	}
 	
-	// efit
+	// user-efit
 	label {
 		border-style: solid;
 		padding: 10px 20px;

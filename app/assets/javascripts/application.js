@@ -31,11 +31,11 @@ $(document).ready(function(){
 $(function() {
     $('.autoplay').slick({
         // 表示枚数
-        slidesToShow: 4,
+        slidesToShow: 1,
         slidesToScroll: 1,
         // dots: true,
         autoplay: true,
-        autoplaySpeed: 4500,
+        autoplaySpeed: 2500,
     });
 });
 
@@ -43,26 +43,31 @@ $(function() {
 $(function() {
     $('.auto').slick({
         // 表示枚数
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 4000,
+        autoplaySpeed: 2000,
+        dots: true,
     });
 });
 
 
 $(function() {
   $('.slider-nav').slick({
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     dots: true,
     centerMode: true,
-    focusOnSelect: true,
+    // focusOnSelect: true,
   });  
 }) 
 
+$('.single-item-rtl').slick({
+  rtl: true
+});
+	
 
 
 $(function() {
