@@ -7,10 +7,12 @@
   
   <div class="dropdown-menu navdrop">
     <!--マイページ-->
-    <%= link_to user_path(current_user) do %>
-      <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40", class: "rounded-circle" %>
-      <%= current_user.name %>
-    <% end %>
+    <div class="text-center">
+      <%= link_to user_path(current_user) do %>
+        <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40", class: "rounded-circle" %>
+        <%= current_user.name %>
+      <% end %>
+    </div>
     
     <div class="dropdown-divider"></div>
     
