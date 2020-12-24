@@ -4,9 +4,14 @@
   <h3 class="text-center">国名一覧</h3>
   <div class="text-center">
     <%= form_with model:@country, url:admin_countries_path, local:true do |f| %>
+      <%= render "layouts/error_message", hoge: @country %>
       <div>
         <p>[国名]（例　フランス）</p>
         <%= f.text_field :name %>
+      </div>
+      <div>
+        <p>[通貨]（例　＄）</p>
+        <%= f.text_field :currency %>
       </div>
       
       <div>
@@ -26,6 +31,7 @@
         <tr>
           <th>#</th>
           <th>国名</th>
+          <th>通貨</th>
           <th>状態</th>
           <th> </th>
         </tr>
@@ -35,6 +41,7 @@
         <tr>
           <th><%= country.id %></th>
           <th><%= country.name %></th>
+          <th><%= country.currency %></th>
           <th><%= country.is_active == true ? "有効" : "無効" %></th>
           <th><%= link_to "編集", edit_admin_country_path(country) %></th>
         </tr>

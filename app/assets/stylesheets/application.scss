@@ -72,13 +72,13 @@
   color: #fff;
 }
 #error_explanation ul li {
-  font-size: 12px;
+  //font-size: 12px;
   list-style: square;
 }
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  // display: table;
+   //display: table;
   display: contents;
   input {
     @extend .is-invalid;
@@ -89,7 +89,7 @@
 
 // 壁紙
 .wallpaper {
-	background-image: url(back-ground);
+	background-image: url(back-ground2);
 	background-size: cover;
 }
 

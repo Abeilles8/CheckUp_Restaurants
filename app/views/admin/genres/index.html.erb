@@ -16,6 +16,7 @@
     
     <div>
       <%= form_with model:@genre, url:admin_genres_path, local:true do |f| %>
+        <%= render "layouts/error_message", hoge: @genre %>
         <div>
           <p>[アイコンを登録して下さい]</p>
           <%= f.attachment_field :image %>
