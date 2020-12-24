@@ -1,5 +1,5 @@
 <div class="text-center">
-  <p><%= paginate @reviews %></p>
+  <div><%= paginate @reviews %></div>
 </div>
 
 <% @reviews.each do |review| %>
@@ -7,7 +7,7 @@
     <!--レビュー画像-->
     <div class="review-image col-md-4 text-center">
       <%= link_to review_path(review.id) do %>
-        <div class="auto">
+      <div class="autoplay"><!--スライダー-->
           <% review.review_images.each do |image| %>
             <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "200x100" %>
           <% end %>
