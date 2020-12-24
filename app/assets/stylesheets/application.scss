@@ -25,7 +25,7 @@
 // 必須(!)
 .required {color: red;}
 
-// flash(!)
+// flash-alert(!)
 .alert-primary {
 	background: #1906ffa1;
 	color: #fff;
@@ -39,7 +39,44 @@
 	background: #d3d810c7;
 	color: #001eff;
 }
+.alert-notice {
+	background: #00ff5187;
+  color: #2900ff;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+// flash-alert(!)//
 
+
+// eroor_message(!)
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0;
+  background-color: #c00;
+  color: #fff;
+}
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+// error_message(!)//
 
 // 壁紙
 .wallpaper {
@@ -58,12 +95,10 @@
 
 // header_drop
 .navdrop {
-	background: #330066;
+	background: 0015bba8;
 	border-style: none;
 	color: #000;
-	a {
-		color: #fff;
-	}
+	a {color: #fff;}
 }
 
 // footer
@@ -80,12 +115,12 @@ footer {
 
 // 問い合わせ
 .inquiry-new{
+	.field {width: 300px;}
 	table {
-			margin: 50px 50px;
-			th {padding: 20px;}
-			td {padding-left: 25px;}
-		}
-		.field {width: 300px;}
+		margin: 50px 50px;
+		th {padding: 20px;}
+		td {padding-left: 25px;}
+	}
 }
 
 .box {
@@ -119,6 +154,7 @@ footer {
 	font-size: 25px;
 	margin: 30px;
 	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;;
+		a {color: #ecfd01;}
 }
 .back-image{
 	background-image: url(top-page);
@@ -127,10 +163,25 @@ footer {
 	margin:5px 20px; 
 }
 
+.current_user {
+	font-size: 1.3rem;
+	background: #fffa0096;
+	margin: 20px 0;
+	padding: 20px 0;
+	a {color: #0006ff;}
+}
+
+.gestuser {
+	font-size: 1.3rem;
+	background: #ffd70096;
+	margin: 20px 0;
+	padding: 20px 0;
+	a {color: #0006ff;}
+}
 
 
 
-
+// top.image.slider
 .boxsize{
 	width: 100%;
 	padding: 5px 5px;
@@ -391,3 +442,10 @@ footer {
 		background: #FFA500;
 	}
 }
+
+
+// Admin
+.admin-top {
+	div {padding: 30px 0;}
+}
+

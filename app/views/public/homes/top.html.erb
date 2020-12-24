@@ -4,7 +4,7 @@
     <p class="top-main-title link-none">Check Up <span>Rest</span>aurants</p>
     <div>
       <div class="top-message">
-        <p class="link-none">
+        <p>
           ようこそ！！<br/>
           　お越しいただきありがとうございます。<br/>
           　　皆様の知っている<span>海外・国内</span>のおすすめのレストランを広めませんか？<br/>
@@ -14,22 +14,34 @@
     </div>
   </div>
 </div>
-<div class="">
+<div class="container-fluid">
   <% if  user_signed_in? %>
-    <div class="flex"><%= link_to "review一覧はこちら", reviews_path %></div>
+    <div class="text-center">
+      <p class="current_user">
+        こんにちは！何をする？<br/>
+        レストランを知りたい!▶ <%= link_to "一覧",  reviews_path %><br/>
+        おすすめのレストランを広めたい！▶ <%= link_to "投稿", new_review_path %>
+      </p>
+    </div>
   <% else %>
+    <div class="text-center">
+      <p class="gestuser">
+        こんにちは！<br/>
+        あなたは食べることが好き？旅行は好き？<br/>
+        あなたのおすすめの海外、国内のレストランを広めよう！<br/>
+        さぁ！まだ知らないレストランへ▶ <%= link_to "登録はここから", users_account_path %>
+      </p>
+    </div>
   <% end %>
 </div>
-<div class="">
-  <div class="autoplay">
+<div class="container-fluid">
+  <div class="topauto">
     <div><%= image_tag "topimage-1.jpg", class: "boxsize" %></div>
     <div><%= image_tag "topimage-2.jpg", class: "boxsize" %></div>
     <div><%= image_tag "topimage-3.jpg", class: "boxsize" %></div>
     <div><%= image_tag "topimage-4.jpg", class: "boxsize" %></div>
-    <div class=""><%= image_tag "topimage-2.jpg", class: "boxsize" %></div>
-    <div class=""><%= image_tag "topimage-3.jpg", class: "boxsize" %></div>
-    <div class=""><%= image_tag "topimage-4.jpg", class: "boxsize" %></div>
-    <div class=""><%= image_tag "topimage-1.jpg", class: "boxsize" %></div>
-    <div class=""><%= image_tag "topimage-2.jpg", class: "boxsize" %></div>
-  </div>
+    <div><%= image_tag "topimage-1.jpg", class: "boxsize" %></div>
+    <div><%= image_tag "topimage-2.jpg", class: "boxsize" %></div>
+    <div><%= image_tag "topimage-3.jpg", class: "boxsize" %></div>
+    <div><%= image_tag "topimage-4.jpg", class: "boxsize" %></div>
 </div>

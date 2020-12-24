@@ -1,22 +1,28 @@
 <div class="none">
   <h3 class="text-center">スタイル一覧</h3>
 
-<div>
-  <p><%= link_to "ジャンル>>", admin_genres_path %></p>
-  <p><%= link_to "国名>>", admin_countries_path %></p>
-</div>
+  <div>
+    <p><%= link_to "<< ジャンル", admin_genres_path %></p>
+    <p><%= link_to "<< 国名", admin_countries_path %></p>
+  </div>
 
-<div>
+<div class="text-center">
   <%= form_with model:@style, url:admin_styles_path, local:true do |f| %>
-    <%= f.label "スタイル" %> <%= f.text_field :name %>
+    <div>
+      <p>スタイル（例　高級）</p>
+      <%= f.text_field :name %>
+    </div>
     
-    <%= f.radio_button :is_active, :true %>
-    <%= f.label :is_active, "有効", {value: :true} %>
-    <%= f.radio_button :is_active, :false %>
-    <%= f.label :is_active, "無効", {value: :false} %>
+    <div>
+      <%= f.radio_button :is_active, :true %>
+      <%= f.label :is_active, "有効", {value: :true} %>
+      <%= f.radio_button :is_active, :false %>
+      <%= f.label :is_active, "無効", {value: :false} %>
+    </div>
     
-    <%= f.submit "追加" %>
+    <%= f.submit "追加", class: "btn btn-primary" %>
   <% end %>
+  <div><%= paginate @styles %></div>
 </div>
 
 <tbody>

@@ -27,8 +27,23 @@ $(document).ready(function(){
   });
 });
 
+
 // 自動再生
 $(function() {
+  // Top.page
+    $('.topauto').slick({
+        // 表示枚数
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        // dots: true,
+        autoplay: true,
+        autoplaySpeed: 2500,
+    });
+});
+
+
+$(function() {
+  // review.index
     $('.autoplay').slick({
         // 表示枚数
         slidesToShow: 1,
@@ -39,8 +54,9 @@ $(function() {
     });
 });
 
-// 自動
+
 $(function() {
+  // review.show
     $('.auto').slick({
         // 表示枚数
         slidesToShow: 2,
@@ -63,11 +79,6 @@ $(function() {
     // focusOnSelect: true,
   });  
 }) 
-
-$('.single-item-rtl').slick({
-  rtl: true
-});
-	
 
 
 $(function() {
