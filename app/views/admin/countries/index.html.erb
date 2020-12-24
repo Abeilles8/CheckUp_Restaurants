@@ -1,11 +1,7 @@
 <div class="none">
-  <h3 class="text-center">国名一覧</h3>
-
-  <div >
-    <p><%= link_to "<< スタイル", admin_styles_path %></p>
-    <p><%= link_to "<< ジャンル", admin_genres_path %></p>
-  </div>
+  <%= render "admin/homes/nav" %>
   
+  <h3 class="text-center">国名一覧</h3>
   <div class="text-center">
     <%= form_with model:@country, url:admin_countries_path, local:true do |f| %>
       <div>

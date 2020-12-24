@@ -17,56 +17,54 @@
   </head>
 
   <body class="wallpaper">
-    <header>
-      <nav class="navbar navbar-expand-lg">
-        <!--LOGO-->
-        <div class="navbar-left">
-            <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
-        </div>
-        
-        <!--Navigation-->
-        <div class="">
-          <ul class="navbar-nav mr-auto">
-            <% if user_signed_in? %>
-              <!--ユーザー-->
-              <li>
-                <%= link_to root_path do %>
-                  <%= image_tag "home.icon.png", size: "50x50" %>
-                <% end %>
-              </li>
-              <li><%= render "layouts/nav.drop" %></li>
-            <% elsif admins_signed_in? %>
-              <!--管理者-->
-              <li><%= link_to "ジャンル", admin_genres_path %></li>
-              <li><%= link_to "スタイル", admin_styles_path %></li>
-              <li><%= link_to "Country", admin_countries_path %></li>
-            <% else %>
-              <!--ゲスト-->
-              <li><%= link_to "新規登録/ログイン", users_account_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    
-    <div class="container-fluid">
-      <!--<div class="mx-auto">-->
-        <!--<div class="col-xs-12">-->
-          <div class="text-center"><%= render "layouts/flash_messages"%></div>
-          <%= yield %>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-expand-lg">
+          <!--LOGO-->
+          <div class="navbar-left">
+              <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
+          </div>
+          
+          <!--Navigation-->
+          <div class="">
+            <ul class="navbar-nav mr-auto">
+              <% if user_signed_in? %>
+                <!--ユーザー-->
+                <li>
+                  <%= link_to root_path do %>
+                    <%= image_tag "home.icon.png", size: "50x50" %>
+                  <% end %>
+                </li>
+                <li><%= render "layouts/nav.drop" %></li>
+              <% elsif admin_signed_in? %>
+                <li></li>
+              <% else %>
+                <!--ゲスト-->
+                <li><%= link_to "新規登録/ログイン", users_account_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+      <div class="container-fluid">
+        <!--<div class="mx-auto">-->
+          <!--<div class="col-xs-12">-->
+            <div class="text-center"><%= render "layouts/flash_messages"%></div>
+            <%= yield %>
+          <!--</div>-->
         <!--</div>-->
-      <!--</div>-->
-    </div>
-    
-    <footer class="">
-      <div class="text-right inquiry-link">
-        <%= link_to inquiry_path do %>
-          <p>お問い合わせはこちらから
-            <%= image_tag "inquiry.png", size: "30x30" %>
-          </p>
-        <% end %>
       </div>
-    </footer>
+      
+      <footer class="">
+        <div class="text-right inquiry-link">
+          <%= link_to inquiry_path do %>
+            <p>お問い合わせはこちらから
+              <%= image_tag "inquiry.png", size: "30x30" %>
+            </p>
+          <% end %>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

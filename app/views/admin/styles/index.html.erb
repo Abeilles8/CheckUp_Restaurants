@@ -1,51 +1,47 @@
 <div class="none">
+  <%= render "admin/homes/nav" %>
+  
   <h3 class="text-center">スタイル一覧</h3>
-
-  <div>
-    <p><%= link_to "<< ジャンル", admin_genres_path %></p>
-    <p><%= link_to "<< 国名", admin_countries_path %></p>
-  </div>
-
-<div class="text-center">
-  <%= form_with model:@style, url:admin_styles_path, local:true do |f| %>
-    <div>
-      <p>スタイル（例　高級）</p>
-      <%= f.text_field :name %>
-    </div>
-    
-    <div>
-      <%= f.radio_button :is_active, :true %>
-      <%= f.label :is_active, "有効", {value: :true} %>
-      <%= f.radio_button :is_active, :false %>
-      <%= f.label :is_active, "無効", {value: :false} %>
-    </div>
-    
-    <%= f.submit "追加", class: "btn btn-primary" %>
-  <% end %>
-  <div><%= paginate @styles %></div>
-</div>
-
-<tbody>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th>#</th>
-        <th>スタイル名</th>
-        <th>状態</th>
-        <th> </th>
-      </tr>
-    </thead>
-    
-    <% @styles.each do |style| %>
-      <tr>
-        <th><%= style.id %></th>
-        <th><%= style.name %></th>
-        <th><%= style.is_active == true ? "有効" : "無効" %></th>
-        <th><%= link_to "編集", edit_admin_style_path(style) %></th>
-      </tr>
+  <div class="text-center">
+    <%= form_with model:@style, url:admin_styles_path, local:true do |f| %>
+      <div>
+        <p>スタイル（例　高級）</p>
+        <%= f.text_field :name %>
+      </div>
+      
+      <div>
+        <%= f.radio_button :is_active, :true %>
+        <%= f.label :is_active, "有効", {value: :true} %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, "無効", {value: :false} %>
+      </div>
+      
+      <%= f.submit "追加", class: "btn btn-primary" %>
     <% end %>
-  </table>
-
-</tbody>
+    <div><%= paginate @styles %></div>
+  </div>
+  
+  <tbody>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>スタイル名</th>
+          <th>状態</th>
+          <th> </th>
+        </tr>
+      </thead>
+      
+      <% @styles.each do |style| %>
+        <tr>
+          <th><%= style.id %></th>
+          <th><%= style.name %></th>
+          <th><%= style.is_active == true ? "有効" : "無効" %></th>
+          <th><%= link_to "編集", edit_admin_style_path(style) %></th>
+        </tr>
+      <% end %>
+    </table>
+  
+  </tbody>
 
 </div>

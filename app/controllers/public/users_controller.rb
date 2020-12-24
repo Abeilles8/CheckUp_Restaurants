@@ -1,8 +1,6 @@
 class Public::UsersController < ApplicationController
-  # before_action :set_user, only: [:show]
-  # current_user => my_page
-  # before_action :authenticate_user!, only: [:my_page]
   
+  before_action :authenticate_user!
   
   def show
     @user = User.find(params[:id])
@@ -26,5 +24,4 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name,:my_country, :email, :image, :introduction)
   end
-  
 end
