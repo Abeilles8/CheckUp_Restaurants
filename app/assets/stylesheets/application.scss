@@ -35,6 +35,10 @@
 	font-size: 1.3rem;
 	color: #000;
 }
+.alert-alert {
+	background: #ff7171b0;
+	color: #000;
+}
 .alert-update {
 	background: #d3d810c7;
 	color: #001eff;
@@ -50,12 +54,12 @@
 
 // eroor_message(!)
 #error_explanation {
-  width: 450px;
+  // width: 450px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: #f1277b69;
 }
 #error_explanation h2 {
   text-align: left;
@@ -74,14 +78,25 @@
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
+  // display: table;
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
 }
 // error_message(!)//
+
 
 // 壁紙
 .wallpaper {
 	background-image: url(back-ground);
 	background-size: cover;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 // header
@@ -95,7 +110,7 @@
 
 // header_drop
 .navdrop {
-	background: 0015bba8;
+	background: #0015bba8;
 	border-style: none;
 	color: #000;
 	a {color: #fff;}
@@ -105,6 +120,8 @@
 footer {
 	height: 90px;
 	background-color: #330066;
+	// position: fixed;
+	margin-top: auto;
 	
 	// お問い合わせ
 	.inquiry-link {
@@ -388,7 +405,7 @@ footer {
 // user-profile
 
 .profile {
-	background: #330066;
+	background: #330066eb;
 	color: orange;
 	
 	.counter {
@@ -440,6 +457,17 @@ footer {
 		padding: 5px 60px;
 		margin: 10px 0;
 		background: #FFA500;
+	}
+}
+
+.devise {
+	background: #e2ae1282;
+	padding: 100px;
+	
+	.devise-submit {
+		color: #d900ff;
+		font-size: 1.2rem;
+		margin: 10px 0;
 	}
 }
 

@@ -1,5 +1,7 @@
 class Admin::StylesController < ApplicationController
   
+  before_action :authenticate_admin!
+  
   def index
     @style = Style.new
     @styles = Style.all.page(params[:page]).per(10)

@@ -1,5 +1,7 @@
 class Admin::CountriesController < ApplicationController
    
+   before_action :authenticate_admin!
+   
   def index
     @country = Country.new
     @countries = Country.all.page(params[:page]).per(10)
