@@ -1,9 +1,10 @@
 <div class="none">
 	<h3 class="text-center">スタイル編集</h3>
-	<div class="row">
+	<div class="text-center">
     <%= form_with model:@style, url:admin_style_path, local:true do |f| %>
       <div>
-        <%= f.label "スタイル名" %> <%= f.text_field :name %>
+        <p>スタイル名（例　高級）</p>
+        <%= f.text_field :name %>
       </div>
       <div>
         <%= f.radio_button :is_active, :true %>
@@ -12,7 +13,7 @@
         <%= f.label :is_active, "無効", {value: :false} %>
       </div>
 
-      <%= f.submit "変更を保存" %>
+      <%= f.submit "変更を保存", class: "btn btn-primary" %>
     <% end %>
 	</div>
 </div>

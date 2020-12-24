@@ -1,36 +1,38 @@
 <div class="none">
 	<h3 class="text-center">ジャンル編集</h3>
-	<div class="row">
-	  
-    <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
-      <!--画像を表示させる-->
-      <div class="d-flex align-items-center justify-content-center">
-        <%= attachment_image_tag @genre, :image, fallback:"sample.jpg", size: "100x100" %>
-      </div>
-      <div>
-        <%= f.attachment_field :image %>
-      </div>
-      <div>
-        <%= f.label "ジャンル" %> 
-        <%= f.text_field :name %><br/>
-      </div>
-      <div>
-        <%= f.radio_button :is_active, :true %>
-        <%= f.label :is_active, "有効", {value: :true} %>
-        <%= f.radio_button :is_active, :false %>
-        <%= f.label :is_active, "無効", {value: :false} %>
-      </div>
-      
-      <%= f.submit "変更を保存" %>
-    <% end %>
-    <!--管理者へメッセージ-->
-    <div>
+	<div class="">
+	  <!--管理者へメッセージ-->
+    <div class="text-center">
       <p>※アイコンはジャンル名に適したアイコンを使用して下さい。<br/>
         以下のリンクのサイトからアイコンをダウンロードしファイルを選択することで利用できます。<br/>
         <li><a href='https://icons8.jp/'>icons8</a></li>
         <li><a href='https://icon-icons.com/ja/'>icon-icons</a></li>
         また、ここでアイコンをアップロードと<span class="red">直ちにユーザーに反映されます</span>ので<strong>お気をつけ下さい。</strong>
       </p>
+    </div>
+    
+    <div class="text-center">
+      <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
+        <!--画像を表示させる-->
+        <div class="text-center">
+          <%= attachment_image_tag @genre, :image, fallback:"sample.jpg", size: "100x100" %>
+        </div>
+        <div>
+          <%= f.attachment_field :image %>
+        </div>
+        <div>
+          <p>[ジャンル名]</p> 
+          <%= f.text_field :name %><br/>
+        </div>
+        <div>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "有効", {value: :true} %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "無効", {value: :false} %>
+        </div>
+        
+        <%= f.submit "変更を保存", class: "btn btn-primary" %>
+      <% end %>
     </div>
 	</div>
 </div>

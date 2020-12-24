@@ -1,37 +1,49 @@
 <div class="none">
   <h3 class="text-center">ジャンル一覧</h3>
-    <div>
-      <p><%= link_to "スタイル>>", admin_styles_path %></p>
-      <p><%= link_to "国名>>", admin_countries_path %></p>
-    </div>
-    <!--管理者へメッセージ-->
+  
+  <div>
+    <p><%= link_to "スタイル>>", admin_styles_path %></p>
+    <p><%= link_to "国名>>", admin_countries_path %></p>
+  </div>
+  
+  
+  <!--管理者へメッセージ-->
+  <div class="text-center">
+    <!--target="_blank" rel="noopener noreferrer"でセキュリティとパフォーマンス対策-->
     <div>
       <p>※アイコンはジャンル名に適したアイコンを使用して下さい。<br/>
         以下のリンクのサイトからアイコンをダウンロードしファイルを選択することで利用できます。<br/>
-        <li><a href='https://icons8.jp/'>icons8</a></li>
-        <li><a href='https://icon-icons.com/ja/'>icon-icons</a></li>
+        <li><a href='https://icons8.jp/' target="_blank" rel="noopener noreferrer">icons8</a>（おすすめ）</li>
+        <li><a href='https://icon-icons.com/ja/' target="_blank" rel="noopener noreferrer">icon-icons</a></li>
         また、ここでアイコンをアップロードと<span class="red">直ちにユーザーに反映されます</span>ので<strong>お気をつけ下さい。</strong>
       </p>
     </div>
     
     <div>
-    <%= form_with model:@genre, url:admin_genres_path, local:true do |f| %>
-      <%= f.label "ジャンル名" %> 
-      <%= f.text_field :name %><br/>
-      <%= f.attachment_field :image %><br/>
-      
-      
-      <%= f.radio_button :is_active, :true %>
-      <%= f.label :is_active, "有効", {value: :true} %>
-      <%= f.radio_button :is_active, :false %>
-      <%= f.label :is_active, "無効", {value: :false} %>
-      
-      <%= f.submit "追加" %>
-    <% end %>
+      <%= form_with model:@genre, url:admin_genres_path, local:true do |f| %>
+        <div>
+          <p>[アイコンを登録して下さい]</p>
+          <%= f.attachment_field :image %>
+        </div>
+        <div>
+          <p>[ジャンル名]</p>
+          <%= f.text_field :name %>
+        </div>
+        
+        <div>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "有効", {value: :true} %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "無効", {value: :false} %>
+        </div>
+        
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      <% end %>
+      <div><%= paginate @genres %></div>
     </div>
-    
-    <tbody>
-    
+  </div>
+  
+  <tbody>
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -53,7 +65,6 @@
         </tr>
       <% end %>
     </table>
-    
-    </tbody>
+  </tbody>
 
 </div>
