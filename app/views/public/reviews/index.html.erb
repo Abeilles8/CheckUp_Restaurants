@@ -3,11 +3,11 @@
 </div>
 
 <% @reviews.each do |review| %>
-  <div class="row none review-box">
+  <div class="row none-clear review-box">
     <!--レビュー画像-->
     <div class="review-image col-md-4 text-center">
       <%= link_to review_path(review.id) do %>
-      <div class="autoplay"><!--スライダー-->
+        <div class="autoplay"><!--スライダー-->
           <% review.review_images.each do |image| %>
             <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "200x100" %>
           <% end %>
@@ -50,13 +50,13 @@
           <div class="review-content col-md-9"><%= review.content %></div>
         </div>
 
-        <div><p>予算： <strong><%= review.budget %></strong></p></div>
+        <div><p>予算： <strong><%= review.currency.name %> <%= review.budget %></strong></p></div>
         <div>
           <p>コメント数(<%= review.review_comments.count %>)件</p>
         </div>
         <div class="review-genre"><!--ジャンル-->
           <% review.review_genres.each do |review_genre| %>
-            <%= attachment_image_tag review_genre.genre, :image, size: "27x27" %>
+            <%= attachment_image_tag review_genre.genre, :image, size: "29x29" %>
           <% end %>
         </div>
     </div>

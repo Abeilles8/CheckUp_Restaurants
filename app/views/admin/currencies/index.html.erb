@@ -1,22 +1,22 @@
 <div class="none">
   <%= render "admin/homes/nav" %>
   
-  <h3 class="text-center">国名一覧</h3>
+  <h3 class="text-center">通貨の一覧</h3>
   <div class="text-center">
     <!--管理者へメッセージ-->
     <div>
       <p>
-        国は<strong class="required">空白</strong>での投稿はできません。<br/>
+        通貨は、<strong class="required">空白</strong>での投稿はできません。<br/>
         間違えて投稿してしまった場合、編集リンクから変更して下さい。
       </p>
     </div>
-    
-    <%= form_with model:@country, url:admin_countries_path, local:true do |f| %>
-      <%= render "layouts/error_message", hoge: @country %>
-      <div>
-        <p>[国名]（例　フランス）</p>
-        <%= f.text_field :name %>
-      </div>
+    <%= form_with model:@currency, url:admin_currencies_path, local:true do |f| %>
+      <%= render "layouts/error_message", hoge: @currency %>
+      
+        <div>
+          <p>[通貨]（例　＄）</p>
+          <%= f.text_field :name %>
+        </div>
       
       <div>
         <%= f.radio_button :is_active, :true %>
@@ -26,7 +26,7 @@
       </div>
       <%= f.submit "追加", class: "btn btn-primary" %>
     <% end %>
-    <div><%= paginate @countries %></div>
+    <div><%= paginate @currencies %></div>
   </div>
   
   <tbody>
@@ -34,18 +34,18 @@
       <thead class="thead-dark">
         <tr>
           <th>#</th>
-          <th>国名</th>
+          <th>通貨</th>
           <th>状態</th>
           <th> </th>
         </tr>
       </thead>
       
-      <% @countries.each do |country| %>
+      <% @currencies.each do |currency| %>
         <tr>
-          <th><%= country.id %></th>
-          <th><%= country.name %></th>
-          <th><%= country.is_active == true ? "有効" : "無効" %></th>
-          <th><%= link_to "編集", edit_admin_country_path(country) %></th>
+          <th><%= currency.id %></th>
+          <th><%= currency.name %></th>
+          <th><%= currency.is_active == true ? "有効" : "無効" %></th>
+          <th><%= link_to "編集", edit_admin_currency_path(currency) %></th>
         </tr>
       <% end %>
     </table>

@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # my_pageには自分がレビューしたものだけを表示
-    @reviews = @user.reviews.all
+    @reviews = @user.reviews.all.order("created_at DESC")
   end
   
   def edit
@@ -22,6 +22,6 @@ class Public::UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name,:my_country, :email, :image, :introduction)
+    params.require(:user).permit(:name, :my_country, :email, :image, :introduction)
   end
 end

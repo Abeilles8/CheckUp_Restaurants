@@ -32,6 +32,6 @@ class Admin::CountriesController < ApplicationController
   
   private
   def country_params
-    params.require(:country).permit(:name, :currency, :is_active, :created_at, :updated_at)
+    params.require(:country).permit(:name, :is_active, :created_at, :updated_at)
   end
 end

@@ -2,6 +2,7 @@ class Review < ApplicationRecord
 	
 	belongs_to :user
 	belongs_to :country
+	belongs_to :currency
 	belongs_to :style
 	
 	has_many :likes, dependent: :destroy
