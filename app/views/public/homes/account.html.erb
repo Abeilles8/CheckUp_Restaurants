@@ -1,25 +1,50 @@
-<div class="none">
-  <div class="col-md-6">
-    <div>
-      <p>無料会員登録</p>
-      <%= link_to "無料会員登録はこちら", new_user_registration_path %>
+<div class="container devise">
+  <div class="row">
+    <!--新規登録-->
+    <div class="col-md-6">
+      <div class="d-area text-center d">
+        <h4 class="d-title">無料会員登録</h4>
+        <div class="d-link">
+          <%= link_to "新規会員登録はこちら", new_user_registration_path, class: "btn btn-outline-primary sign-in" %>
+        </div>
+      </div>
     </div>
+    <!--//新規登録-->
+    
+    <!--ログイン-->
+    <div class="col-md-6">
+      <div class="d-area text-center">
+        <h4 class="d-title">ログイン</h4>
+        <div class="d-link">
+          <div class="row">
+            <div class="d-b-margin col-md-4">
+              <%= link_to user_github_omniauth_authorize_path, class: "btn btn-outline-primary log-in" do %>
+                <%= image_tag "github", size: "40x40" %><p>Github</p>
+              <% end %>
+            </div>
+            
+            <div class="d-b-margin col-md-4">
+              <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-primary log-in" do %>
+                <%= image_tag "google", size: "40x40" %><p>Google</p>
+              <% end %>
+            </div>
+            
+            <div class="d-b-margin col-md-4">
+              <%= link_to user_twitter_omniauth_authorize_path, class: "btn btn-outline-primary log-in" do %>
+                <%= image_tag "twitter", size: "40x40" %><p>Twitter</p>
+              <% end %>
+            </div>
+          
+          </div>
+          <div class="col-md-12">
+            <%= link_to "すでにログインがお済みの方", new_user_session_path, class: "btn btn-outline-primary log-in" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--//ログイン-->
   </div>
-  <div class="col=md-6">
-    <p>ログイン</p>
-    <div class="row">
-      <div>
-        <%= link_to "すでにログインがお済みの方", new_user_session_path %>
-      </div>
-      <div>
-        <%= link_to "Twitter", user_twitter_omniauth_authorize_path %>
-      </div>
-      <div>
-        <%= link_to "Google", user_google_oauth2_omniauth_authorize_path %>
-      </div>
-      <div>
-        <%= link_to "Github", user_github_omniauth_authorize_path %>
-      </div>
-    </div>
+  <div class="text-center">
+    <%= link_to "トップページ", root_path %>
   </div>
 </div>
