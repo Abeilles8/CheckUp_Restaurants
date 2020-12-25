@@ -37,10 +37,10 @@
                 </li>
                 <li><%= render "layouts/nav.drop" %></li>
               <% elsif admin_signed_in? %>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
+                <!--管理者-->
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか", class: "btn btn-primary" %></li>
               <% else %>
                 <!--ゲスト-->
-                <li><%= link_to "新規登録/ログイン", account_path %></li>
               <% end %>
             </ul>
           </div>

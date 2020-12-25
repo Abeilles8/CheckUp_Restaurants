@@ -9,7 +9,7 @@
     <!--マイページ-->
     <div class="text-center">
       <%= link_to user_path(current_user) do %>
-        <%= attachment_image_tag current_user, :image, fallback:"sample.jpg", size: "40x40", class: "rounded-circle" %>
+        <%= attachment_image_tag current_user, :image, fallback:"user-image.png", size: "40x40", class: "rounded-circle" %>
         <%= current_user.name %>
       <% end %>
     </div>

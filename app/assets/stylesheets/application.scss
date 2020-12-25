@@ -163,15 +163,16 @@ footer {
 
 // TOP-Page
 .top-main-title {
-	padding-top: 40px;
+	// padding-top: 40px;
 	font-family: 'Snell Roundhand','Segoe UI Historic',sans-serif;
-	font-size: 95px;
+	font-size: 8rem;
 	color: #000;
 	span { color: red;}
 }
 .top-message {
 	color: #fff;
-	font-size: 25px;
+	font-size: 30px;
+	position: absolute;
 	margin: 30px;
 	font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;;
 		a {color: #ecfd01;}

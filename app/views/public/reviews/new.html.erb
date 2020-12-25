@@ -52,7 +52,7 @@
 	            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
 	              <%= genre.label do %>
 	                <%= genre.check_box %>
-	                <%= attachment_image_tag genre.object, :image, fallback:"sample.jpg", size: "20x20" %>
+	                <%= attachment_image_tag genre.object, :image, fallback:"sample.jpg", size: "25x25" %>
 	                <%= genre.object.name %>
 	                <!--<= genre.object.image %>-->
 	              <% end %>
