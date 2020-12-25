@@ -62,5 +62,13 @@
 - IDE：Cloud9
 
 ## 使用素材
-- [icons8](https://icons8.jp/)
-- [Foodiesfeed](https://www.foodiesfeed.com/free-food-photo/blood-orange-upside-down-cake/download/)
+- [Bootstrap](https://getbootstrap.jp/)
+- [slick](https://kenwheeler.github.io/slick/)  
+
+アイコン使用
+>- [icon-icons](https://icon-icons.com/ja/)
+>- [icons8](https://icons8.jp/)  
+
+画像使用
+>- [Pixabay](https://pixabay.com/ja/)
+>- [Foodiesfeed](https://www.foodiesfeed.com/free-food-photo/blood-orange-upside-down-cake/download/)
