@@ -1,9 +1,11 @@
 <div class=" none review-new">
-  <div class="text-left"><%= link_to "<<一覧に戻る", reviews_path %></div>
-  <div class="text-center"><h2>Review編集</h2></div>
+  <div class="text-left"><%= link_to "<<詳細ページに戻る", review_path(@review.id) %></div>
+  <div class="text-center"><h2>Review編集</h2>
+		<%= render "layouts/error_message", hoge: @review %>
+  </div>
 	
 	<!--画像表示-->
-	<div class="container-fluid">
+	<div class="container">
   	<div class="row">
       <% @review.review_images.each do |image| %>
       	<div>

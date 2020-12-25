@@ -9,8 +9,12 @@ class Admin::StylesController < ApplicationController
   
   def create
     @style = Style.new(style_params)
-    @style.save
-    redirect_to admin_styles_path
+    if @style.save
+      redirect_to admin_styles_path
+    else
+      @styles = Style.all.page(params[:page]).per(10)
+      render :index
+    end
   end
   
   def edit
@@ -19,8 +23,11 @@ class Admin::StylesController < ApplicationController
   
   def update
     @style = Style.find(params[:id])
-    @style.update(style_params)
-    redirect_to admin_styles_path(@style)
+    if @style.update(style_params)
+      redirect_to admin_styles_path(@style)
+    else
+      render :edit
+    end
   end
   
   private

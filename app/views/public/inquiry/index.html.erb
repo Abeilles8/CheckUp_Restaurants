@@ -1,24 +1,30 @@
 
 <div class="none inquiry-new">
-  <div class="text-left"><%= link_to "<<一覧に戻る", reviews_path %></div>
-  <div class="text-center"><h2>お問い合わせ</h2></div>
+  <div class="text-left"><%= link_to "<<トップページに戻る", root_path %></div>
+  <div class="text-center">
+    <h2>お問い合わせ</h2>
+    <%= render "layouts/error_message", hoge: @inquiry %>
+  </div>
 
   <div class="container">
     <div class="text-center">
       <%= form_with model:@inquiry , url: inquiry_confirm_path, local:true do |f| %>
         <table>
           <tr>
+            <th>タイトル<span class="required">(必須)</span></th>
+            <td><%= f.text_field :title, class: "field" %></td>
+          </tr>
+          
+          <tr>
             <th>名前<span class="required">(必須)</span></th>
             <td><%= f.text_field :name, class: "field" %></td>
           </tr>
+          
           <tr>
             <th>メールアドレス<span class="required">(必須)</span></th>
             <td><%= f.email_field :email, placeholder: "〇〇＠〇〇", class: "field" %></td>
           </tr>
-          <tr>
-            <th>タイトル<span class="required">(必須)</span></th>
-            <td><%= f.text_field :title, class: "field" %></td>
-          </tr>
+          
           <tr>
             <th>お問い合わせ内容</th>
             <td><%= f.text_area :message, class: "field" %></td>

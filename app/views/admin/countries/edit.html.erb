@@ -3,9 +3,14 @@
   
 	<div class="text-center">
     <%= form_with model:@country, url:admin_country_path, local:true do |f| %>
+      <%= render "layouts/error_message", hoge: @country %>
       <div>
-        <p>国名</p>
+        <p>[国名]（例　フランス）</p>
         <%= f.text_field :name %>
+      </div>
+      <div>
+        <p>[通貨]（例　＄）</p>
+        <%= f.text_field :currency %>
       </div>
       <div>
         <%= f.radio_button :is_active, :true %>

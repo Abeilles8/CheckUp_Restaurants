@@ -23,7 +23,7 @@ class Public::ReviewsController < ApplicationController
     # 送信された値をスペースで区切って配列化
     # tag_list = params[:review][:tag_name].split(nil)
     @review.user_id = current_user.id
-    if @review.save!
+    if @review.save
       # 取得したタグの配列をdbに保存
       # @review.save_tag(tag_list)
       flash[:primary] = "投稿しました"
@@ -81,13 +81,13 @@ class Public::ReviewsController < ApplicationController
   def review_params
   	params.require(:review).permit(
   	  :name, 
-  	  :rate, 
+  	 # :rate, 
   	  { :review_images_images => []}, 
   	  :content, 
   	  :address, 
   	  :budget, 
   	  :user_id, 
-  	  :country_id, 
+  	  :country_id,
   	  :style_id, 
   	  { :genre_ids => [] },
   	  :tag_list,

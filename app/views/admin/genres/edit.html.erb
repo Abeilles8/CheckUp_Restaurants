@@ -13,11 +13,13 @@
     
     <div class="text-center">
       <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
+        <%= render "layouts/error_message", hoge: @genre %>
         <!--画像を表示させる-->
         <div class="text-center">
           <%= attachment_image_tag @genre, :image, fallback:"sample.jpg", size: "100x100" %>
         </div>
         <div>
+          <p>[アイコンを登録して下さい]</p>
           <%= f.attachment_field :image %>
         </div>
         <div>

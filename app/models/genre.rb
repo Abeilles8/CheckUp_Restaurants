@@ -6,5 +6,6 @@ class Genre < ApplicationRecord
 	attachment :image
 	
 	
-	# validates :name, presence: true
+	validates :name, presence: true
+	validates :image_id, presence: true
 end

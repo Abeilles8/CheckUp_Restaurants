@@ -9,8 +9,12 @@ class Admin::CountriesController < ApplicationController
   
   def create
     @country = Country.new(country_params)
-    @country.save
-    redirect_to admin_countries_path
+    if @country.save
+      redirect_to admin_countries_path
+    else
+      @countries = Country.all.page(params[:page]).per(10)
+      render :index
+    end
   end
   
   def edit
@@ -19,8 +23,11 @@ class Admin::CountriesController < ApplicationController
   
   def update
     @country = Country.find(params[:id])
-    @country.update(country_params)
-    redirect_to admin_countries_path(@country)
+    if @country.update(country_params)
+      redirect_to admin_countries_path(@country)
+    else
+      render :edit
+    end
   end
   
   private

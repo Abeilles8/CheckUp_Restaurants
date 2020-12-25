@@ -84,7 +84,9 @@ class Review < ApplicationRecord
 	# /通知機能<コメント>
 	
 	# validation
-	validates :name, presence: true
-	validates :review_images_images, presence: true
-	
+	with_options presence: true do
+		validates :review_images_images, :name, :country_id, :address
+	end
+	# 整数かつ0以上で
+	validates :budget, numericality: { allow_nil: true, :greater_than_or_equal_to => 0 }
 end
