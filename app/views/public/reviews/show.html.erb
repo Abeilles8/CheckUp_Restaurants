@@ -1,5 +1,5 @@
 <div class=""><%= link_to "＜＜一覧画面に戻る", reviews_path %></div>
-<div class="none review-show">
+<div class="none-clear review-show">
   <div class="title">
     <div class="text-right edit">
       <!--current_userのみ編集＆削除-->
@@ -57,7 +57,7 @@
       <div class="link-none col-md-1"><!--ユーザー画像-->
         <%= link_to user_path(@review.user.id) do %>
           <div class="user">
-            <%= attachment_image_tag @review.user, :image, fallback:"sample.jpg", size: "70x70", class: "rounded-circle" %><br/>
+            <%= attachment_image_tag @review.user, :image, fallback:"user-image.png", size: "70x70", class: "rounded-circle" %><br/>
           </div>
           <div class="text-center">
             <strong><%= @review.user.name %></strong><br/>
@@ -90,7 +90,7 @@
               </tr>
               <tr>
                 <th>予算</th>
-                <td><%= @review.currency.name %><%= @review.budget %></td>
+                <td><%= @review.currency.name %> <%= @review.budget %></td>
               </tr>
               <tr>
                 <th>エリア</th>

@@ -18,7 +18,7 @@
   <!--ユーザー画像-->
   <div class="text-center">
     <div class="user-image">
-      <%= attachment_image_tag @user, :image, fallback: "sample.jpg", size: "200x200", class: "rounded-circle" %><br/>
+      <%= attachment_image_tag @user, :image, fallback: "user-image.png", size: "200x200", class: "rounded-circle" %><br/>
       <strong class="user-name"><%= @user.name %></strong>
     </div>
     <div class="button">
@@ -45,7 +45,7 @@
 
 <!--投稿した一覧-->
 <% @reviews.each do |review| %>
-  <div class="row none review-box">
+  <div class="row none-clear review-box">
     
     <!--レビュー画像-->
     <div class="review-image col-md-4 text-center">
@@ -86,7 +86,7 @@
           <div class="review-content col-md-9"><%= review.content %></div>
         </div>
 
-        <div><p>予算:<span><%= review.currency.name %><%= review.budget %></span></p></div>
+        <div><p>予算：<span><%= review.currency.name %> <%= review.budget %></span></p></div>
         <div>
           <p>
             いいね数(<%= review.likes.count %>)<br/>

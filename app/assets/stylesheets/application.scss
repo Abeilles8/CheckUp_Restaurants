@@ -92,7 +92,7 @@
 
 // 壁紙
 .wallpaper {
-	background-image: url(back-ground2);
+	background-image: image-url("wallpaper");
 	background-size: cover;
 }
 
@@ -105,7 +105,7 @@
 // header
 .logo {
 	font-family: 'Snell Roundhand','Segoe UI Historic',sans-serif;
-	color: #000;
+	color: #da19b7;
 	font-size: 40px;
 	padding: 20px 20px;
 	span {color: red;}
@@ -268,7 +268,7 @@ footer {
 // review.show
 .review-show {
 	.title {
-		background: #FFE0B3;
+		background-color: #fbcb807d;
 		
 		.edit {
 			padding: 10px 10px;
@@ -425,6 +425,9 @@ footer {
 			color: #fff;
 			font-family: 'Bodoni 72','ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体','Segoe UI Historic',sans-serif;
 		}
+		.rounded-circle {
+			border: 1px solid #7b02bd ;
+		}
 	}
 	.button {
 		.edit-link {
@@ -471,6 +474,23 @@ footer {
 		color: #d900ff;
 		font-size: 1.2rem;
 		margin: 10px 0;
+	}
+}
+.d-area{
+	border: 1px solid #0400ff;
+	height: 400px;
+	width: 400px;
+	margin: 20px;
+	padding: 0 30px 30px 30px;
+	background: #f524b22e;
+	
+	.d-title { padding: 10px;}
+	.d-link {
+		padding-top: 80px;
+		
+		.sign-in { width: auto;}
+		.d-b-margin { margin-bottom: 10px;}
+		.log-in { padding: 9px;}
 	}
 }
 

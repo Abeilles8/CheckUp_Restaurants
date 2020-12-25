@@ -4,7 +4,7 @@
       <%= form_with model:@user, url:user_path, local:true do |f| %>
         <div>
           <label>
-            <%= attachment_image_tag @user, :image, fallback: "sample.jpg", size: "200x200", class: "rounded-circle" %><br/>
+            <%= attachment_image_tag @user, :image, fallback: "user-image.png", size: "200x200", class: "rounded-circle" %><br/>
             <p>プロフィール画像</p>
             <%= f.attachment_field :image%>
           </label>
