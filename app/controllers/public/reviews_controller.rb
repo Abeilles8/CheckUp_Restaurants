@@ -5,7 +5,7 @@ class Public::ReviewsController < ApplicationController
   # before_action :baria_review
 	
 	def index
-	  @reviews = Review.all.order("created_at DESC").page(params[:page]).per(4)
+	  @reviews = Review.all.order("created_at DESC").page(params[:page]).per(5)
 	  
 	  if params[:tag_name]
 	   # tagged_withで絞り込み
@@ -85,12 +85,13 @@ class Public::ReviewsController < ApplicationController
   	  { :review_images_images => []}, 
   	  :content, 
   	  :address, 
+  	  :tag_list,
   	  :budget, 
   	  :user_id, 
   	  :country_id,
+  	  :currency_id,
   	  :style_id, 
   	  { :genre_ids => [] },
-  	  :tag_list,
   	 # review_images_attributes: [:image, :id]
   	  )
   end

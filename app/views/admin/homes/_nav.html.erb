@@ -12,6 +12,9 @@
     <%= link_to "Country", admin_countries_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
+    <%= link_to "Currency", admin_currencies_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
     <%= link_to "Log out", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか", class: "nav-link" %>
   </li>
 </ul>

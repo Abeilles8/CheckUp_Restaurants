@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_22_055951) do
+ActiveRecord::Schema.define(version: 2020_12_25_012340) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,13 @@ ActiveRecord::Schema.define(version: 2020_12_22_055951) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
-    t.string "currency"
+    t.boolean "is_active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -141,6 +147,7 @@ ActiveRecord::Schema.define(version: 2020_12_22_055951) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.integer "currency_id"
   end
 
   create_table "sns", force: :cascade do |t|

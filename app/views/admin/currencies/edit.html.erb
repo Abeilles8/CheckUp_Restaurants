@@ -1,16 +1,16 @@
 <div class="none">
-  <h3 class="text-center">国名の編集</h3>
+  <h3 class="text-center">通貨の編集</h3>
   
 	<div class="text-center">
 	  <!--管理者へメッセージ-->
     <div>
-      <p>国は<strong class="required">空白</strong>での投稿はできません。</p>
+      <p>通貨は<strong class="required">空白</strong>での投稿はできません。</p>
     </div>
     
-    <%= form_with model:@country, url:admin_country_path, local:true do |f| %>
-      <%= render "layouts/error_message", hoge: @country %>
+    <%= form_with model:@currency, url:admin_currency_path, local:true do |f| %>
+      <%= render "layouts/error_message", hoge: @currency %>
       <div>
-        <p>[国名]（例　フランス）</p>
+        <p>[通貨]（例　＄）</p>
         <%= f.text_field :name %>
       </div>
       

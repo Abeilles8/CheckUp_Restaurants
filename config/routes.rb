@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   
   get 'admin' => 'admin/homes#top'
   namespace :admin do
-    resources :countries
     resources :genres
     resources :styles
+    resources :countries
+    resources :currencies
   end
   
   
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     get "/about" => "homes#about"
-    get "users/account" => "users#account"
+    get "/account" => "homes#account"
     
     resources :users, only: [:show, :edit, :update]
     # フォロー

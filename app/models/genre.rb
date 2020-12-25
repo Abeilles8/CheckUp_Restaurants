@@ -7,5 +7,5 @@ class Genre < ApplicationRecord
 	
 	
 	validates :name, presence: true
-	validates :image_id, presence: true
+	validates :image, presence: true
 end
