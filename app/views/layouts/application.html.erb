@@ -38,7 +38,7 @@
                 <li><%= render "layouts/nav.drop" %></li>
               <% elsif admin_signed_in? %>
                 <!--管理者-->
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか" %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか", class: "btn btn-primary" %></li>
               <% else %>
                 <!--ゲスト-->
               <% end %>
