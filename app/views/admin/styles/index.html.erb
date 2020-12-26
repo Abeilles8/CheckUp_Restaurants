@@ -3,6 +3,13 @@
   
   <h3 class="text-center">スタイル一覧</h3>
   <div class="text-center">
+    <!--管理者へメッセージ-->
+    <div>
+      <p>
+        国は<strong class="required">空白</strong>での投稿はできません。<br/>
+        間違えて投稿してしまった場合、編集リンクから変更して下さい。
+      </p>
+    </div>
     <%= form_with model:@style, url:admin_styles_path, local:true do |f| %>
       <%= render "layouts/error_message", hoge: @style %>
       <div>

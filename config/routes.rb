@@ -4,18 +4,20 @@ Rails.application.routes.draw do
   
   
   # Admin.routiong
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
-  }
+  devise_for :admins, skip: :all #自動routing作成をskipさせる
+  # 必要なroutingのみ
+  devise_scope :admin do
+    get "admins/sign_in" => "admins/sessions#new", as: :new_admin_session 
+    post "admins/sign_in" => "admins/sessions#create", as: :admin_session
+    delete "admins/sign_out" => "admins/sessions#new", as: :destroy_admin_session
+  end
   
   get 'admin' => 'admin/homes#top'
   namespace :admin do
-    resources :genres
-    resources :styles
-    resources :countries
-    resources :currencies
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :styles, only: [:index, :create, :edit, :update]
+    resources :countries, only: [:index, :create, :edit, :update]
+    resources :currencies, only: [:index, :create, :edit, :update]
   end
   
   
