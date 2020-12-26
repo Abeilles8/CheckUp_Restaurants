@@ -78,7 +78,7 @@
           <div class="link-none col-md-1">
             <%= link_to user_path(review.user.id) do %>
               <div class="text-center user-name">
-                <%= attachment_image_tag review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
+                <%= attachment_image_tag review.user, :image, fallback:"user-image.jpg", size: "50x50", class: "rounded-circle"%>
               </div>
             <% end %>
           </div>
