@@ -135,7 +135,7 @@
         <tbody>
           <tr>
             <th>
-              <%= attachment_image_tag review_comment.user, :image, fallback:"review-image.jpg", size: "45x45", class: "rounded-circle" %><br/>
+              <%= attachment_image_tag review_comment.user, :image, fallback:"user-image.png", size: "45x45", class: "rounded-circle" %><br/>
               <%= review_comment.user.name %>
             </th>
             <td><p><%= review_comment.comment %></p></td>
