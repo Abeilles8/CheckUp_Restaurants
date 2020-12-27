@@ -5,7 +5,7 @@
 
 
 <% @favorites.each do |favorite| %>
-  <div class="row none review-box">
+  <div class="row none-clear review-box">
     <div class="review-image col-md-4 text-center"><!--レビュー画像-->
       <%= link_to review_path(favorite.review.id) do %>
         <% favorite.review.review_images.each do |image| %>
@@ -32,7 +32,7 @@
           <!--ユーザー画像-->
           <div class="link-none col-md-1">
             <%= link_to user_path(favorite.review.user.id) do %>
-              <%= attachment_image_tag favorite.review.user, :image, fallback:"sample.jpg", size: "50x50", class: "rounded-circle"%>
+              <%= attachment_image_tag favorite.review.user, :image, fallback:"user-image.png", size: "50x50", class: "rounded-circle"%>
               <div class="text-center">
                 <strong class="name"><%= favorite.review.user.name %></strong>
               </div>
@@ -42,7 +42,7 @@
           <div class="review-content col-md-10"><%= favorite.review.content %></div>
         </div>
 
-        <div><p>予算:<span><%= favorite.review.budget %></span></p></div>
+        <div><p>予算:<span><%= favorite.review.currency.name %> <%= favorite.review.budget %></span></p></div>
         <div>
           <p>
             いいね数(<%= favorite.review.likes.count %>)<br/>

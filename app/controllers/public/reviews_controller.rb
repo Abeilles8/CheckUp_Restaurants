@@ -2,7 +2,7 @@ class Public::ReviewsController < ApplicationController
 	
   # 	ログインユーザーのみ
   before_action :authenticate_user!
-  # before_action :baria_review
+
 	
 	def index
 	  @reviews = Review.all.order("created_at DESC").page(params[:page]).per(5)
@@ -96,10 +96,4 @@ class Public::ReviewsController < ApplicationController
   	  )
   end
   
-  # def baria_review
-  #   unless Review.find(params[:id]).user_id == current_user.id
-  #     # 元のページに
-  #     redirect_back(fallback_location: root_path)
-  #   end
-  # end
 end
