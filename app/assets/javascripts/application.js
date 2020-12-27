@@ -81,14 +81,14 @@ $(function() {
 }) 
 
 
-$(function() {
-  $('#star').raty({
-		  size      :36,
-		  starOff:    "/images/star-off.png",
-		  starOn:    "/images/star-on.png",
-		  starHalf:   "/images/star-half.png",
-		  scoreName: "review[rate]",
-		  //半分の入力を行う
-		  half:       "true"
-		});
-});
+// $(function() {
+//   $('#star').raty({
+// 		  size      :36,
+// 		  starOff:    "/images/star-off.png",
+// 		  starOn:    "/images/star-on.png",
+// 		  starHalf:   "/images/star-half.png",
+// 		  scoreName: "review[rate]",
+// 		  //半分の入力を行う
+// 		  half:       "true"
+// 		});
+// });
