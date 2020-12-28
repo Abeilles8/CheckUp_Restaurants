@@ -1,51 +1,59 @@
-<!--検索フォーム-->
-<input id="address" type="textbox" >
-<input type="button" value="検索" onclick="codeAddress()">
-<div id="map"></div>
-<style>#map {height: 600px; width: 100%;} </style>
-
-<script>
-  let map;
+<div class="">
+  <!--検索フォーム-->
+  <input id="address" type="textbox">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <div id="map"></div>
+  <style>#map {height: 600px; width: 100%;} </style>
   
-  function initMap(){
-    geocoder = new google.maps.Geocoder()
+  <script>
+    let map;
     
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {
-          lat: 48.8588,
-          lng: 2.3494
-      },
-      // 表示領域
-      zoom: 17,
-    });
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+      
+      map = new google.maps.Map(document.getElementById('map'), {
+        // center: {
+        // // 定義した変数から緯度経度を呼び出す
+        //     lat: gon.review.latitude, 
+        //     lng: gon.review.longitude
+        // },
+         center: {lat: 48.8588, lng: 2.3494},
+        // 表示領域
+        zoom: 17,
+      });
+      
+      var marker = new google.maps.Marker({
+        // 定義した変数から緯度経度を呼び出し、マーカーを立てる
+        // draggable:true;
+        position: {
+        //     lat: gon.review.latitude,
+        //     lng: gon.review.longitude
+                lat: 40.7828, lng:-73.9653
+        },
+        draggable:true,
+        map: map
+      });
+    }
     
-    var marker = new google.maps.Marker({
-      // マーカーを立てる
-      position: {
-          lat: 48.8588,    
-          lng: 2.3494
-      },
-      map: map
-    });
-  }
+    let geocoder
+    
+    function codeAddress(){
+      let inputAddress = document.getElementById("address").value;
+      
+      geocoder.geocode( {"address": inputAddress}, function(results, status) {
+        if (status == "OK") {
+          map.setCenter(results[0].geometry.location);
+          marker = new google.maps.Maker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert("該当する結果がありませんでした:" + status);
+        }
+      });
+    }
+  </script>
   
-  let geocoder
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"] %>&callback=initMap" async defer></script>
   
-  function codeAddress(){
-    let inputAddress = document.getElementById("address").value;
-    
-    geocoder.geocode( {"address": inputAddress}, function(results, status) {
-      if (status == "OK") {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Maker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert("該当する結果がありませんでした:" + status);
-      }
-    });
-  }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"] %>&callback=initMap" async defer></script>
+</div>

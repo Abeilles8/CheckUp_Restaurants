@@ -13,6 +13,16 @@
  */
 @import "bootstrap";
 
+
+
+
+.auto{
+  display: none;
+}
+.auto.slick-initialized{
+  display: block; 
+}
+
 // リンク下線なし,黒
 .link-none a {
 	text-decoration: none;
