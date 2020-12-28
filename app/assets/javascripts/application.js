@@ -13,13 +13,14 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 // 
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 // 
 //= require underscore
+//= require_tree .
+
 
 $(document).ready(function(){
   $('.your-class').slick({
@@ -29,7 +30,9 @@ $(document).ready(function(){
 
 
 // 自動再生
-$(function() {
+document.addEventListener("turbolinks:load"
+, function () {
+  $(function() {
   // Top.page
     $('.topauto').slick({
         // 表示枚数
@@ -39,11 +42,13 @@ $(function() {
         autoplay: true,
         autoplaySpeed: 2500,
     });
-});
+  });
+})
 
-
-$(function() {
-  // review.index
+document.addEventListener("turbolinks:load"
+, function () {
+  $(function() {
+    // review.index
     $('.autoplay').slick({
         // 表示枚数
         slidesToShow: 1,
@@ -52,10 +57,13 @@ $(function() {
         autoplay: true,
         autoplaySpeed: 2500,
     });
-});
+  });
+})
 
 
-$(function() {
+document.addEventListener("turbolinks:load"
+, function () {
+  $(function() {
   // review.show
     $('.auto').slick({
         // 表示枚数
@@ -65,7 +73,8 @@ $(function() {
         autoplaySpeed: 2000,
         dots: true,
     });
-});
+  });
+})
 
 
 $(function() {
