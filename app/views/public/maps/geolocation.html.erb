@@ -10,20 +10,29 @@
     
     function initMap(){
       geocoder = new google.maps.Geocoder()
-
-      map = new google.maps.Map(document.getElementById('map'), {
-         center: {lat: 48.8588, lng: 2.3494},
-        // 表示領域
-        zoom: 17,
-      });
       
-      marker = new google.maps.Marker({
-        // 定義した変数から緯度経度を呼び出し、マーカーを立てる
-        position: {lat: 48.8588, lng: 2.3494},
-        // マーカーを移動
-        draggable:true,
-        map: map
-      });
+      (navigator.geolocation) {
+        // 現在地取得
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            // 緯度経度を変数に格納
+            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            // 現在地取得用のオプションを変数に代入
+            var mapOptions = {
+              center: mapLatLng,
+              zoom: 17
+            };
+            // マップオブジェクト作成
+            map = new google.maps.Map(
+              document.getElementById('map'), 
+              mapOptions
+            );
+            marker = new google.maps.Marker({
+              map: map,
+              position: mapLatLng
+            });
+          };
+      )};
     }
     
     let geocoder

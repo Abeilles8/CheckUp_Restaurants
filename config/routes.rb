@@ -44,8 +44,6 @@ Rails.application.routes.draw do
     end
     # タグ
     resources :tags
-    # googlemaps
-    resources :maps, only: [:index]
     # 通知
     resources :notifications, only: [:index, :destroy]
     
