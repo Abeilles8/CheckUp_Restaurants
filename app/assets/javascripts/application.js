@@ -55,7 +55,7 @@ document.addEventListener("turbolinks:load"
         slidesToScroll: 1,
         // dots: true,
         autoplay: true,
-        autoplaySpeed: 2500,
+        autoplaySpeed: 2700,
     });
   });
 })
