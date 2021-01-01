@@ -24,7 +24,7 @@
 	          <th>予算<span class="required">（必須）</span></th>
 	          <td>
 	          	<%= f.collection_select :currency_id, Currency.all, :id, :name %>
-	          	<%= f.text_field :budget, placeholder: "予算どのくらいですか？　100", class: "field" %>
+	          	<%= f.text_field :budget, placeholder: "400", class: "budget" %>
 	          </td>
 	        </tr>
 	        
@@ -47,8 +47,9 @@
 	        </tr>
 	
 	        <tr>
-	          <th>ジャンル選択（複数選択可）</th>
+	          <th>アイコン選択（複数選択可）</th>
 	          <td class="genre-field">
+	          	<p>該当するものにチェックをお願いします。</p>
 	            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |genre| %>
 	              <%= genre.label do %>
 	                <%= genre.check_box %>
@@ -71,7 +72,7 @@
 	        <tr>
 	          <th>レビュー内容</th>
 	          <td>
-	            <%= f.text_area :content, placeholder: "このお店どうでしたか？", class: "col-12" %>
+	            <%= f.text_area :content, placeholder: "このお店はどうでしたか？", class: "col-12" %>
 	          </td>
 	        </tr>
 	      </table>
