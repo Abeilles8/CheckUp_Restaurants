@@ -2,14 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :google_oauth2, :github]
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:twitter, :google_oauth2, :github]
          
   attachment :image
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :review_comments, dependent: :destroy
-  has_many :sns
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification",  foreign_key: "visited_id", dependent: :destroy
   
