@@ -42,7 +42,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
   def google_oauth2
     @user = User.find_or_create_by(user_params)
-    # @user = User.from_omniauth(request.env["omniauth.auth"])
     
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
@@ -68,6 +67,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
   def user_params
     request.env["omniauth.auth"].slice(:provider, :uid).to_h
+  end
+  
+  def callback_for(provider)
+    @omniauth = request.env["omniauth.auth"]
+    info = User.find_oauth(@omniauth)
+    @user = info[:user]
+    
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication
+      set_flash_messege(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+    else
+      
+    end
   end
   
 end

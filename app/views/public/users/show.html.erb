@@ -2,8 +2,8 @@
 <div class=" profile">
   <div class="text-right ">
     <div class="counter">
-      <div>投稿数<strong class="count"><%= @user.reviews.count%></strong></div>
-      <div><%= image_tag "like.png", size: "40x40"%><strong class="count"><%= @user.likes.count %></strong></div>
+      <div>投稿数 <strong class="count"><%= @user.reviews.count%></strong></div>
+      <div><%= image_tag "like.png", size: "40x40"%> <strong class="count"><%= @likes_count %></strong></div>
       <div>
         <% if current_user.id == @user.id %>
             <%= link_to favorite_path(current_user.favorites) do %>

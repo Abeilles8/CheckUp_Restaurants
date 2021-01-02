@@ -1,18 +1,18 @@
 <% reviews.each do |review| %>
   <div class="row none-clear review-box">
     <!--レビュー画像-->
-    <div class="review-image col-md-4 text-center">
+    <div class="review-image col-12 col-md-4 text-center">
       <%= link_to review_path(review.id) do %>
         <div class="autoplay"><!--スライダー-->
           <% review.review_images.each do |image| %>
-            <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "200x100" %>
+            <%= attachment_image_tag image, :image, fallback:"review-image.jpg", class: "image" %>
           <% end %>
         </div>
       <% end %>
     </div>
     
     <!--レビュー詳細-->
-    <div class="review col-md-8">
+    <div class="review col-12 col-md-8">
         <div class="review-title">
           <div><!--いいね/お気に入り-->
             <% if current_user.id != review.user.id %>
@@ -35,7 +35,7 @@
 
         <div class=" row user-content"><!--ユーザーの情報-->
           <!--ユーザー画像-->
-          <div class="text-center link-none col-md-1">
+          <div class="text-center link-none col-1 col-md-1">
             <%= link_to user_path(review.user.id) do %>
               <div class="text-center">
                 <%= attachment_image_tag review.user, :image, fallback:"user-image.png", size: "55x55", class: "rounded-circle"%>
@@ -43,10 +43,10 @@
             <% end %>
           </div>
           <!--レビュー内容-->
-          <div class="review-content col-md-9"><%= review.content %></div>
+          <div class="review-content col-10 col-md-9"><%= review.content %></div>
         </div>
 
-        <div><p>予算： <strong><%= review.currency.name %> <%= review.budget %></strong></p></div>
+        <div><p>予算：<strong><%= review.currency.name %> <%= review.budget %></strong></p></div>
         <div>
           <p>コメント数(<%= review.review_comments.count %>)件</p>
         </div>

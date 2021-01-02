@@ -6,6 +6,12 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     # my_pageには自分がレビューしたものだけを表示
     @reviews = @user.reviews.all.order("created_at DESC")
+    # 総いいね数
+    @user_reviews = @user.reviews
+    @likes_count = 0
+    @user_reviews.each do |review|
+      @likes_count += review.likes.count
+    end
   end
   
   def edit
