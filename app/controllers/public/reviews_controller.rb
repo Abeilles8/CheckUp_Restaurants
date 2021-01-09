@@ -11,6 +11,7 @@ class Public::ReviewsController < ApplicationController
 	   # tagged_withで絞り込み
 	    @reviews = Review.tagged_with("#{params[:tag_name]}")
 	  end
+	  
 	end
   
   def new
@@ -85,6 +86,8 @@ class Public::ReviewsController < ApplicationController
   	  { :review_images_images => []}, 
   	  :content, 
   	  :address, 
+  	  :latitude,
+  	  :longitude,
   	  :tag_list,
   	  :budget, 
   	  :user_id, 
