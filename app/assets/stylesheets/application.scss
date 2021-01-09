@@ -118,9 +118,13 @@
 	color: #da19b7;
 	font-size: 40px;
 	padding: 20px 20px;
+	float: left;
 	span {color: red;}
 }
 
+.nav {
+	float: right;
+}
 // header_drop
 .navdrop {
 	background: #0015bba8;
@@ -128,6 +132,7 @@
 	color: #000;
 	a {color: #fff;}
 }
+
 
 // footer
 footer {

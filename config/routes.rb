@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations',
     # SNSログイン
-    omniauth_callbacks: 'users/omniauth_callbacks',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   
   scope module: :public do
@@ -46,7 +46,6 @@ Rails.application.routes.draw do
     resources :tags
     # 通知
     resources :notifications, only: [:index, :destroy]
-    
     # いいね
     post "like/:id" => "likes#create", as: "create_like"
     delete "like/:id" => "likes#destroy", as: "destroy_like"

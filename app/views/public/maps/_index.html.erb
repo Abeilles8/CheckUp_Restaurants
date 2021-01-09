@@ -1,8 +1,8 @@
 <div class="">
   
   <!--検索フォーム-->
-  <input id="address" type="textbox" value="Geeksalon">
-  <input type="button" value="検索" onclick="codeAddress()">
+  <!--<input id="address" type="textbox" value="Geeksalon">-->
+  <!--<input type="button" value="検索" onclick="codeAddress()">-->
   <div id="map"></div>
   <style>#map {height: 800px; width: 100%;} </style>
   
@@ -16,10 +16,18 @@
        zoom: 12,
      });
      
-     marker = new google.maps.Marker({
-       position: {lat: 40.7828, lng:-73.9653},
-       map: map
-     });
+     <% hoges.each do |m| %>
+        (function(){
+        //   var contentString = "住所:<= m.address %>";
+           
+          var marker = new google.maps.Marker({
+             position: {lat: <%= m.latitude %>, lng: <%= m.longitude %>},
+             map: map
+            //  title: contentString
+          });
+          
+        });
+     <% end %>
    }
  </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API"] %>&callback=initMap" async defer></script>
