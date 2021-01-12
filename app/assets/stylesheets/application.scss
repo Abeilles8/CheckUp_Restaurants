@@ -132,6 +132,8 @@
 	color: #000;
 	a {color: #fff;}
 }
+// hover状態に
+.dropdown:hover .dropdown-menu {display: block;}
 
 
 // footer
