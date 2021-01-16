@@ -3,9 +3,9 @@
     <!--レビュー画像-->
     <div class="review-image col-12 col-md-4 text-center">
       <%= link_to review_path(review.id) do %>
-        <div class="autoplay"><!--スライダー-->
+        <div class="autoplay"><!--slider-->
           <% review.review_images.each do |image| %>
-            <%= attachment_image_tag image, :image, fallback:"review-image.jpg", size: "200x100" %>
+            <%= attachment_image_tag image, :image, fallback:"review-image.jpg"%>
           <% end %>
         </div>
       <% end %>

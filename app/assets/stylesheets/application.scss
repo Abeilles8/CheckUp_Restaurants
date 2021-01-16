@@ -100,6 +100,12 @@
 // error_message(!)//
 
 
+.slider img {
+  height: 30vw;
+  max-height: 400px; //ポイント2
+  min-height: 350px; //ポイント2
+}
+
 // 壁紙
 .wallpaper {
 	background-image: image-url("wallpaper");
@@ -118,10 +124,8 @@
 	color: #da19b7;
 	font-size: 40px;
 	padding: 20px 20px;
-	float: left;
 	span {color: red;}
 }
-.nav {float: right;}
 
 // header_drop
 .navdrop {

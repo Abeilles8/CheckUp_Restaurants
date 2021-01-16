@@ -5,11 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-    <!--googlemapsに使用-->
     <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--slickに使用-->
+    <!--slick-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -20,13 +19,11 @@
     <div class="wrapper">
       <header>
         <!--LOGO-->
-        <div>
-          <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
-        </div>
-        
         <nav class="navbar navbar-expand-lg nav">
-          <!--Navigation-->
-            <ul class="navbar-nav mr-auto">
+          <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
+        
+        <!--Navigation-->
+            <ul class="navbar-nav justify-content-end">
               <% if user_signed_in? %>
                 <!--current_user-->
                 <li>
