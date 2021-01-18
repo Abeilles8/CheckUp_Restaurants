@@ -312,7 +312,7 @@ Devise.setup do |config|
   
   # SNS_Login
   # config.omniauth :facebook,  ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
-  config.omniauth :google_oauth2,  ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], skip_jwt: true
-  config.omniauth :twitter,  ENV['TWITTER_ID'], ENV['TWITTER_SECRET']
-  config.omniauth :github,  ENV['GITHUB_ID'], ENV['GITHUB_SECRET']
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+  config.omniauth :twitter, ENV['TWITTER_ID'], ENV['TWITTER_SECRET']
+  config.omniauth :github, ENV['GITHUB_ID'], ENV['GITHUB_SECRET']
 end

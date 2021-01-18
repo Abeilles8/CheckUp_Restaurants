@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   
   # Admin.routiong
-  devise_for :admins, skip: :all #自動routing作成をskipさせる
+  devise_for :admins, skip: :all #自動routing作成をskip
   # 必要なroutingのみ
   devise_scope :admin do
     get "admins/sign_in" => "admins/sessions#new", as: :new_admin_session 
