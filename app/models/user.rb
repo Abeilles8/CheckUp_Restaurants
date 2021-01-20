@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2]
          
   attachment :image
-  has_many :sns_credentials, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :favorites, dependent: :destroy

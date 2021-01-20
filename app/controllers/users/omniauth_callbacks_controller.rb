@@ -18,6 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
   
   # callback method
+  private
   def callback_for(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?

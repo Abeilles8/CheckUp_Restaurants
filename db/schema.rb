@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_171714) do
+ActiveRecord::Schema.define(version: 2020_12_25_012340) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -157,15 +157,6 @@ ActiveRecord::Schema.define(version: 2021_01_01_171714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_on_user_id"
-  end
-
-  create_table "sns_credentials", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "spots", force: :cascade do |t|
