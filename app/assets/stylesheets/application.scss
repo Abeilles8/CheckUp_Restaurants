@@ -13,9 +13,6 @@
  */
 @import "bootstrap";
 
-
-
-
 .auto{
   display: none;
 }
@@ -99,12 +96,6 @@
 }
 // error_message(!)//
 
-
-.slider img {
-  height: 30vw;
-  max-height: 400px;
-  min-height: 350px;
-}
 
 // 壁紙
 .wallpaper {
@@ -250,6 +241,10 @@ footer {
 		border-right-style: dotted;
 		// border-width: 0.5px;
 		border-color: #ff7f06;
+		img {
+			width: 100%;
+			height: 18vw;
+		}
 	}
 	.review {
 		padding: 10px;
@@ -259,9 +254,16 @@ footer {
 		border-bottom-style: solid;
 	}
 	.restrant-name {
-	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Charter','Segoe UI Historic',sans-serif;
+	  font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Charter','Segoe UI Historic',sans-serif;
+		margin-left: 15px;
 		a:hover {color: #FF9900;}
 	}
+	.reaction {
+		position: absolute;
+		right: 0;
+		margin-right: 15px;
+	}
+	
 	.restrant-details {
 		margin-bottom: 3px;
 	}
@@ -290,8 +292,10 @@ footer {
 	.title {
 		background-color: #fbcb807d;
 		
-		.edit {
-			padding: 10px 10px;
+		.edit_delete_icon {
+			position: absolute;
+			right: 0;
+			padding-right: 20px;
 		}
 		.boder-red {
 			border-bottom-style: double ;
@@ -305,7 +309,6 @@ footer {
 				border-bottom-style: double ;
 				border-width: 6px;
 				border-color: #0E2287;
-				// background: #FFE0B3;
 				padding: 5px;
 				margin-bottom: 2px;
 				font-size: 2.5rem;
@@ -319,12 +322,18 @@ footer {
 		border-color: red;
 		margin-top: 0;
 		padding-bottom: 15px;
+		padding: 0 30px;
 		
-		.image-vw {
-			width: 50vw;
-			// padding: 0 20px;
-			height: 30vw;
+		img {
+			width: 100%;
+			height: 25vw;
 		}
+		
+		// .image-vw {
+		// 	width: 50vw;
+		// 	// padding: 0 20px;
+		// 	height: 30vw;
+		// }
 	}
 	
 	.user-review {
