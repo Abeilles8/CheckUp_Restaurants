@@ -292,8 +292,10 @@ footer {
 	.title {
 		background-color: #fbcb807d;
 		
-		.edit {
-			padding: 10px 10px;
+		.edit_delete_icon {
+			position: absolute;
+			right: 0;
+			padding-right: 20px;
 		}
 		.boder-red {
 			border-bottom-style: double ;
@@ -307,7 +309,6 @@ footer {
 				border-bottom-style: double ;
 				border-width: 6px;
 				border-color: #0E2287;
-				// background: #FFE0B3;
 				padding: 5px;
 				margin-bottom: 2px;
 				font-size: 2.5rem;
