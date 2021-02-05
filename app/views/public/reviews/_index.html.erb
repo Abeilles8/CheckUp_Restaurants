@@ -14,15 +14,17 @@
     <!--レビュー詳細-->
     <div class="review col-12 col-md-8">
         <div class="review-title">
-          <div><!--いいね/お気に入り-->
-            <% if current_user.id != review.user.id %>
-              <div class="text-right">
-                <%= render "public/reviews/favorite", review: review %> <%= render "public/reviews/like", review: review %>
+          <div><!--レストラン名-->
+            <div>
+              <div class="reaction"><!--いいね/お気に入り-->
+                <% if current_user.id != review.user.id %>
+                  <div class="text-right">
+                    <%= render "public/reviews/favorite", review: review %> <%= render "public/reviews/like", review: review %>
+                  </div>
+                <% end %>
               </div>
-            <% end %>
-          </div>
-          <div class=""><!--レストラン名-->
-            <h3 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h3>
+              <h3 class="restrant-name"><%= link_to review.name, review_path(review.id) %></h3>
+            </div>
             <p class="restrant-details">[<%= review.country.name %>] / <%= review.style.name %></p>
           </div>
         </div>
