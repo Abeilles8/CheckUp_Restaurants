@@ -1,4 +1,4 @@
-# CheckUp Restaurants
+# Check Up Restaurants
 
 ## サイト概要
 海外旅行、国内旅行にいく**旅行者**を対象にしています。  
@@ -53,6 +53,10 @@
 ## 設計書
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1Wj-wkOKArclCbJA4v7nj7QHoPCI7SbYepvWnLsLDgj8/edit?usp=sharing>
+### テーブル定義書
+<https://docs.google.com/spreadsheets/d/1kASu4pUFvLfqNhm1yA04Nx1tfP8jQggs3HCFyHSEngg/edit?usp=sharing>
+### 詳細設計書
+<https://docs.google.com/spreadsheets/d/130mpMzKY2C2Z9YL7uqjXeb1vqs3fo-x1ECMt0WXtZRQ/edit?usp=sharing>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -65,10 +69,10 @@
 - [Bootstrap](https://getbootstrap.jp/)
 - [slick](https://kenwheeler.github.io/slick/)  
 
-アイコン使用
+#### アイコン使用
 >- [icon-icons](https://icon-icons.com/ja/)
 >- [icons8](https://icons8.jp/)  
 
-画像使用
+#### 画像使用
 >- [Pixabay](https://pixabay.com/ja/)
 >- [Foodiesfeed](https://www.foodiesfeed.com/)
