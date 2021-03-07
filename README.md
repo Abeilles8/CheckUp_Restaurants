@@ -57,6 +57,8 @@
 <https://docs.google.com/spreadsheets/d/1kASu4pUFvLfqNhm1yA04Nx1tfP8jQggs3HCFyHSEngg/edit?usp=sharing>
 ### 詳細設計書
 <https://docs.google.com/spreadsheets/d/130mpMzKY2C2Z9YL7uqjXeb1vqs3fo-x1ECMt0WXtZRQ/edit?usp=sharing>
+### ER図
+<https://drive.google.com/file/d/1qX7i95MWs24Qrp_rG8ql0RxOssJBZITP/view?usp=sharing>
 
 ## 開発環境
 - OS：Linux(CentOS)
