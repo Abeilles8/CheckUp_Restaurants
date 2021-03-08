@@ -23,22 +23,25 @@
           <p class="logo">Check Up <span class="red">Rest</span>aurants</p>
         
         <!--Navigation-->
-            <ul class="navbar-nav justify-content-end">
-              <% if user_signed_in? %>
-                <!--current_user-->
-                <li>
-                  <%= link_to root_path do %>
-                    <%= image_tag "home.icon.png", size: "50x50" %>
-                  <% end %>
-                </li>
-                <li><%= render "layouts/nav.drop" %></li>
-              <% elsif admin_signed_in? %>
-                <!--admin-->
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか", class: "btn btn-primary" %></li>
-              <% else %>
-                <!--guest-->
-              <% end %>
-            </ul>
+          <ul class="navbar-nav justify-content-end">
+            <!--current_user-->
+            <% if user_signed_in? %>
+                <!--home_page-->
+              <li>
+                <%= link_to root_path do %>
+                  <%= image_tag "home.icon.png", size: "50x50" %>
+                <% end %>
+              </li>
+                <!--drop_down-->
+              <li><%= render "layouts/nav.drop" %></li>
+            <% elsif admin_signed_in? %>
+              <!--admin-->
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか", class: "btn btn-primary" %></li>
+            <% else %>
+              <!--guest-->
+            <% end %>
+          </ul>
+        <!--//Navigation-->
         </nav>
       </header>
       

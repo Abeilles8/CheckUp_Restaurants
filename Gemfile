@@ -62,6 +62,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # plugin
+group :production do
+  gem 'mysql2'
+end
 gem 'devise'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
@@ -69,9 +72,7 @@ gem 'kaminari'
 gem 'bootstrap', '~> 4.5.3'
 gem 'jquery-rails'
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+gem 'pry-byebug'
 gem 'acts-as-taggable-on', '~> 6.0'
 # 地名から緯度経度に変換
 gem "geocoder"
@@ -80,6 +81,5 @@ gem "gon"
 # SNS_Login
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'carrierwave', '~> 2.0'
